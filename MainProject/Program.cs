@@ -32,7 +32,6 @@ namespace MainProject
 
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
-            app.UseWebSockets();
             app.Run();
         }
     }

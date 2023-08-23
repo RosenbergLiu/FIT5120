@@ -1,15 +1,23 @@
 ﻿window.addEventListener('scroll', function () {
-    var navbarHeight = 70;
-    var scrollPosition = window.scrollY + navbarHeight;
-    var home = document.getElementById('home').offsetTop;
-    var form = document.getElementById('form').offsetTop;
-    var visualization = document.getElementById('visualization').offsetTop;
-    var about = document.getElementById('about').offsetTop;
+    var scrollPosition = window.scrollY;
+    var sections = ['home', 'info', 'form', 'visualization', 'tips'];
+    var activeSection = sections[0];
+    var maxOverlap = 0;
 
-    setActiveLink('home', scrollPosition >= home && scrollPosition < form);
-    setActiveLink('form', scrollPosition >= form && scrollPosition < visualization);
-    setActiveLink('visualization', scrollPosition >= visualization && scrollPosition < about);
-    setActiveLink('about', scrollPosition >= about);
+    sections.forEach(function (sectionId) {
+        var section = document.getElementById(sectionId);
+        var overlap = Math.min(section.offsetTop + section.offsetHeight, scrollPosition + window.innerHeight) -
+            Math.max(section.offsetTop, scrollPosition);
+
+        if (overlap > maxOverlap) {
+            activeSection = sectionId;
+            maxOverlap = overlap;
+        }
+    });
+
+    sections.forEach(function (sectionId) {
+        setActiveLink(sectionId, sectionId === activeSection);
+    });
 });
 
 function setActiveLink(sectionId, isActive) {

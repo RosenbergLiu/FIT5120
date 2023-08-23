@@ -1,3 +1,10 @@
 ﻿.navbar-nav .nav-item .nav-link.active {
     font-weight: bold;
 }
+
+.content-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
