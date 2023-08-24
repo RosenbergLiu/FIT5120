@@ -1,35 +1,21 @@
 ﻿using MainProject.Data;
-using Microsoft.AspNetCore.Components;
-using Radzen;
 
-namespace MainProject.Pages.Components
+namespace MainProject.Pages
 {
-    public partial class FoodFormComponent
+    public partial class Index
     {
-        [Inject]
-        protected NotificationService notificationService { get; set; }
+        FoodFormModel foodFormModel = new FoodFormModel();
 
-        FoodFormModel foodFormModel = new FoodFormModel()
+        List<SavedFood> savedFoodList = new List<SavedFood>;
+
+        IEnumerable<Food>? foodList;
+        IEnumerable<Food>? vegetablesList;
+        IEnumerable<Food>? fruitsList;
+        IEnumerable<Food>? meatList;
+        IEnumerable<Food>? otherList;
+
+        async Task InitialFormAsync()
         {
-            VegetableId = null,
-            VegetableAmount = 0,
-            MeatId = null,
-            MeatAmount = 0,
-            FruitsId = null,
-            FruitsAmount = 0,
-            OtherId = null,
-            OtherAmount = 0
-        };
-
-        private IEnumerable<Food>? foodList;
-        private IEnumerable<Food>? vegetablesList;
-        private IEnumerable<Food>? fruitsList;
-        private IEnumerable<Food>? meatList;
-        private IEnumerable<Food>? otherList;
-
-        protected override async Task OnInitializedAsync()
-        {
-            await base.OnInitializedAsync();
             foodList = await foodService.GetFoodListAsync();
             vegetablesList = foodList.Where(f => f.CategoryId == 1);
             fruitsList = foodList.Where(f => f.CategoryId == 2);
@@ -37,12 +23,14 @@ namespace MainProject.Pages.Components
             otherList = foodList.Where(f => f.CategoryId == 4);
 
             var ip = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
-            notificationService.Notify(NotificationSeverity.Info, ip);
         }
 
-        public async Task OnSubmit(FoodFormModel args)
+        private async Task SaveVegetable()
         {
-
+            var foodId = foodFormModel.VegetableId;
+            var foodAmount = foodFormModel.VegetableAmount;
+            foodFormModel.VegetableId = null;
+            foodFormModel.VegetableAmount = 0;
         }
 
         private void AddVegetable()
@@ -52,9 +40,8 @@ namespace MainProject.Pages.Components
 
         private void MinusVegetable()
         {
-            if(foodFormModel.VegetableAmount > 0)
+            if (foodFormModel.VegetableAmount > 0)
             {
-
                 foodFormModel.VegetableAmount--;
             }
         }
@@ -66,7 +53,7 @@ namespace MainProject.Pages.Components
 
         private void MinusFruits()
         {
-            if(foodFormModel.FruitsAmount > 0)
+            if (foodFormModel.FruitsAmount > 0)
             {
                 foodFormModel.FruitsAmount--;
             }

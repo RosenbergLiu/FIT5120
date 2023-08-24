@@ -10,5 +10,10 @@
         public int? MeatAmount { get; set; }
         public int? OtherId { get; set; }
         public int? OtherAmount { get; set; }
+
+        public FoodFormModel() {
+            VegetableId = MeatId = FruitsId = OtherId = null;
+            VegetableAmount = MeatAmount = FruitsAmount = OtherAmount = 0;
+        }
     }
 }
