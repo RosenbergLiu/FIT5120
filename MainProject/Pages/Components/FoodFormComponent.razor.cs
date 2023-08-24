@@ -1,9 +1,14 @@
 ﻿using MainProject.Data;
+using Microsoft.AspNetCore.Components;
+using Radzen;
 
 namespace MainProject.Pages.Components
 {
     public partial class FoodFormComponent
     {
+        [Inject]
+        protected NotificationService notificationService { get; set; }
+
         FoodFormModel foodFormModel = new FoodFormModel()
         {
             VegetableId = null,
@@ -30,6 +35,9 @@ namespace MainProject.Pages.Components
             fruitsList = foodList.Where(f => f.CategoryId == 2);
             meatList = foodList.Where(f => f.CategoryId == 3);
             otherList = foodList.Where(f => f.CategoryId == 4);
+
+            var ip = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+            notificationService.Notify(NotificationSeverity.Info, ip);
         }
 
         public async Task OnSubmit(FoodFormModel args)

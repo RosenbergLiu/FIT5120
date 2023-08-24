@@ -1,9 +1,16 @@
 ﻿@inject FoodService foodService
+@inject IHttpContextAccessor HttpContextAccessor
 
 <RadzenTemplateForm Data="@foodFormModel" Submit="@((FoodFormModel args) => { OnSubmit(args); })">
     <RadzenRow>
         <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
-            <RadzenFieldset Text="Vegetable">
+            <RadzenFieldset>
+                <HeaderTemplate>
+                    <span class="d-inline-flex align-items-center align-middle">
+                        <RadzenIcon Icon="spa" class="me-1" /><b>Vegetable</b>
+                    </span>
+                </HeaderTemplate>
+                <ChildContent>
                 <RadzenStack Gap="1rem">
                     <RadzenRow>
                         <RadzenDropDown @bind-Value=@foodFormModel.VegetableId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select vegetable" Style="width: 100%; max-width: 400px;" />
@@ -23,30 +30,40 @@
                         <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success">Add</RadzenButton>
                     </RadzenRow>
                 </RadzenStack>
+                </ChildContent>
             </RadzenFieldset>
         </RadzenColumn>
 
         <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
-            <RadzenFieldset Text="Fruits">
-                <RadzenStack Gap="1rem">
-                    <RadzenRow>
-                        <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select fruit" Style="width: 100%; max-width: 400px;" />
-                    </RadzenRow>
-                    <RadzenRow>
-                        <RadzenColumn class="centered-content" Size="2">
-                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusFruits" />
-                        </RadzenColumn>
-                        <RadzenColumn class="centered-content" Size="8">
-                            <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false"></RadzenNumeric>
-                        </RadzenColumn>
-                        <RadzenColumn class="centered-content" Size="2">
-                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddFruits" />
-                        </RadzenColumn>
-                    </RadzenRow>
-                    <RadzenRow Style="justify-content: center !important;">
-                        <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success">Add</RadzenButton>
-                    </RadzenRow>
-                </RadzenStack>
+            <RadzenFieldset>
+                <HeaderTemplate>
+
+                    <span class="d-inline-flex align-items-center align-middle">
+                        <i class="fa-solid fa-pepper-hot fa-beat"></i>
+                        <RadzenIcon Icon="nutrition" class="me-1" /><b>Fruits</b>
+                    </span>
+                </HeaderTemplate>
+                <ChildContent>
+                    <RadzenStack Gap="1rem">
+                        <RadzenRow>
+                            <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select fruit" Style="width: 100%; max-width: 400px;" />
+                        </RadzenRow>
+                        <RadzenRow>
+                            <RadzenColumn class="centered-content" Size="2">
+                                <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusFruits" />
+                            </RadzenColumn>
+                            <RadzenColumn class="centered-content" Size="8">
+                                <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false"></RadzenNumeric>
+                            </RadzenColumn>
+                            <RadzenColumn class="centered-content" Size="2">
+                                <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddFruits" />
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow Style="justify-content: center !important;">
+                            <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success">Add</RadzenButton>
+                        </RadzenRow>
+                    </RadzenStack>
+                </ChildContent>
             </RadzenFieldset>
         </RadzenColumn>
 

@@ -26,6 +26,7 @@ namespace MainProject
             builder.Services.AddScoped<TooltipService>();
             builder.Services.AddScoped<ContextMenuService>();
 
+            builder.Services.AddHttpContextAccessor();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
