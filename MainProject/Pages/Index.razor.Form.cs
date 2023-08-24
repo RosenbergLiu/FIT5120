@@ -1,4 +1,5 @@
 ﻿using MainProject.Data;
+using System.Collections.ObjectModel;
 
 namespace MainProject.Pages
 {
@@ -6,7 +7,7 @@ namespace MainProject.Pages
     {
         FoodFormModel foodFormModel = new FoodFormModel();
 
-        List<SavedFood> savedFoodList = new List<SavedFood>;
+        ObservableCollection<SavedFood> savedFoodList = new ObservableCollection<SavedFood>();
 
         IEnumerable<Food>? foodList;
         IEnumerable<Food>? vegetablesList;
@@ -25,12 +26,22 @@ namespace MainProject.Pages
             var ip = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
         }
 
-        private async Task SaveVegetable()
+        /// <summary>
+        /// Vegetable Methods
+        /// </summary>
+        private void SaveVegetable()
         {
-            var foodId = foodFormModel.VegetableId;
-            var foodAmount = foodFormModel.VegetableAmount;
-            foodFormModel.VegetableId = null;
-            foodFormModel.VegetableAmount = 0;
+            if(foodFormModel.VegetableId !=null && foodFormModel.VegetableAmount > 0)
+            {
+                SavedFood newFood = new SavedFood()
+                {
+                    FoodId = foodFormModel.VegetableId,
+                    FoodAmount = foodFormModel.VegetableAmount
+                };
+                AddOrUpdateFood(newFood);
+                foodFormModel.VegetableId = null;
+                foodFormModel.VegetableAmount = 0;
+            }
         }
 
         private void AddVegetable()
@@ -43,6 +54,24 @@ namespace MainProject.Pages
             if (foodFormModel.VegetableAmount > 0)
             {
                 foodFormModel.VegetableAmount--;
+            }
+        }
+
+        /// <summary>
+        /// Fruits Methods
+        /// </summary>
+        private void SaveFruits()
+        {
+            if (foodFormModel.FruitsId != null && foodFormModel.FruitsAmount > 0)
+            {
+                SavedFood newFood = new SavedFood()
+                {
+                    FoodId = foodFormModel.FruitsId,
+                    FoodAmount = foodFormModel.FruitsAmount
+                };
+                AddOrUpdateFood(newFood);
+                foodFormModel.FruitsId = null;
+                foodFormModel.FruitsAmount = 0;
             }
         }
 
@@ -59,6 +88,23 @@ namespace MainProject.Pages
             }
         }
 
+        /// <summary>
+        /// Meat Methods
+        /// </summary>
+        private void SaveMeat()
+        {
+            if (foodFormModel.MeatId != null && foodFormModel.MeatAmount > 0)
+            {
+                SavedFood newFood = new SavedFood()
+                {
+                    FoodId = foodFormModel.MeatId,
+                    FoodAmount = foodFormModel.MeatAmount
+                };
+                AddOrUpdateFood(newFood);
+                foodFormModel.MeatId = null;
+                foodFormModel.MeatAmount = 0;
+            }
+        }
         private void AddMeat()
         {
             foodFormModel.MeatAmount++;
@@ -72,6 +118,9 @@ namespace MainProject.Pages
             }
         }
 
+        /// <summary>
+        /// Other Methods
+        /// </summary>
         private void AddOther()
         {
             foodFormModel.OtherAmount++;
@@ -82,6 +131,20 @@ namespace MainProject.Pages
             if (foodFormModel.OtherAmount > 0)
             {
                 foodFormModel.OtherAmount--;
+            }
+        }
+
+        ////////////////////////
+        public void AddOrUpdateFood(SavedFood newFood)
+        {
+            var existingFood = savedFoodList.FirstOrDefault(f => f.FoodId == newFood.FoodId);
+            if (existingFood != null)
+            {
+                existingFood.FoodAmount += newFood.FoodAmount;
+            }
+            else
+            {
+                savedFoodList.Add(newFood);
             }
         }
     }

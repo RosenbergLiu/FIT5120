@@ -18,6 +18,12 @@ namespace MainProject.Pages
 
         }
 
+        async Task LoadListData(LoadDataArgs args)
+        {
+            isLoading = true;
+            StateHasChanged();
+            isLoading = false;
+        }
         
     }
 }
