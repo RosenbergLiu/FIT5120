@@ -10,13 +10,13 @@
                     </RadzenRow>
                     <RadzenRow>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusVegetable" />
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
                             <RadzenNumeric @bind-Value=@foodFormModel.VegetableAmount ShowUpDown="false"></RadzenNumeric>
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddVegetable" />
                         </RadzenColumn>
                     </RadzenRow>
                 </RadzenStack>
@@ -31,13 +31,13 @@
                     </RadzenRow>
                     <RadzenRow>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" onclick=""/>
+                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusFruits" />
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
                             <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false"></RadzenNumeric>
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddFruits" />
                         </RadzenColumn>
                     </RadzenRow>
                 </RadzenStack>
@@ -52,13 +52,13 @@
                     </RadzenRow>
                     <RadzenRow>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusMeat" />
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
                             <RadzenNumeric @bind-Value=@foodFormModel.MeatAmount ShowUpDown="false"></RadzenNumeric>
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddMeat" />
                         </RadzenColumn>
                     </RadzenRow>
                 </RadzenStack>
@@ -73,13 +73,13 @@
                     </RadzenRow>
                     <RadzenRow>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusOther" />
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
                             <RadzenNumeric @bind-Value=@foodFormModel.OtherAmount ShowUpDown="false"></RadzenNumeric>
                         </RadzenColumn>
                         <RadzenColumn class="centered-content">
-                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" />
+                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddOther" />
                         </RadzenColumn>
                     </RadzenRow>
                 </RadzenStack>

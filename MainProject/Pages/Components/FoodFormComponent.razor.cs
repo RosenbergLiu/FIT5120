@@ -50,5 +50,44 @@ namespace MainProject.Pages.Components
                 foodFormModel.VegetableAmount--;
             }
         }
+
+        private void AddFruits()
+        {
+            foodFormModel.FruitsAmount++;
+        }
+
+        private void MinusFruits()
+        {
+            if(foodFormModel.FruitsAmount > 0)
+            {
+                foodFormModel.FruitsAmount--;
+            }
+        }
+
+        private void AddMeat()
+        {
+            foodFormModel.MeatAmount++;
+        }
+
+        private void MinusMeat()
+        {
+            if (foodFormModel.MeatAmount > 0)
+            {
+                foodFormModel.MeatAmount--;
+            }
+        }
+
+        private void AddOther()
+        {
+            foodFormModel.OtherAmount++;
+        }
+
+        private void MinusOther()
+        {
+            if (foodFormModel.OtherAmount > 0)
+            {
+                foodFormModel.OtherAmount--;
+            }
+        }
     }
 }
