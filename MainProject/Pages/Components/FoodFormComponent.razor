@@ -1,0 +1,65 @@
+﻿
+
+<RadzenTemplateForm Data="@foodFormModel" Submit="@((FoodFormModel args) => { OnSubmit(args); })">
+    <RadzenRow>
+        <RadzenColumn class="rz-color-on-info-lighter rz-p-5">
+            <RadzenFieldset Text="Vegetable">
+                <RadzenStack Gap="1rem">
+                    <RadzenText></RadzenText>
+                    <RadzenDropDown @bind-Value=@selectedVegetable Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" />
+                </RadzenStack>
+            </RadzenFieldset>
+        </RadzenColumn>
+
+        <RadzenColumn class="rz-color-on-info-lighter rz-p-5">
+            <RadzenFieldset Text="Fruits">
+                <RadzenStack Gap="1rem">
+
+                </RadzenStack>
+            </RadzenFieldset>
+        </RadzenColumn>
+
+        <RadzenColumn class="rz-color-on-info-lighter rz-p-5">
+            <RadzenFieldset Text="Meat">
+                <RadzenStack Gap="1rem">
+
+                </RadzenStack>
+            </RadzenFieldset>
+        </RadzenColumn>
+
+        <RadzenColumn class="rz-color-on-info-lighter rz-p-5">
+            <RadzenFieldset Text="Other">
+                <RadzenStack Gap="1rem">
+
+                </RadzenStack>
+            </RadzenFieldset>
+        </RadzenColumn>
+    </RadzenRow>
+    
+</RadzenTemplateForm>
+
+@code {
+    [Inject]
+    protected FoodService foodService { get; set; }
+
+    FoodFormModel foodFormModel = new FoodFormModel();
+
+    int? selectedVegetable;
+    int? selectedFruit;
+    int? selectedMeat;
+    private IEnumerable<Food>? foodList;
+    IEnumerable<Food>? vegetablesList;
+    IEnumerable<Food>? fruitsList;
+    IEnumerable<Food>? meatList;
+    IEnumerable<Food>? otherList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        foodList = await foodService.GetFoodListAsync();
+        vegetablesList = foodList.Where(f => f.CategoryId == 1);
+        fruitsList = foodList.Where(f => f.CategoryId == 2);
+        meatList = foodList.Where(f => f.CategoryId == 3);
+        otherList = foodList.Where(f => f.CategoryId == 4);
+    }
+}

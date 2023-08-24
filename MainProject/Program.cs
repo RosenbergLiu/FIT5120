@@ -1,6 +1,10 @@
-
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Radzen;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MainProject.Data;
+using MainProject.Services;
 
 namespace MainProject
 {
@@ -10,9 +14,19 @@ namespace MainProject
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<MainProjectContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MainProjectContext") ?? throw new InvalidOperationException("Connection string 'MainProjectContext' not found.")));
+
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+
+            builder.Services.AddScoped<DialogService>();
+            builder.Services.AddScoped<NotificationService>();
+            builder.Services.AddScoped<TooltipService>();
+            builder.Services.AddScoped<ContextMenuService>();
+
+            builder.Services.AddScoped<FoodService>();
 
             var app = builder.Build();
 

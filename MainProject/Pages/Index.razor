@@ -1,8 +1,7 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar" style="position: fixed">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -29,9 +28,9 @@
     <div id="info" class="content-section" style="background-color: blue;">
         <h2>Info</h2>
     </div>
-    <div id="form" class="content-section" style="background-color:gray;">
-        <h2>Form</h2>
-    </div>
+    <for id="form" class="content-section">
+        <FoodFormComponent></FoodFormComponent>
+    </for>
     <div id="visualization" class="content-section" style="background-color: red;">
         <h2>Visualization</h2>
     </div>
