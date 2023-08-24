@@ -36,5 +36,19 @@ namespace MainProject.Pages.Components
         {
 
         }
+
+        private void AddVegetable()
+        {
+            foodFormModel.VegetableAmount++;
+        }
+
+        private void MinusVegetable()
+        {
+            if(foodFormModel.VegetableAmount > 0)
+            {
+
+                foodFormModel.VegetableAmount--;
+            }
+        }
     }
 }
