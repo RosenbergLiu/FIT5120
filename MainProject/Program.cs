@@ -26,6 +26,9 @@ namespace MainProject
             builder.Services.AddScoped<TooltipService>();
             builder.Services.AddScoped<ContextMenuService>();
 
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
             builder.Services.AddScoped<FoodService>();
 
             var app = builder.Build();
