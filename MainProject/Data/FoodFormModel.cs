@@ -2,18 +2,18 @@
 {
     public class FoodFormModel
     {
-        public int? VegetableId { get; set; }
-        public int VegetableAmount { get; set; }
+        public int? VegetablesId { get; set; }
+        public int VegetablesAmount { get; set; }
         public int? FruitsId { get; set; }
         public int FruitsAmount { get; set; }
-        public int? MeatId { get; set; }
-        public int MeatAmount { get; set; }
-        public int? OtherId { get; set; }
-        public int OtherAmount { get; set; }
+        public int? MeatsId { get; set; }
+        public int MeatsAmount { get; set; }
+        public int? OthersId { get; set; }
+        public int OthersAmount { get; set; }
 
         public FoodFormModel() {
-            VegetableId = MeatId = FruitsId = OtherId = null;
-            VegetableAmount = MeatAmount = FruitsAmount = OtherAmount = 0;
+            VegetablesId = MeatsId = FruitsId = OthersId = null;
+            VegetablesAmount = MeatsAmount = FruitsAmount = OthersAmount = 0;
         }
     }
 }

@@ -42,27 +42,27 @@
                         <RadzenFieldset>
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
-                                    <RadzenIcon Icon="spa" class="me-1" /><b>Vegetable</b>
+                                    <RadzenIcon Icon="spa" class="me-1" /><b>Vegetables</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.VegetableId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select vegetable" Style="width: 100%; max-width: 400px;" />
+                                        <RadzenDropDown @bind-Value=@foodFormModel.VegetablesId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select vegetable" Style="width: 100%; max-width: 400px;" />
                                     </RadzenRow>
                                     <RadzenRow>
                                         <RadzenColumn class="centered-content" Size="2">
-                                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusVegetable" />
+                                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusVegetables" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.VegetableAmount ShowUpDown="false"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormModel.VegetablesAmount ShowUpDown="false"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
-                                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddVegetable" />
+                                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddVegetables" />
                                         </RadzenColumn>
                                     </RadzenRow>
                                     <RadzenRow Style="justify-content: center !important;">
-                                        <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success" Click="SaveVegetable">Add</RadzenButton>
+                                        <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success" Click="SaveVegetables">Add</RadzenButton>
                                     </RadzenRow>
                                 </RadzenStack>
                             </ChildContent>
@@ -103,44 +103,44 @@
                     </RadzenColumn>
 
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
-                        <RadzenFieldset Text="Meat">
+                        <RadzenFieldset Text="Meats">
                             <RadzenStack Gap="1rem">
                                 <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.MeatId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select meat" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select meat" Style="width: 100%; max-width: 400px;" />
                                 </RadzenRow>
                                 <RadzenRow>
                                     <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusMeat" />
+                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusMeats" />
                                     </RadzenColumn>
                                     <RadzenColumn class="centered-content" Size="8">
-                                        <RadzenNumeric @bind-Value=@foodFormModel.MeatAmount ShowUpDown="false"></RadzenNumeric>
+                                        <RadzenNumeric @bind-Value=@foodFormModel.MeatsAmount ShowUpDown="false"></RadzenNumeric>
                                     </RadzenColumn>
                                     <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddMeat" />
+                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddMeats" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success" Click="SaveMeat">Add</RadzenButton>
+                                    <RadzenButton Style="width: 100%;" ButtonStyle="ButtonStyle.Success" Click="SaveMeats">Add</RadzenButton>
                                 </RadzenRow>
                             </RadzenStack>
                         </RadzenFieldset>
                     </RadzenColumn>
 
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
-                        <RadzenFieldset Text="Other">
+                        <RadzenFieldset Text="Others">
                             <RadzenStack Gap="1rem">
                                 <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.OtherId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.OthersId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" />
                                 </RadzenRow>
                                 <RadzenRow>
                                     <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusOther" />
+                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusOthers" />
                                     </RadzenColumn>
                                     <RadzenColumn class="centered-content" Size="8">
-                                        <RadzenNumeric @bind-Value=@foodFormModel.OtherAmount ShowUpDown="false"></RadzenNumeric>
+                                        <RadzenNumeric @bind-Value=@foodFormModel.OthersAmount ShowUpDown="false"></RadzenNumeric>
                                     </RadzenColumn>
                                     <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddOther" />
+                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddOthers" />
                                     </RadzenColumn>
                                 </RadzenRow>
                                 <RadzenRow Style="justify-content: center !important;">

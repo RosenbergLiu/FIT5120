@@ -27,33 +27,33 @@ namespace MainProject.Pages
         }
 
         /// <summary>
-        /// Vegetable Methods
+        /// Vegetables Methods
         /// </summary>
-        private void SaveVegetable()
+        private void SaveVegetables()
         {
-            if(foodFormModel.VegetableId !=null && foodFormModel.VegetableAmount > 0)
+            if(foodFormModel.VegetablesId !=null && foodFormModel.VegetablesAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.VegetableId,
-                    FoodAmount = foodFormModel.VegetableAmount
+                    FoodId = foodFormModel.VegetablesId,
+                    FoodAmount = foodFormModel.VegetablesAmount
                 };
                 AddOrUpdateFood(newFood);
-                foodFormModel.VegetableId = null;
-                foodFormModel.VegetableAmount = 0;
+                foodFormModel.VegetablesId = null;
+                foodFormModel.VegetablesAmount = 0;
             }
         }
 
-        private void AddVegetable()
+        private void AddVegetables()
         {
-            foodFormModel.VegetableAmount++;
+            foodFormModel.VegetablesAmount++;
         }
 
-        private void MinusVegetable()
+        private void MinusVegetables()
         {
-            if (foodFormModel.VegetableAmount > 0)
+            if (foodFormModel.VegetablesAmount > 0)
             {
-                foodFormModel.VegetableAmount--;
+                foodFormModel.VegetablesAmount--;
             }
         }
 
@@ -89,48 +89,48 @@ namespace MainProject.Pages
         }
 
         /// <summary>
-        /// Meat Methods
+        /// Meats Methods
         /// </summary>
-        private void SaveMeat()
+        private void SaveMeats()
         {
-            if (foodFormModel.MeatId != null && foodFormModel.MeatAmount > 0)
+            if (foodFormModel.MeatsId != null && foodFormModel.MeatsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.MeatId,
-                    FoodAmount = foodFormModel.MeatAmount
+                    FoodId = foodFormModel.MeatsId,
+                    FoodAmount = foodFormModel.MeatsAmount
                 };
                 AddOrUpdateFood(newFood);
-                foodFormModel.MeatId = null;
-                foodFormModel.MeatAmount = 0;
+                foodFormModel.MeatsId = null;
+                foodFormModel.MeatsAmount = 0;
             }
         }
-        private void AddMeat()
+        private void AddMeats()
         {
-            foodFormModel.MeatAmount++;
+            foodFormModel.MeatsAmount++;
         }
 
-        private void MinusMeat()
+        private void MinusMeats()
         {
-            if (foodFormModel.MeatAmount > 0)
+            if (foodFormModel.MeatsAmount > 0)
             {
-                foodFormModel.MeatAmount--;
+                foodFormModel.MeatsAmount--;
             }
         }
 
         /// <summary>
-        /// Other Methods
+        /// Others Methods
         /// </summary>
-        private void AddOther()
+        private void AddOthers()
         {
-            foodFormModel.OtherAmount++;
+            foodFormModel.OthersAmount++;
         }
 
-        private void MinusOther()
+        private void MinusOthers()
         {
-            if (foodFormModel.OtherAmount > 0)
+            if (foodFormModel.OthersAmount > 0)
             {
-                foodFormModel.OtherAmount--;
+                foodFormModel.OthersAmount--;
             }
         }
 
