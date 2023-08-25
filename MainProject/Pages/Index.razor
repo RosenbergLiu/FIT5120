@@ -46,8 +46,8 @@
                             <ChildContent>
                                 <RadzenStack>
                                     <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
-                                                    AllowFiltering="true" />
+                                        <RadzenDropDown @bind-Value=@foodFormModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                        AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
                                         <RadzenColumn class="centered-content" Size="2">
@@ -61,10 +61,10 @@
                                         </RadzenColumn>
                                     </RadzenRow>
                                     <RadzenRow>
-                                    <RadzenNumericRangeValidator Component="Cereal" Min="0" Text="Quantity should be bigger than 0" Popup=true Style="position: absolute; margin-top: -1rem;" />
+                                        <RadzenNumericRangeValidator Component="Cereal" Min="0" Text="Quantity should be bigger than 0" Popup=true Style="position: absolute; margin-top: -1rem;" />
                                     </RadzenRow>
                                     <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveCereals" ButtonType="ButtonType.Submit">Add</RadzenButton>
+                                        <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveCereals" ButtonType="ButtonType.Submit">Add</RadzenButton>
                                     </RadzenRow>
                                 </RadzenStack>
                             </ChildContent>
@@ -76,14 +76,14 @@
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
                                     <img src="svg/pepper.svg" />
-                                <b style="margin-left: 5px; font-size:smaller;">Fruits, Cereals, and Nuts (kg)</b>
+                                    <b style="margin-left: 5px; font-size:smaller;">Fruits, Cereals, and Nuts (kg)</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
-                                                    AllowFiltering="true" />
+                                        <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                        AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
                                         <RadzenColumn class="centered-content" Size="2">
@@ -96,12 +96,12 @@
                                             <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddFruits" />
                                         </RadzenColumn>
                                     </RadzenRow>
-                                <RadzenRow>
-                                    <RadzenNumericRangeValidator Component="Fruit" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
-                                </RadzenRow>
-                                <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveFruits">Add</RadzenButton>
-                                </RadzenRow>
+                                    <RadzenRow>
+                                        <RadzenNumericRangeValidator Component="Fruit" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
+                                    </RadzenRow>
+                                    <RadzenRow Style="justify-content: center !important;">
+                                        <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveFruits">Add</RadzenButton>
+                                    </RadzenRow>
                                 </RadzenStack>
                             </ChildContent>
                         </RadzenFieldset>
@@ -109,37 +109,37 @@
 
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
                         <RadzenFieldset>
-                        <HeaderTemplate>
-                            <span class="d-inline-flex align-items-center align-middle">
-                                <img src="svg/egg.svg" />
-                                <b style="margin-left: 5px; font-size:smaller;">Dairy, Meats, and Animal Products (kg)</b>
-                            </span>
-                        </HeaderTemplate>
-                        <ChildContent>
-                            <RadzenStack Gap="1rem">
-                                <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
-                                                    AllowFiltering="true" />
-                                </RadzenRow>
-                                <RadzenRow>
-                                    <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusMeats" />
-                                    </RadzenColumn>
-                                    <RadzenColumn class="centered-content" Size="8">
-                                        <RadzenNumeric @bind-Value=@foodFormModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
-                                    </RadzenColumn>
-                                    <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddMeats" />
-                                    </RadzenColumn>
-                                </RadzenRow>
-                                <RadzenRow>
-                                    <RadzenNumericRangeValidator Component="Meat" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
-                                </RadzenRow>
-                                <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveMeats" class="minus-top-gap">Add</RadzenButton>
-                                </RadzenRow>
-                            </RadzenStack>
-                        </ChildContent>
+                            <HeaderTemplate>
+                                <span class="d-inline-flex align-items-center align-middle">
+                                    <img src="svg/egg.svg" />
+                                    <b style="margin-left: 5px; font-size:smaller;">Dairy, Meats, and Animal Products (kg)</b>
+                                </span>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <RadzenStack Gap="1rem">
+                                    <RadzenRow>
+                                        <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                        AllowFiltering="true" />
+                                    </RadzenRow>
+                                    <RadzenRow>
+                                        <RadzenColumn class="centered-content" Size="2">
+                                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusMeats" />
+                                        </RadzenColumn>
+                                        <RadzenColumn class="centered-content" Size="8">
+                                            <RadzenNumeric @bind-Value=@foodFormModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
+                                        </RadzenColumn>
+                                        <RadzenColumn class="centered-content" Size="2">
+                                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddMeats" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow>
+                                        <RadzenNumericRangeValidator Component="Meat" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
+                                    </RadzenRow>
+                                    <RadzenRow Style="justify-content: center !important;">
+                                        <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveMeats" class="minus-top-gap">Add</RadzenButton>
+                                    </RadzenRow>
+                                </RadzenStack>
+                            </ChildContent>
                         </RadzenFieldset>
                     </RadzenColumn>
 
@@ -152,29 +152,29 @@
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
-                            <RadzenStack Gap="1rem">
-                                <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
-                                                    AllowFiltering="true" />
-                                </RadzenRow>
-                                <RadzenRow>
-                                    <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusOils" />
-                                    </RadzenColumn>
-                                    <RadzenColumn class="centered-content" Size="8">
-                                        <RadzenNumeric @bind-Value=@foodFormModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
-                                    </RadzenColumn>
-                                    <RadzenColumn class="centered-content" Size="2">
-                                        <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddOils" />
-                                    </RadzenColumn>
-                                </RadzenRow>
-                                <RadzenRow>
-                                    <RadzenNumericRangeValidator Component="Oil" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
-                                </RadzenRow>
-                                <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveOils">Add</RadzenButton>
-                                </RadzenRow>
-                            </RadzenStack>
+                                <RadzenStack Gap="1rem">
+                                    <RadzenRow>
+                                        <RadzenDropDown @bind-Value=@foodFormModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                        AllowFiltering="true" />
+                                    </RadzenRow>
+                                    <RadzenRow>
+                                        <RadzenColumn class="centered-content" Size="2">
+                                            <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusOils" />
+                                        </RadzenColumn>
+                                        <RadzenColumn class="centered-content" Size="8">
+                                            <RadzenNumeric @bind-Value=@foodFormModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
+                                        </RadzenColumn>
+                                        <RadzenColumn class="centered-content" Size="2">
+                                            <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddOils" />
+                                        </RadzenColumn>
+                                    </RadzenRow>
+                                    <RadzenRow>
+                                        <RadzenNumericRangeValidator Component="Oil" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
+                                    </RadzenRow>
+                                    <RadzenRow Style="justify-content: center !important;">
+                                        <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveOils">Add</RadzenButton>
+                                    </RadzenRow>
+                                </RadzenStack>
                             </ChildContent>
                         </RadzenFieldset>
                     </RadzenColumn>
@@ -212,7 +212,7 @@
                         loading="lazy"
                         allowfullscreen
                         referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA9RZqx7BJ2ywDCozbEflOBLXIjI8MnNms&q=foodbank+in+Melbourne">
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA9RZqx7BJ2ywDCozbEflOBLXIjI8MnNms&q=foodbank+in+Melbourne&zoom=9">
                 </iframe>
         </div>
     </div>
