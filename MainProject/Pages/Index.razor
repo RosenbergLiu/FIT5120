@@ -33,9 +33,6 @@
     </div>
     <div id="form" class="content-section" >
         <div id="form-input-area">
-            <div style="justify-content: center; display: flex; margin-bottom: 40px">
-                <RadzenText TextStyle="TextStyle.DisplayH3">Form</RadzenText>
-            </div>
             <RadzenTemplateForm Data="@foodFormModel" >
                 <RadzenRow>
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
@@ -43,20 +40,21 @@
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
                                     <img src="svg/pepper.svg" />
-                                    <b style="margin-left: 10px">Vegetables</b>
+                                <b style="margin-left: 5px; font-size:smaller;">Cereals, Grains, and Tubers (kg)</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
                                 <RadzenStack>
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.VegetablesId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select vegetable" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.VegetablesId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                    AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusVegetables" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.VegetablesAmount ShowUpDown="true" Name="Vegetable"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormModel.VegetablesAmount ShowUpDown="false" Name="Vegetable"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddVegetables" />
@@ -77,14 +75,15 @@
                         <RadzenFieldset>
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
-                                    <img src="svg/apple.svg" />
-                                    <b style="margin-left: 10px">Fruits</b>
+                                    <img src="svg/pepper.svg" />
+                                <b style="margin-left: 5px; font-size:smaller;">Fruits, Vegetables, and Nuts (kg)</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select fruit" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                    AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
                                         <RadzenColumn class="centered-content" Size="2">
@@ -113,13 +112,14 @@
                         <HeaderTemplate>
                             <span class="d-inline-flex align-items-center align-middle">
                                 <img src="svg/chicken.svg" />
-                                <b style="margin-left: 10px">Meats</b>
+                                <b style="margin-left: 5px; font-size:smaller;">Dairy, Meats, and Animal Products (kg)</b>
                             </span>
                         </HeaderTemplate>
                         <ChildContent>
                             <RadzenStack Gap="1rem">
                                 <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select meat" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                    AllowFiltering="true" />
                                 </RadzenRow>
                                 <RadzenRow>
                                     <RadzenColumn class="centered-content" Size="2">
@@ -148,13 +148,14 @@
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
                                     <img src="svg/egg.svg" />
-                                    <b style="margin-left: 10px">Others</b>
+                                    <b style="margin-left: 5px; font-size:smaller;">Oils, Sweets, and Beverages (kg)</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
                             <RadzenStack Gap="1rem">
                                 <RadzenRow>
-                                    <RadzenDropDown @bind-Value=@foodFormModel.OthersId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" />
+                                    <RadzenDropDown @bind-Value=@foodFormModel.OthersId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                                    AllowFiltering="true" />
                                 </RadzenRow>
                                 <RadzenRow>
                                     <RadzenColumn class="centered-content" Size="2">
