@@ -30,50 +30,50 @@ namespace MainProject.Pages
         }
 
         /// <summary>
-        /// Vegetables Methods
+        /// Cereals Methods
         /// </summary>
-        private async void SaveVegetables()
+        private async void SaveCereals()
         {
             if(foodList == null)
             {
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.VegetablesId !=null && foodFormModel.VegetablesAmount > 0)
+            if (foodFormModel.CerealsId !=null && foodFormModel.CerealsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.VegetablesId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.VegetablesId).Select(f => f.FoodName).FirstOrDefault(),
-                    FoodAmount = foodFormModel.VegetablesAmount
+                    FoodId = foodFormModel.CerealsId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.CerealsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodAmount = foodFormModel.CerealsAmount
                 };
                 AddOrUpdateFood(newFood);
-                foodFormModel.VegetablesId = null;
-                foodFormModel.VegetablesAmount = 0;
+                foodFormModel.CerealsId = null;
+                foodFormModel.CerealsAmount = 0;
             }
         }
 
-        private void AddVegetables()
+        private void AddCereals()
         {
-            if (foodFormModel.VegetablesAmount < 0)
+            if (foodFormModel.CerealsAmount < 0)
             {
-                foodFormModel.VegetablesAmount = 0;
+                foodFormModel.CerealsAmount = 0;
             }
             else
             {
-                foodFormModel.VegetablesAmount ++;
+                foodFormModel.CerealsAmount ++;
             }
         }
 
-        private void MinusVegetables()
+        private void MinusCereals()
         {
-            if (foodFormModel.VegetablesAmount > 0)
+            if (foodFormModel.CerealsAmount > 0)
             {
-                foodFormModel.VegetablesAmount --;
+                foodFormModel.CerealsAmount --;
             }
             else
             {
-                foodFormModel.VegetablesAmount = 0;
+                foodFormModel.CerealsAmount = 0;
             }
         }
 
@@ -178,50 +178,50 @@ namespace MainProject.Pages
         }
 
         /// <summary>
-        /// Others Methods
+        /// Oils Methods
         /// </summary>
-        private async void SaveOthers()
+        private async void SaveOils()
         {
             if (foodList == null)
             {
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.OthersId != null && foodFormModel.OthersAmount > 0)
+            if (foodFormModel.OilsId != null && foodFormModel.OilsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.OthersId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.OthersId).Select(f => f.FoodName).FirstOrDefault(),
-                    FoodAmount = foodFormModel.OthersAmount
+                    FoodId = foodFormModel.OilsId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.OilsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodAmount = foodFormModel.OilsAmount
                 };
                 AddOrUpdateFood(newFood);
-                foodFormModel.OthersId = null;
-                foodFormModel.OthersAmount = 0;
+                foodFormModel.OilsId = null;
+                foodFormModel.OilsAmount = 0;
             }
         }
 
-        private void AddOthers()
+        private void AddOils()
         {
-            if (foodFormModel.OthersAmount < 0)
+            if (foodFormModel.OilsAmount < 0)
             {
-                foodFormModel.OthersAmount = 0;
+                foodFormModel.OilsAmount = 0;
             }
             else
             {
-                foodFormModel.OthersAmount ++;
+                foodFormModel.OilsAmount ++;
             }
         }
 
-        private void MinusOthers()
+        private void MinusOils()
         {
-            if (foodFormModel.OthersAmount > 0)
+            if (foodFormModel.OilsAmount > 0)
             {
-                foodFormModel.OthersAmount --;
+                foodFormModel.OilsAmount --;
             }
             else
             {
-                foodFormModel.OthersAmount = 0;
+                foodFormModel.OilsAmount = 0;
             }
         }
 

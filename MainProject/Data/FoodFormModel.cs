@@ -4,8 +4,8 @@ namespace MainProject.Data
 {
     public class FoodFormModel
     {
-        public int? VegetablesId { get; set; }
-        public int VegetablesAmount { get; set; }
+        public int? CerealsId { get; set; }
+        public int CerealsAmount { get; set; }
 
         public int? FruitsId { get; set; }
         public int FruitsAmount { get; set; }
@@ -13,12 +13,12 @@ namespace MainProject.Data
         public int? MeatsId { get; set; }
         public int MeatsAmount { get; set; }
 
-        public int? OthersId { get; set; }
-        public int OthersAmount { get; set; }
+        public int? OilsId { get; set; }
+        public int OilsAmount { get; set; }
 
         public FoodFormModel() {
-            VegetablesId = MeatsId = FruitsId = OthersId = null;
-            VegetablesAmount = MeatsAmount = FruitsAmount = OthersAmount = 0;
+            CerealsId = MeatsId = FruitsId = OilsId = null;
+            CerealsAmount = MeatsAmount = FruitsAmount = OilsAmount = 0;
         }
     }
 }
