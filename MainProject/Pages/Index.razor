@@ -33,10 +33,10 @@
     </div>
     <div id="form" class="content-section" >
         <div id="form-input-area">
-            <div style="justify-content: center; display: flex; margin-bottom 40px">
+            <div style="justify-content: center; display: flex; margin-bottom: 40px">
                 <RadzenText TextStyle="TextStyle.DisplayH3">Form</RadzenText>
             </div>
-            <RadzenTemplateForm Data="@foodFormModel" Submit="@((FoodFormModel args) => { OnSubmit(args); })" >
+            <RadzenTemplateForm Data="@foodFormModel" >
                 <RadzenRow>
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
                         <RadzenFieldset>
