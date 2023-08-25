@@ -221,7 +221,7 @@ namespace MainProject.Pages
             }
         }
 
-        ////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////
         public void AddOrUpdateFood(SavedFood newFood)
         {
             var existingFood = savedFoodList.FirstOrDefault(f => f.FoodItem == newFood.FoodItem);
@@ -233,6 +233,12 @@ namespace MainProject.Pages
             {
                 savedFoodList.Add(newFood);
             }
+        }
+
+        void DeleteItem(SavedFood item)
+        {
+            savedFoodList.Remove(item);
+            StateHasChanged();
         }
     }
 }

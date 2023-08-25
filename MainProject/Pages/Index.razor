@@ -3,6 +3,7 @@
 @inject FoodService foodService
 @inject IHttpContextAccessor HttpContextAccessor
 @inject NotificationService notificationService
+@inject IConfiguration configuration;
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -212,12 +213,11 @@
                         loading="lazy"
                         allowfullscreen
                         referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyA9RZqx7BJ2ywDCozbEflOBLXIjI8MnNms&q=foodbank+in+Melbourne&zoom=9">
+                    src="@googleMapSrc">
                 </iframe>
         </div>
     </div>
     </div>
-    AIzaSyA9RZqx7BJ2ywDCozbEflOBLXIjI8MnNms
 
 @code {
     bool isLoading;
@@ -246,27 +246,5 @@
     private void ScrollToTips()
     {
         JSRuntime.InvokeVoidAsync("scrollToTips");
-    }
-
-    int zoom = 3;
-    RadzenGoogleMap map;
-
-    void OnMapClick(GoogleMapClickEventArgs args)
-    {
-    }
-
-    async Task OnMarkerClick(RadzenGoogleMapMarker marker)
-    {
-        var message = $"Custom information about <b>{marker.Title}</b>";
-
-        var code = $@"
-var map = Radzen['{map.UniqueID}'].instance;
-var marker = map.markers.find(m => m.title == '{marker.Title}');
-if(window.infoWindow) {{window.infoWindow.close();}}
-window.infoWindow = new google.maps.InfoWindow({{content: '{message}'}});
-setTimeout(() => window.infoWindow.open(map, marker), 200);
-";
-
-        await JSRuntime.InvokeVoidAsync("eval", code);
     }
 }
