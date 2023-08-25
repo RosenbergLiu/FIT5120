@@ -234,11 +234,5 @@ namespace MainProject.Pages
                 savedFoodList.Add(newFood);
             }
         }
-
-        void DeleteItem(SavedFood item)
-        {
-            savedFoodList.Remove(item);
-            StateHasChanged();
-        }
     }
 }
