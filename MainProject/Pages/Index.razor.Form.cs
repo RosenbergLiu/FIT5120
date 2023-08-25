@@ -43,8 +43,7 @@ namespace MainProject.Pages
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.CerealsId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.CerealsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.CerealsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.CerealsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -91,8 +90,7 @@ namespace MainProject.Pages
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.FruitsId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.FruitsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.FruitsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.FruitsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -139,8 +137,7 @@ namespace MainProject.Pages
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.MeatsId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.MeatsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.MeatsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.MeatsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -191,8 +188,7 @@ namespace MainProject.Pages
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodId = foodFormModel.OilsId,
-                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.OilsId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.OilsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.OilsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -228,7 +224,7 @@ namespace MainProject.Pages
         ////////////////////////
         public void AddOrUpdateFood(SavedFood newFood)
         {
-            var existingFood = savedFoodList.FirstOrDefault(f => f.FoodId == newFood.FoodId);
+            var existingFood = savedFoodList.FirstOrDefault(f => f.FoodItem == newFood.FoodItem);
             if (existingFood != null)
             {
                 existingFood.FoodAmount += newFood.FoodAmount;

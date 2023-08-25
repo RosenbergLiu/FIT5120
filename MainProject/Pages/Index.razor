@@ -187,7 +187,7 @@
             <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                             Data="@savedFoodList" TItem="SavedFood" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" Density="Density.Compact">
                 <Columns>
-                    <RadzenDataGridColumn TItem="SavedFood" Property="FoodName" Filterable="false" Title="Food" Width="40vh" TextAlign="TextAlign.Center" />
+                    <RadzenDataGridColumn TItem="SavedFood" Property="FoodItem.FoodName" Filterable="false" Title="Food" Width="40vh" TextAlign="TextAlign.Center" />
                     <RadzenDataGridColumn TItem="SavedFood" Property="FoodAmount" Filterable="true" Title="Amount" Width="40vh" TextAlign="TextAlign.Center" />
                     <RadzenDataGridColumn TItem="SavedFood" Width="20vh" Filterable="false" TextAlign="TextAlign.Center">
                         <Template Context="data">

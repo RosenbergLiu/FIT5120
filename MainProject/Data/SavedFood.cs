@@ -2,8 +2,7 @@
 {
     public class SavedFood
     {
-        public int? FoodId { get; set; }
-        public string? FoodName { get; set; }
+        public Food? FoodItem { get; set; }
         public int FoodAmount { get; set; }
     }
 }
