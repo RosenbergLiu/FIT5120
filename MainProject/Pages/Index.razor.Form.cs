@@ -39,11 +39,6 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.VegetablesAmount < 0)
-            {
-                foodFormModel.VegetablesAmount = 0;
-            }
-
             if (foodFormModel.VegetablesId !=null && foodFormModel.VegetablesAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
@@ -79,11 +74,6 @@ namespace MainProject.Pages
             if (foodList == null)
             {
                 foodList = await foodService.GetFoodListAsync();
-            }
-
-            if (foodFormModel.FruitsAmount < 0)
-            {
-                foodFormModel.FruitsAmount = 0;
             }
 
             if (foodFormModel.FruitsId != null && foodFormModel.FruitsAmount > 0)
@@ -123,11 +113,6 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.MeatsAmount < 0)
-            {
-                foodFormModel.MeatsAmount = 0;
-            }
-
             if (foodFormModel.MeatsId != null && foodFormModel.MeatsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
@@ -163,11 +148,6 @@ namespace MainProject.Pages
             if (foodList == null)
             {
                 foodList = await foodService.GetFoodListAsync();
-            }
-
-            if (foodFormModel.OthersAmount < 0)
-            {
-                foodFormModel.OthersAmount = 0;
             }
 
             if (foodFormModel.OthersId != null && foodFormModel.OthersAmount > 0)
