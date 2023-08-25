@@ -55,14 +55,25 @@ namespace MainProject.Pages
 
         private void AddVegetables()
         {
-            foodFormModel.VegetablesAmount++;
+            if (foodFormModel.VegetablesAmount < 0)
+            {
+                foodFormModel.VegetablesAmount = 0;
+            }
+            else
+            {
+                foodFormModel.VegetablesAmount ++;
+            }
         }
 
         private void MinusVegetables()
         {
             if (foodFormModel.VegetablesAmount > 0)
             {
-                foodFormModel.VegetablesAmount--;
+                foodFormModel.VegetablesAmount --;
+            }
+            else
+            {
+                foodFormModel.VegetablesAmount = 0;
             }
         }
 
@@ -92,14 +103,25 @@ namespace MainProject.Pages
 
         private void AddFruits()
         {
-            foodFormModel.FruitsAmount++;
+            if (foodFormModel.FruitsAmount < 0)
+            {
+                foodFormModel.FruitsAmount = 0;
+            }
+            else
+            {
+                foodFormModel.FruitsAmount ++;
+            }
         }
 
         private void MinusFruits()
         {
             if (foodFormModel.FruitsAmount > 0)
             {
-                foodFormModel.FruitsAmount--;
+                foodFormModel.FruitsAmount --;
+            }
+            else
+            {
+                foodFormModel.FruitsAmount = 0;
             }
         }
 
@@ -125,18 +147,33 @@ namespace MainProject.Pages
                 foodFormModel.MeatsId = null;
                 foodFormModel.MeatsAmount = 0;
             }
+            else
+            {
+                foodFormModel.MeatsAmount = 0;
+            }
         }
 
         private void AddMeats()
         {
-            foodFormModel.MeatsAmount++;
+            if (foodFormModel.MeatsAmount < 0)
+            {
+                foodFormModel.MeatsAmount = 0;
+            }
+            else
+            {
+                foodFormModel.MeatsAmount ++;
+            }
         }
 
         private void MinusMeats()
         {
             if (foodFormModel.MeatsAmount > 0)
             {
-                foodFormModel.MeatsAmount--;
+                foodFormModel.MeatsAmount --;
+            }
+            else
+            {
+                foodFormModel.MeatsAmount = 0;
             }
         }
 
@@ -166,14 +203,25 @@ namespace MainProject.Pages
 
         private void AddOthers()
         {
-            foodFormModel.OthersAmount++;
+            if (foodFormModel.OthersAmount < 0)
+            {
+                foodFormModel.OthersAmount = 0;
+            }
+            else
+            {
+                foodFormModel.OthersAmount ++;
+            }
         }
 
         private void MinusOthers()
         {
             if (foodFormModel.OthersAmount > 0)
             {
-                foodFormModel.OthersAmount--;
+                foodFormModel.OthersAmount --;
+            }
+            else
+            {
+                foodFormModel.OthersAmount = 0;
             }
         }
 
