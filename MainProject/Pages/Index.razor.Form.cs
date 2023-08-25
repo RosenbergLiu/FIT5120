@@ -1,5 +1,8 @@
 ﻿using MainProject.Data;
+using Radzen;
+using Radzen.Blazor;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace MainProject.Pages
 {
@@ -29,13 +32,24 @@ namespace MainProject.Pages
         /// <summary>
         /// Vegetables Methods
         /// </summary>
-        private void SaveVegetables()
+        private async void SaveVegetables()
         {
-            if(foodFormModel.VegetablesId !=null && foodFormModel.VegetablesAmount > 0)
+            if(foodList == null)
+            {
+                foodList = await foodService.GetFoodListAsync();
+            }
+
+            if (foodFormModel.VegetablesAmount < 0)
+            {
+                foodFormModel.VegetablesAmount = 0;
+            }
+
+            if (foodFormModel.VegetablesId !=null && foodFormModel.VegetablesAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
                     FoodId = foodFormModel.VegetablesId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.VegetablesId).Select(f => f.FoodName).FirstOrDefault(),
                     FoodAmount = foodFormModel.VegetablesAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -60,13 +74,24 @@ namespace MainProject.Pages
         /// <summary>
         /// Fruits Methods
         /// </summary>
-        private void SaveFruits()
+        private async void SaveFruits()
         {
+            if (foodList == null)
+            {
+                foodList = await foodService.GetFoodListAsync();
+            }
+
+            if (foodFormModel.FruitsAmount < 0)
+            {
+                foodFormModel.FruitsAmount = 0;
+            }
+
             if (foodFormModel.FruitsId != null && foodFormModel.FruitsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
                     FoodId = foodFormModel.FruitsId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.FruitsId).Select(f => f.FoodName).FirstOrDefault(),
                     FoodAmount = foodFormModel.FruitsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -91,13 +116,24 @@ namespace MainProject.Pages
         /// <summary>
         /// Meats Methods
         /// </summary>
-        private void SaveMeats()
+        private async void SaveMeats()
         {
+            if (foodList == null)
+            {
+                foodList = await foodService.GetFoodListAsync();
+            }
+
+            if (foodFormModel.MeatsAmount < 0)
+            {
+                foodFormModel.MeatsAmount = 0;
+            }
+
             if (foodFormModel.MeatsId != null && foodFormModel.MeatsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
                     FoodId = foodFormModel.MeatsId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.MeatsId).Select(f => f.FoodName).FirstOrDefault(),
                     FoodAmount = foodFormModel.MeatsAmount
                 };
                 AddOrUpdateFood(newFood);
@@ -105,6 +141,7 @@ namespace MainProject.Pages
                 foodFormModel.MeatsAmount = 0;
             }
         }
+
         private void AddMeats()
         {
             foodFormModel.MeatsAmount++;
@@ -121,6 +158,32 @@ namespace MainProject.Pages
         /// <summary>
         /// Others Methods
         /// </summary>
+        private async void SaveOthers()
+        {
+            if (foodList == null)
+            {
+                foodList = await foodService.GetFoodListAsync();
+            }
+
+            if (foodFormModel.OthersAmount < 0)
+            {
+                foodFormModel.OthersAmount = 0;
+            }
+
+            if (foodFormModel.OthersId != null && foodFormModel.OthersAmount > 0)
+            {
+                SavedFood newFood = new SavedFood()
+                {
+                    FoodId = foodFormModel.OthersId,
+                    FoodName = foodList.Where(f => f.FoodId == foodFormModel.OthersId).Select(f => f.FoodName).FirstOrDefault(),
+                    FoodAmount = foodFormModel.OthersAmount
+                };
+                AddOrUpdateFood(newFood);
+                foodFormModel.OthersId = null;
+                foodFormModel.OthersAmount = 0;
+            }
+        }
+
         private void AddOthers()
         {
             foodFormModel.OthersAmount++;

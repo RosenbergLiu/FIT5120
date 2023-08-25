@@ -18,12 +18,14 @@ namespace MainProject.Pages
 
         }
 
-        async Task LoadListData(LoadDataArgs args)
+        void DeleteItem(SavedFood item)
         {
-            isLoading = true;
+            // Logic to delete the item from savedFoodList
+            savedFoodList.Remove(item);
+            // You may also need to call any database or service to make the deletion persistent
+
+            // Refresh the grid or necessary components
             StateHasChanged();
-            isLoading = false;
         }
-        
     }
 }
