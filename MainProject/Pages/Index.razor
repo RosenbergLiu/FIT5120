@@ -63,10 +63,10 @@
                                         </RadzenColumn>
                                     </RadzenRow>
                                     <RadzenRow>
-                                         <RadzenNumericRangeValidator Component="Vegetable" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
+                                    <RadzenNumericRangeValidator Component="Vegetable" Min="0" Text="Quantity should be bigger than 0" Popup=true Style="position: absolute; margin-top: -1rem;"/>
                                     </RadzenRow>
                                     <RadzenRow Style="justify-content: center !important;">
-                                        <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveVegetables" ButtonType="ButtonType.Submit">Add</RadzenButton>
+                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveVegetables" ButtonType="ButtonType.Submit">Add</RadzenButton>
                                     </RadzenRow>
                                 </RadzenStack>
                             </ChildContent>
@@ -91,7 +91,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="ButtonStyle.Light" Click="MinusFruits" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                        <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="ButtonStyle.Light" Click="AddFruits" />
@@ -136,7 +136,7 @@
                                     <RadzenNumericRangeValidator Component="Meat" Min="0" Text="Quantity should be bigger than 0" Popup="true" Style="position: absolute; margin-top: -1rem;"></RadzenNumericRangeValidator>
                                 </RadzenRow>
                                 <RadzenRow Style="justify-content: center !important;">
-                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveMeats">Add</RadzenButton>
+                                    <RadzenButton Style="width: 100%; margin-top: -1rem;" ButtonStyle="ButtonStyle.Success" Click="SaveMeats" class="minus-top-gap">Add</RadzenButton>
                                 </RadzenRow>
                             </RadzenStack>
                         </ChildContent>
