@@ -1,17 +1,16 @@
 ﻿window.addEventListener('scroll', function () {
-    var scrollPosition = window.scrollY;
+    var navbarHeight = 70;
+    var viewportCenter = window.scrollY + window.innerHeight / 4; // This gets the middle of the screen
+
     var sections = ['home', 'info', 'form', 'visualization', 'tips'];
-    var activeSection = sections[0];
-    var maxOverlap = 0;
+    var activeSection = null;
 
     sections.forEach(function (sectionId) {
         var section = document.getElementById(sectionId);
-        var overlap = Math.min(section.offsetTop + section.offsetHeight, scrollPosition + window.innerHeight) -
-            Math.max(section.offsetTop, scrollPosition);
 
-        if (overlap > maxOverlap) {
+        // Check if the viewport's center is within this section
+        if (viewportCenter >= section.offsetTop && viewportCenter <= (section.offsetTop + section.offsetHeight)) {
             activeSection = sectionId;
-            maxOverlap = overlap;
         }
     });
 
