@@ -46,9 +46,11 @@ namespace MainProject.Pages
                     FoodItem = foodList.Where(f => f.FoodId == foodFormModel.CerealsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.CerealsAmount
                 };
+                newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
                 foodFormModel.CerealsId = null;
                 foodFormModel.CerealsAmount = 0;
+                CalculateWasteSum();
             }
         }
 
@@ -93,9 +95,11 @@ namespace MainProject.Pages
                     FoodItem = foodList.Where(f => f.FoodId == foodFormModel.FruitsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.FruitsAmount
                 };
+                newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
                 foodFormModel.FruitsId = null;
                 foodFormModel.FruitsAmount = 0;
+                CalculateWasteSum();
             }
         }
 
@@ -140,9 +144,11 @@ namespace MainProject.Pages
                     FoodItem = foodList.Where(f => f.FoodId == foodFormModel.MeatsId).FirstOrDefault(),
                     FoodAmount = foodFormModel.MeatsAmount
                 };
+                newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
                 foodFormModel.MeatsId = null;
                 foodFormModel.MeatsAmount = 0;
+                CalculateWasteSum();
             }
             else
             {
@@ -189,11 +195,13 @@ namespace MainProject.Pages
                 SavedFood newFood = new SavedFood()
                 {
                     FoodItem = foodList.Where(f => f.FoodId == foodFormModel.OilsId).FirstOrDefault(),
-                    FoodAmount = foodFormModel.OilsAmount
+                    FoodAmount = foodFormModel.OilsAmount,
                 };
+                newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
                 foodFormModel.OilsId = null;
                 foodFormModel.OilsAmount = 0;
+                CalculateWasteSum();
             }
         }
 
@@ -233,6 +241,25 @@ namespace MainProject.Pages
             {
                 savedFoodList.Add(newFood);
             }
+        }
+
+        public SavedFood CalculateWaste(SavedFood food)
+        {
+            if(food.FoodItem != null)
+            {
+                food.FoodGHG = food.FoodItem.GHG * food.FoodAmount;
+                food.FoodLand = food.FoodItem.Land * food.FoodAmount;
+                food.FoodWater = food.FoodItem.Water * food.FoodAmount;
+                food.FoodEutrophying = food.FoodItem.Eutrophying * food.FoodAmount;
+            }
+
+            return food;
+        }
+
+        void DeleteItem(SavedFood item)
+        {
+            savedFoodList.Remove(item);
+            StateHasChanged();
         }
     }
 }
