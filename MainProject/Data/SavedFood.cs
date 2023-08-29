@@ -3,6 +3,7 @@
     public class SavedFood
     {
         public Food? FoodItem { get; set; }
+        public string FoodName { get; set; }
         public int FoodAmount { get; set; }
         public double FoodGHG { get; set; }
         public double FoodWater { get; set; }

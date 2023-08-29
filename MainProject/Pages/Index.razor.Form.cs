@@ -1,4 +1,6 @@
 ﻿using MainProject.Data;
+using MainProject.Services;
+using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 using System.Collections.ObjectModel;
@@ -10,7 +12,11 @@ namespace MainProject.Pages
     {
         FoodFormModel foodFormModel = new FoodFormModel();
 
+        ColorScheme colorScheme = ColorScheme.Pastel;
+
         ObservableCollection<SavedFood> savedFoodList = new ObservableCollection<SavedFood>();
+
+        SavedFood[] foodVis;
 
         IEnumerable<Food>? foodList;
         IEnumerable<Food>? vegetablesList;
@@ -51,6 +57,7 @@ namespace MainProject.Pages
                 foodFormModel.CerealsId = null;
                 foodFormModel.CerealsAmount = 0;
                 CalculateWasteSum();
+                foodVis = savedFoodList.ToArray();
             }
         }
 
@@ -100,6 +107,7 @@ namespace MainProject.Pages
                 foodFormModel.FruitsId = null;
                 foodFormModel.FruitsAmount = 0;
                 CalculateWasteSum();
+                foodVis = savedFoodList.ToArray();
             }
         }
 
@@ -149,6 +157,7 @@ namespace MainProject.Pages
                 foodFormModel.MeatsId = null;
                 foodFormModel.MeatsAmount = 0;
                 CalculateWasteSum();
+                foodVis = savedFoodList.ToArray();
             }
             else
             {
@@ -202,6 +211,7 @@ namespace MainProject.Pages
                 foodFormModel.OilsId = null;
                 foodFormModel.OilsAmount = 0;
                 CalculateWasteSum();
+                foodVis = savedFoodList.ToArray();
             }
         }
 
@@ -247,6 +257,7 @@ namespace MainProject.Pages
         {
             if(food.FoodItem != null)
             {
+                food.FoodName = food.FoodItem.FoodName;
                 food.FoodGHG = food.FoodItem.GHG * food.FoodAmount;
                 food.FoodLand = food.FoodItem.Land * food.FoodAmount;
                 food.FoodWater = food.FoodItem.Water * food.FoodAmount;
