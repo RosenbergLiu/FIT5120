@@ -277,7 +277,7 @@
             <Tabs>
                 <RadzenTabsItem Text="Green-house Gas Emission">
                     <RadzenChart>
-                        <RadzenColumnSeries Data="@GHGVis" CategoryProperty="FoodName" Title="GHG" LineType="LineType.Dashed" ValueProperty="FoodGHG">
+                        <RadzenColumnSeries Data="@GHGVis" CategoryProperty="FoodName" Title="GHG" LineType="LineType.Dashed" ValueProperty="FoodGHG" Fill="#335c67">
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
@@ -285,7 +285,7 @@
                 </RadzenTabsItem>
                 <RadzenTabsItem Text="Water Wasted">
                     <RadzenChart>
-                        <RadzenColumnSeries Data="@waterVis" CategoryProperty="FoodName" Title="Water wasted" LineType="LineType.Dashed" ValueProperty="FoodWater">
+                        <RadzenColumnSeries Data="@waterVis" CategoryProperty="FoodName" Title="Water wasted" LineType="LineType.Dashed" ValueProperty="FoodWater" Fill="#fff3b0">
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
@@ -293,16 +293,15 @@
                 </RadzenTabsItem>
                 <RadzenTabsItem Text="Land Wasted">
                     <RadzenChart>
-                        <RadzenColumnSeries Data="@landVis" CategoryProperty="FoodName" Title="Land wasted" LineType="LineType.Dashed" ValueProperty="FoodLand">
+                        <RadzenColumnSeries Data="@landVis" CategoryProperty="FoodName" Title="Land wasted" LineType="LineType.Dashed" ValueProperty="FoodLand" Fill="#e09f3e">
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
                     </RadzenChart>
                 </RadzenTabsItem>
                 <RadzenTabsItem Text="Eutrophying">
-                    <RadzenButton></RadzenButton>
                     <RadzenChart>
-                        <RadzenColumnSeries Data="@eutrophyingVis" CategoryProperty="FoodName" Title="Eutrophying" LineType="LineType.Dashed" ValueProperty="FoodEutrophying">
+                        <RadzenColumnSeries Data="@eutrophyingVis" CategoryProperty="FoodName" Title="Eutrophying" LineType="LineType.Dashed" ValueProperty="FoodEutrophying" Fill="#9e2a2b">
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
