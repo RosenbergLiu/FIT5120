@@ -222,7 +222,7 @@
                 </RadzenDataGrid>
             </RadzenRow>
             <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
-                <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Waste" Style="height: 2vh"/>
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact" Style="height: 2vh"/>
             </RadzenRow>
         }
     </div>
@@ -236,41 +236,77 @@
 @if (savedFoodList.Count > 0)
 {
     <div id="visualization">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">Visualization</RadzenText>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">Total impact to environment</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.H6">Green-house Gas Emission</RadzenText>
+                    <h6>Green-house Gas Emission</h6>
                     <RadzenText TextStyle="TextStyle.H2">@GHGSum</RadzenText>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.H6">Land Wasted</RadzenText>
+                    <h6>Land Wasted</h6>
                     <RadzenText TextStyle="TextStyle.H2">@LandSum</RadzenText>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.H6">Water Wasted</RadzenText>
+                    <h6>Water Wasted</h6>
                     <RadzenText TextStyle="TextStyle.H2">@WaterSum</RadzenText>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.H6">Eutrophying</RadzenText>
+                    <h6>Eutrophying</h6>
                     <RadzenText TextStyle="TextStyle.H2">@EutrophyingSum</RadzenText>
                 </RadzenStack>
             </RadzenColumn>
         </RadzenRow>
-        <RadzenRow>
-            <RadzenChart style="height: 400px" >
-                <RadzenPieSeries Data="@foodVis" Title="GHG" CategoryProperty="FoodName" ValueProperty="FoodGHG">
-                </RadzenPieSeries>
-            </RadzenChart>
+
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">Detailed impact by food</RadzenText>
         </RadzenRow>
+
+        <RadzenTabs TabPosition="TabPosition.Top" RenderMode="TabRenderMode.Client" >
+            <Tabs>
+                <RadzenTabsItem Text="Green-house Gas Emission">
+                    <RadzenChart Style="width: 90%">
+                        <RadzenColumnSeries Data="@GHGVis" CategoryProperty="FoodName" Title="GHG" LineType="LineType.Dashed" ValueProperty="FoodGHG">
+                            <RadzenSeriesDataLabels Visible="true" />
+                            <RadzenLegend Visible="false" />
+                        </RadzenColumnSeries>
+                    </RadzenChart>
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Water Wasted">
+                    <RadzenChart Style="width: 90%">
+                        <RadzenColumnSeries Data="@waterVis" CategoryProperty="FoodName" Title="Water wasted" LineType="LineType.Dashed" ValueProperty="FoodWater">
+                            <RadzenSeriesDataLabels Visible="true" />
+                            <RadzenLegend Visible="false" />
+                        </RadzenColumnSeries>
+                    </RadzenChart>
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Land Wasted">
+                    <RadzenChart Style="width: 90%">
+                        <RadzenColumnSeries Data="@landVis" CategoryProperty="FoodName" Title="Land wasted" LineType="LineType.Dashed" ValueProperty="FoodLand">
+                            <RadzenSeriesDataLabels Visible="true" />
+                            <RadzenLegend Visible="false" />
+                        </RadzenColumnSeries>
+                    </RadzenChart>
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Eutrophying">
+                    <RadzenChart Style="width: 90%">
+                        <RadzenColumnSeries Data="@eutrophyingVis" CategoryProperty="FoodName" Title="Eutrophying" LineType="LineType.Dashed" ValueProperty="FoodEutrophying">
+                            <RadzenSeriesDataLabels Visible="true" />
+                            <RadzenLegend Visible="false" />
+                        </RadzenColumnSeries>
+                    </RadzenChart>
+                </RadzenTabsItem>
+            </Tabs>
+        </RadzenTabs>
+
 
     </div>
 }
@@ -280,7 +316,7 @@ else
 }
 
     <div id="tips" class="content-section" style="background-color: yellow;">
-        <h2>Tips</h2>
+        <h2>What You Can Do</h2>
     <div class="container-fluid">
         <div class="row p-3">
                 <iframe width="600"
@@ -298,13 +334,6 @@ else
 @code {
     bool isLoading;
     int count;
-
-    public class PieChartData
-    {
-        public string Category { get; set; }
-        public double Value { get; set; }
-        public string Color { get; set; } // Add a color property
-    }
 
     private void ScrollToHome()
     {

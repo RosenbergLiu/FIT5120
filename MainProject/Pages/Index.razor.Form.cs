@@ -12,11 +12,7 @@ namespace MainProject.Pages
     {
         FoodFormModel foodFormModel = new FoodFormModel();
 
-        ColorScheme colorScheme = ColorScheme.Pastel;
-
         ObservableCollection<SavedFood> savedFoodList = new ObservableCollection<SavedFood>();
-
-        SavedFood[] foodVis;
 
         IEnumerable<Food>? foodList;
         IEnumerable<Food>? vegetablesList;
@@ -57,7 +53,7 @@ namespace MainProject.Pages
                 foodFormModel.CerealsId = null;
                 foodFormModel.CerealsAmount = 0;
                 CalculateWasteSum();
-                foodVis = savedFoodList.ToArray();
+                UpdateVisualization();
             }
         }
 
@@ -107,7 +103,7 @@ namespace MainProject.Pages
                 foodFormModel.FruitsId = null;
                 foodFormModel.FruitsAmount = 0;
                 CalculateWasteSum();
-                foodVis = savedFoodList.ToArray();
+                UpdateVisualization();
             }
         }
 
@@ -157,7 +153,7 @@ namespace MainProject.Pages
                 foodFormModel.MeatsId = null;
                 foodFormModel.MeatsAmount = 0;
                 CalculateWasteSum();
-                foodVis = savedFoodList.ToArray();
+                UpdateVisualization();
             }
             else
             {
@@ -211,7 +207,7 @@ namespace MainProject.Pages
                 foodFormModel.OilsId = null;
                 foodFormModel.OilsAmount = 0;
                 CalculateWasteSum();
-                foodVis = savedFoodList.ToArray();
+                UpdateVisualization();
             }
         }
 
@@ -258,10 +254,10 @@ namespace MainProject.Pages
             if(food.FoodItem != null)
             {
                 food.FoodName = food.FoodItem.FoodName;
-                food.FoodGHG = food.FoodItem.GHG * food.FoodAmount;
-                food.FoodLand = food.FoodItem.Land * food.FoodAmount;
-                food.FoodWater = food.FoodItem.Water * food.FoodAmount;
-                food.FoodEutrophying = food.FoodItem.Eutrophying * food.FoodAmount;
+                food.FoodGHG = Math.Round(food.FoodItem.GHG * food.FoodAmount, 2);
+                food.FoodLand = Math.Round(food.FoodItem.Land * food.FoodAmount, 2);
+                food.FoodWater = Math.Round(food.FoodItem.Water * food.FoodAmount, 2);
+                food.FoodEutrophying = Math.Round(food.FoodItem.Eutrophying * food.FoodAmount, 2);
             }
 
             return food;
