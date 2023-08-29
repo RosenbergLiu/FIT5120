@@ -33,7 +33,12 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
 <div id="home" class="content-section" style="background-color: green;">
-    <h2>Home</h2>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%; margin-bottom: 2rem;">
+        <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Home Page</RadzenText>
+    </RadzenRow>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
+        <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="See the impact" Style="height: 2vh" />
+    </RadzenRow>
 </div>
 
 
@@ -43,7 +48,12 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
 <div id="info" class="content-section" style="background-color: blue;">
-    <h2>Info</h2>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%; margin-bottom: 2rem;">
+        <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Info Page</RadzenText>
+    </RadzenRow>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
+        <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="See my impact" Style="height: 2vh" />
+    </RadzenRow>
 </div>
 
 
@@ -53,8 +63,8 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
     <div id="form" >
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">My Waste</RadzenText>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">My Waste</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 30vh; width: 100%;">
             <RadzenTemplateForm Data="@foodFormModel" >
@@ -236,8 +246,8 @@
 @if (savedFoodList.Count > 0)
 {
     <div id="visualization">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%; margin-bottom: 2rem;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">Total impact to environment</RadzenText>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Total impact to environment</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
             <RadzenColumn class="rz-p-5" Size="2">
@@ -266,8 +276,8 @@
             </RadzenColumn>
         </RadzenRow>
 
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%; margin-bottom: 2rem;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 3rem">Detailed impact by food</RadzenText>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Detailed impact by food</RadzenText>
         </RadzenRow>
 
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
@@ -327,7 +337,14 @@
 }
 else
 {
-    <div id="visualization" style="height: 30vh"></div>
+    <div id="visualization" style="height: 30vh">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15vh; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Your Impact to the Environment</RadzenText>
+        </RadzenRow>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10vh; width: 100%;">
+            <RadzenButton ButtonStyle="ButtonStyle.Primary" Variant="Variant.Text" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" Text="Add some data to see your impact" Style="height: 2vh" />
+        </RadzenRow>
+    </div>
 }
 
     <div id="tips" class="content-section" style="background-color: yellow;">
