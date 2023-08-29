@@ -265,6 +265,14 @@
                 </RadzenStack>
             </RadzenColumn>
         </RadzenRow>
+        <RadzenRow>
+            <RadzenChart style="height: 400px" ColorScheme="@colorScheme">
+                <RadzenPieSeries Data="@foodVis" Title="GHG" CategoryProperty="FoodName" ValueProperty="FoodGHG">
+                    <RadzenSeriesDataLabels Visible="true" />
+                </RadzenPieSeries>
+            </RadzenChart>
+        </RadzenRow>
+
     </div>
 }
 else
@@ -291,6 +299,13 @@ else
 @code {
     bool isLoading;
     int count;
+
+    public class PieChartData
+    {
+        public string Category { get; set; }
+        public double Value { get; set; }
+        public string Color { get; set; } // Add a color property
+    }
 
     private void ScrollToHome()
     {
