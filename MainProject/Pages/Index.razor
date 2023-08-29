@@ -248,7 +248,7 @@
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <h6>Land Wasted</h6>
+                    <h6>Land Used</h6>
                     <RadzenText TextStyle="TextStyle.H2">@LandSum</RadzenText>
                 </RadzenStack>
             </RadzenColumn>
@@ -281,6 +281,9 @@
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
+                        <RadzenValueAxis>
+                            <RadzenGridLines Visible="true" />
+                        </RadzenValueAxis>
                     </RadzenChart>
                 </RadzenTabsItem>
                 <RadzenTabsItem Text="Water Wasted">
@@ -289,14 +292,20 @@
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
+                        <RadzenValueAxis>
+                            <RadzenGridLines Visible="true" />
+                        </RadzenValueAxis>
                     </RadzenChart>
                 </RadzenTabsItem>
-                <RadzenTabsItem Text="Land Wasted">
+                <RadzenTabsItem Text="Land Used">
                     <RadzenChart>
-                        <RadzenColumnSeries Data="@landVis" CategoryProperty="FoodName" Title="Land wasted" LineType="LineType.Dashed" ValueProperty="FoodLand" Fill="#e09f3e">
+                        <RadzenColumnSeries Data="@landVis" CategoryProperty="FoodName" Title="Land used" LineType="LineType.Dashed" ValueProperty="FoodLand" Fill="#e09f3e">
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
+                        <RadzenValueAxis>
+                            <RadzenGridLines Visible="true" />
+                        </RadzenValueAxis>
                     </RadzenChart>
                 </RadzenTabsItem>
                 <RadzenTabsItem Text="Eutrophying">
@@ -305,6 +314,9 @@
                             <RadzenSeriesDataLabels Visible="true" />
                             <RadzenLegend Visible="false" />
                         </RadzenColumnSeries>
+                        <RadzenValueAxis>
+                            <RadzenGridLines Visible="true" />
+                        </RadzenValueAxis>
                     </RadzenChart>
                 </RadzenTabsItem>
             </Tabs>
