@@ -3,7 +3,7 @@
 @inject FoodService foodService
 @inject IHttpContextAccessor HttpContextAccessor
 @inject NotificationService notificationService
-@inject IConfiguration configuration;
+@inject IConfiguration configuration
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -32,12 +32,12 @@
 <!--------------------------------          Home Page           -------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
-<div id="home" class="content-section" style="background-color: green">
+<div id="home" class="content-section">
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 40rem; width: 100%;">
-        <RadzenText TextStyle="TextStyle.DisplayH1" Style="margin-top: 5rem">Food Saver</RadzenText>
+        <RadzenText TextStyle="TextStyle.DisplayH1" Style="margin-top: 5rem;">Food Saver</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-        <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="See the impact" Style="height: 2rem" />
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="See how the food waste impact the environment" Style="height: 2rem" />
     </RadzenRow>
 </div>
 
@@ -46,12 +46,12 @@
 <!--------------------------------          Info Page           -------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
-<div id="info" class="content-section" style="background-color: blue;">
+<div id="info" class="content-section">
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 40rem; width: 100%;">
         <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Info Page</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-        <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="See my impact" Style="height: 2rem" />
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="See my impact" />
     </RadzenRow>
 </div>
 
@@ -230,10 +230,9 @@
                 </RadzenDataGrid>
             </RadzenRow>
             <RadzenRow Visible="@(savedFoodList.Count > 0)" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-                <RadzenButton ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact"/>
+                <RadzenButton ButtonStyle="ButtonStyle.Secondary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact" />
             </RadzenRow>
     </div>
-
 
 <!---------------------------------------------------------------------------------------------->
 <!-----------------------------------                        ----------------------------------->
@@ -273,10 +272,10 @@
             </RadzenColumn>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 4rem; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" >Detailed impact by food</RadzenText>
+            <RadzenText TextStyle="TextStyle.DisplayH5" >Detailed Impact by Food</RadzenText>
         </RadzenRow>
 
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 25rem;">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 30rem;">
             <RadzenTabs TabPosition="TabPosition.Top" RenderMode="TabRenderMode.Client" Style="width: 60%">
                 <Tabs>
                     <RadzenTabsItem Text="Green-house Gas Emission">
@@ -325,22 +324,25 @@
                     </RadzenTabsItem>
                 </Tabs>
             </RadzenTabs>
-
         </RadzenRow>
-
     </RadzenStack>
+    
 
     <RadzenStack Visible="@(savedFoodList.Count == 0)">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%; margin-bottom: 2rem;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Your Impact to the Environment</RadzenText>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">What is your impact to the environment</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
-            <RadzenButton ButtonStyle="ButtonStyle.Primary" Variant="Variant.Text" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" Text="Add some data to see your impact" />
+            <RadzenButton Variant="Variant.Text" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" Text="Add some data to see your impact" />
         </RadzenRow>
     </RadzenStack>
+
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
+        <RadzenButton Variant="Variant.Text" Size="ButtonSize.Large" Click="ScrollToTips" Icon="arrow_downward" Text="How can I help" />
+    </RadzenRow>
 </div>
 
-    <div id="tips" class="content-section" style="background-color: yellow;">
+    <div id="tips" class="content-section">
         <h2>What You Can Do</h2>
         <div class="container-fluid">
             <div class="row p-3">

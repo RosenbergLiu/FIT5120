@@ -10,8 +10,8 @@
     flex-direction: column;
 }
 
-#navbar {
-    position: fixed;
+#visualization {
+    background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
 }
 
 #form-input-area {
