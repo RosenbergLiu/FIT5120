@@ -34,6 +34,11 @@ a, .btn-link {
     outline: 1px solid #26b050;
 }
 
+.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 .invalid {
     outline: 1px solid red;
 }
