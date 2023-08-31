@@ -258,11 +258,13 @@
                         kg
                     </RadzenRow>
                     <RadzenChart Visible="@showCompare">
-                        <RadzenColumnSeries Data="@GHGCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                        <RadzenColumnSeries Data="@GHGCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount" Fill="#e91e63">
                             <RadzenSeriesDataLabels Visible="true" />
                         </RadzenColumnSeries>
                         <RadzenLegend Visible="false" />
                         <RadzenColumnOptions Radius="5" Width="30" />
+                        <RadzenChartTooltipOptions Visible="false" />
+                        <RadzenValueAxis Visible="false" />
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
@@ -274,11 +276,13 @@
                         m&sup2
                     </RadzenRow>
                     <RadzenChart Visible="@showCompare">
-                        <RadzenColumnSeries Data="@landCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                        <RadzenColumnSeries Data="@landCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount" Fill="#e91e63">
                             <RadzenSeriesDataLabels Visible="true" />
                         </RadzenColumnSeries>
                         <RadzenLegend Visible="false" />
                         <RadzenColumnOptions Radius="5" Width="30" />
+                        <RadzenChartTooltipOptions Visible="false" />
+                        <RadzenValueAxis Visible="false" />
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
@@ -290,11 +294,13 @@
                         L
                     </RadzenRow>
                     <RadzenChart Visible="@showCompare">
-                        <RadzenColumnSeries Data="@waterCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                        <RadzenColumnSeries Data="@waterCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount" Fill="#e91e63">
                             <RadzenSeriesDataLabels Visible="true" />
                         </RadzenColumnSeries>
                         <RadzenLegend Visible="false" />
                         <RadzenColumnOptions Radius="5" Width="30" />
+                        <RadzenChartTooltipOptions Visible="false" />
+                        <RadzenValueAxis Visible="false" />
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
@@ -306,11 +312,13 @@
                         g
                     </RadzenRow>
                     <RadzenChart Visible="@showCompare">
-                        <RadzenColumnSeries Data="@eutrophyingCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                        <RadzenColumnSeries Data="@eutrophyingCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount" Fill="#e91e63">
                             <RadzenSeriesDataLabels Visible="true" />
                         </RadzenColumnSeries>
                         <RadzenLegend Visible="false" />
                         <RadzenColumnOptions Radius="5" Width="30" />
+                        <RadzenChartTooltipOptions Visible="false" />
+                        <RadzenValueAxis Visible="false" />
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>

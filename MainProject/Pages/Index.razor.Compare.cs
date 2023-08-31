@@ -15,7 +15,11 @@ namespace MainProject.Pages
         bool showCompare = false;
         OtherUserDataViewModel? otherUserDataViewModel;
 
-        CompareViewModel[]? GHGCompare;
+        CompareViewModel[]? GHGCompare = new CompareViewModel[]
+        {
+            new CompareViewModel{ Category = "Me", Amount = 24 },
+            new CompareViewModel{ Category = "Average", Amount = 34 }
+        };
         CompareViewModel[]? waterCompare;
         CompareViewModel[]? landCompare;
         CompareViewModel[]? eutrophyingCompare;
