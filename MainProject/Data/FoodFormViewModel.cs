@@ -2,7 +2,7 @@
 
 namespace MainProject.Data
 {
-    public class FoodFormModel
+    public class FoodFormViewModel
     {
         public int? CerealsId { get; set; }
         public int CerealsAmount { get; set; }
@@ -16,7 +16,7 @@ namespace MainProject.Data
         public int? OilsId { get; set; }
         public int OilsAmount { get; set; }
 
-        public FoodFormModel() {
+        public FoodFormViewModel() {
             CerealsId = MeatsId = FruitsId = OilsId = null;
             CerealsAmount = MeatsAmount = FruitsAmount = OilsAmount = 0;
         }

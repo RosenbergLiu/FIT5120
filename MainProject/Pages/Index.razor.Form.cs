@@ -10,7 +10,7 @@ namespace MainProject.Pages
 {
     public partial class Index
     {
-        FoodFormModel foodFormModel = new FoodFormModel();
+        FoodFormViewModel FoodFormViewModel = new FoodFormViewModel();
 
         ObservableCollection<SavedFood> savedFoodList = new ObservableCollection<SavedFood>();
 
@@ -39,17 +39,17 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.CerealsId !=null && foodFormModel.CerealsAmount > 0)
+            if (FoodFormViewModel.CerealsId !=null && FoodFormViewModel.CerealsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.CerealsId).FirstOrDefault(),
-                    FoodAmount = foodFormModel.CerealsAmount
+                    FoodItem = foodList.Where(f => f.FoodId == FoodFormViewModel.CerealsId).FirstOrDefault(),
+                    FoodAmount = FoodFormViewModel.CerealsAmount
                 };
                 newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
-                foodFormModel.CerealsId = null;
-                foodFormModel.CerealsAmount = 0;
+                FoodFormViewModel.CerealsId = null;
+                FoodFormViewModel.CerealsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
             }
@@ -57,25 +57,25 @@ namespace MainProject.Pages
 
         private void AddCereals()
         {
-            if (foodFormModel.CerealsAmount < 0)
+            if (FoodFormViewModel.CerealsAmount < 0)
             {
-                foodFormModel.CerealsAmount = 0;
+                FoodFormViewModel.CerealsAmount = 0;
             }
             else
             {
-                foodFormModel.CerealsAmount ++;
+                FoodFormViewModel.CerealsAmount ++;
             }
         }
 
         private void MinusCereals()
         {
-            if (foodFormModel.CerealsAmount > 0)
+            if (FoodFormViewModel.CerealsAmount > 0)
             {
-                foodFormModel.CerealsAmount --;
+                FoodFormViewModel.CerealsAmount --;
             }
             else
             {
-                foodFormModel.CerealsAmount = 0;
+                FoodFormViewModel.CerealsAmount = 0;
             }
         }
 
@@ -89,17 +89,17 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.FruitsId != null && foodFormModel.FruitsAmount > 0)
+            if (FoodFormViewModel.FruitsId != null && FoodFormViewModel.FruitsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.FruitsId).FirstOrDefault(),
-                    FoodAmount = foodFormModel.FruitsAmount
+                    FoodItem = foodList.Where(f => f.FoodId == FoodFormViewModel.FruitsId).FirstOrDefault(),
+                    FoodAmount = FoodFormViewModel.FruitsAmount
                 };
                 newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
-                foodFormModel.FruitsId = null;
-                foodFormModel.FruitsAmount = 0;
+                FoodFormViewModel.FruitsId = null;
+                FoodFormViewModel.FruitsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
             }
@@ -107,25 +107,25 @@ namespace MainProject.Pages
 
         private void AddFruits()
         {
-            if (foodFormModel.FruitsAmount < 0)
+            if (FoodFormViewModel.FruitsAmount < 0)
             {
-                foodFormModel.FruitsAmount = 0;
+                FoodFormViewModel.FruitsAmount = 0;
             }
             else
             {
-                foodFormModel.FruitsAmount ++;
+                FoodFormViewModel.FruitsAmount ++;
             }
         }
 
         private void MinusFruits()
         {
-            if (foodFormModel.FruitsAmount > 0)
+            if (FoodFormViewModel.FruitsAmount > 0)
             {
-                foodFormModel.FruitsAmount --;
+                FoodFormViewModel.FruitsAmount --;
             }
             else
             {
-                foodFormModel.FruitsAmount = 0;
+                FoodFormViewModel.FruitsAmount = 0;
             }
         }
 
@@ -139,47 +139,47 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.MeatsId != null && foodFormModel.MeatsAmount > 0)
+            if (FoodFormViewModel.MeatsId != null && FoodFormViewModel.MeatsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.MeatsId).FirstOrDefault(),
-                    FoodAmount = foodFormModel.MeatsAmount
+                    FoodItem = foodList.Where(f => f.FoodId == FoodFormViewModel.MeatsId).FirstOrDefault(),
+                    FoodAmount = FoodFormViewModel.MeatsAmount
                 };
                 newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
-                foodFormModel.MeatsId = null;
-                foodFormModel.MeatsAmount = 0;
+                FoodFormViewModel.MeatsId = null;
+                FoodFormViewModel.MeatsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
             }
             else
             {
-                foodFormModel.MeatsAmount = 0;
+                FoodFormViewModel.MeatsAmount = 0;
             }
         }
 
         private void AddMeats()
         {
-            if (foodFormModel.MeatsAmount < 0)
+            if (FoodFormViewModel.MeatsAmount < 0)
             {
-                foodFormModel.MeatsAmount = 0;
+                FoodFormViewModel.MeatsAmount = 0;
             }
             else
             {
-                foodFormModel.MeatsAmount ++;
+                FoodFormViewModel.MeatsAmount ++;
             }
         }
 
         private void MinusMeats()
         {
-            if (foodFormModel.MeatsAmount > 0)
+            if (FoodFormViewModel.MeatsAmount > 0)
             {
-                foodFormModel.MeatsAmount --;
+                FoodFormViewModel.MeatsAmount --;
             }
             else
             {
-                foodFormModel.MeatsAmount = 0;
+                FoodFormViewModel.MeatsAmount = 0;
             }
         }
 
@@ -193,17 +193,17 @@ namespace MainProject.Pages
                 foodList = await foodService.GetFoodListAsync();
             }
 
-            if (foodFormModel.OilsId != null && foodFormModel.OilsAmount > 0)
+            if (FoodFormViewModel.OilsId != null && FoodFormViewModel.OilsAmount > 0)
             {
                 SavedFood newFood = new SavedFood()
                 {
-                    FoodItem = foodList.Where(f => f.FoodId == foodFormModel.OilsId).FirstOrDefault(),
-                    FoodAmount = foodFormModel.OilsAmount,
+                    FoodItem = foodList.Where(f => f.FoodId == FoodFormViewModel.OilsId).FirstOrDefault(),
+                    FoodAmount = FoodFormViewModel.OilsAmount,
                 };
                 newFood = CalculateWaste(newFood);
                 AddOrUpdateFood(newFood);
-                foodFormModel.OilsId = null;
-                foodFormModel.OilsAmount = 0;
+                FoodFormViewModel.OilsId = null;
+                FoodFormViewModel.OilsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
             }
@@ -211,25 +211,25 @@ namespace MainProject.Pages
 
         private void AddOils()
         {
-            if (foodFormModel.OilsAmount < 0)
+            if (FoodFormViewModel.OilsAmount < 0)
             {
-                foodFormModel.OilsAmount = 0;
+                FoodFormViewModel.OilsAmount = 0;
             }
             else
             {
-                foodFormModel.OilsAmount ++;
+                FoodFormViewModel.OilsAmount ++;
             }
         }
 
         private void MinusOils()
         {
-            if (foodFormModel.OilsAmount > 0)
+            if (FoodFormViewModel.OilsAmount > 0)
             {
-                foodFormModel.OilsAmount --;
+                FoodFormViewModel.OilsAmount --;
             }
             else
             {
-                foodFormModel.OilsAmount = 0;
+                FoodFormViewModel.OilsAmount = 0;
             }
         }
 

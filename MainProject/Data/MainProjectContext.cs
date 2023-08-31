@@ -12,7 +12,7 @@ namespace MainProject.Data
             : base(options)
         {
         }
-
-        public DbSet<Food> Foods { get; set; } = default!;
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<UserDataRecord> UserDataRecords { get; set; }
     }
 }

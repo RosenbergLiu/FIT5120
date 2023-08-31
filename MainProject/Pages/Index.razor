@@ -28,6 +28,7 @@
     </div>
 </nav>
 
+
 <!---------------------------------------------------------------------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!--------------------------------          Home Page           -------------------------------->
@@ -38,9 +39,11 @@
         <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH1" Style="margin-top: 5rem; color: #ffffff" TextAlign="Radzen.TextAlign.Center" TagName="Radzen.Blazor.TagName.H1">Food Saver</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%">
-        <RadzenButton Variant="Radzen.Variant.Flat" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="Learn More about Food Waste" Style="height: 2rem; background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);" Shade="Radzen.Shade.Light" ButtonStyle="Radzen.ButtonStyle.Info" />
+        <RadzenButton Variant="Radzen.Variant.Flat" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" 
+                      Text="Learn More about Food Waste" Style="height: 2rem; background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);" Shade="Radzen.Shade.Light" ButtonStyle="Radzen.ButtonStyle.Info" />
     </RadzenRow>
 </div>
+
 
 <!---------------------------------------------------------------------------------------------->
 <!-----------------------------------                        ----------------------------------->
@@ -52,7 +55,7 @@
         <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Info Page</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" />
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" />
     </RadzenRow>
 </div>
 
@@ -67,7 +70,7 @@
             <RadzenText TextStyle="TextStyle.DisplayH4" Style="margin-top: 5rem">My Waste</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 18rem; width: 100%;">
-            <RadzenTemplateForm Data="@foodFormModel" >
+            <RadzenTemplateForm Data="@FoodFormViewModel" >
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
                         <RadzenFieldset Style="border-radius: 1rem; border: 2px solid rgba(216, 157, 106, 0.2)">
@@ -80,7 +83,7 @@
                             <ChildContent>
                                 <RadzenStack>
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -88,7 +91,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusCereals" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.CerealsAmount ShowUpDown="false" Name="Cereal"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.CerealsAmount ShowUpDown="false" Name="Cereal"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddCereals" />
@@ -116,7 +119,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -124,7 +127,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusFruits" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddFruits" />
@@ -152,7 +155,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -160,7 +163,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusMeats" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddMeats" />
@@ -188,7 +191,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@foodFormModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -196,7 +199,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusOils" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@foodFormModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddOils" />
@@ -250,28 +253,61 @@
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Green-house Gas Emission</h6>
-                    <RadzenText TextStyle="TextStyle.H2">@GHGSum</RadzenText>
+                    <RadzenRow>
+                        <RadzenText TextStyle="TextStyle.H2">@GHGSum</RadzenText>
+                        kg
+                    </RadzenRow>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Land Used</h6>
-                    <RadzenText TextStyle="TextStyle.H2">@LandSum</RadzenText>
+                    <RadzenRow>
+                        <RadzenText TextStyle="TextStyle.H2">@LandSum</RadzenText>
+                        m&sup2
+                    </RadzenRow>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
-                    <h6>Water Wasted</h6>
-                    <RadzenText TextStyle="TextStyle.H2">@WaterSum</RadzenText>
+                    <h6>Water Used</h6>
+                    <RadzenRow>
+                        <RadzenText TextStyle="TextStyle.H2">@WaterSum</RadzenText>
+                        L
+                    </RadzenRow>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Eutrophying</h6>
-                    <RadzenText TextStyle="TextStyle.H2">@EutrophyingSum</RadzenText>
+                    <RadzenRow>
+                        <RadzenText TextStyle="TextStyle.H2">@EutrophyingSum</RadzenText>
+                        g
+                    </RadzenRow>
                 </RadzenStack>
             </RadzenColumn>
         </RadzenRow>
+
+        <!-------------------------------      Compare with Others      -------------------------------->
+        <!----------------->
+        <!----------------->
+        <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@(!seeOthers)">
+            <RadzenButton Text="Compare my impact with other people" ButtonStyle="Radzen.ButtonStyle.Primary"
+                          Click="ShowConfirmedAsync" Size="Radzen.ButtonSize.Large" />
+        </RadzenRow>
+        <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@seeOthers">
+
+        </RadzenRow>
+        <!----------------->
+        <!----------------->
+        <!---------------------------------------------------------------------------------------------->
+
+
+
+
+        <!-----------------------------      Detailed Impact by Food      ------------------------------>
+        <!----------------->
+        <!----------------->
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 4rem; width: 100%;">
             <RadzenText TextStyle="TextStyle.DisplayH5" >Detailed Impact by Food</RadzenText>
         </RadzenRow>
@@ -327,10 +363,13 @@
             </RadzenTabs>
         </RadzenRow>
     </RadzenStack>
+    <!----------------->
+    <!----------------->
+    <!---------------------------------------------------------------------------------------------->
 
     <RadzenStack Visible="@(savedFoodList.Count == 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">What is your impact to the environment</RadzenText>
+            <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Do you want to know your impact to the environment?</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
             <RadzenButton Variant="Radzen.Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" 
@@ -338,14 +377,7 @@
         </RadzenRow>
     </RadzenStack>
 
-    <!--------------------------------      Compare with Other      -------------------------------->
-    <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@(!seeOthers)">
-        <RadzenButton Text="Compare my waste with other people" ButtonStyle="ButtonStyle.Secondary"
-                      Click="ShowConfirmedAsync" Size="Radzen.ButtonSize.Large" />
-    </RadzenRow>
-    <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@seeOthers">
-
-    </RadzenRow>
+    
 
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
         <RadzenButton Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToTips" Icon="arrow_downward" Text="How can I help" ButtonStyle="Radzen.ButtonStyle.Secondary" />
@@ -372,8 +404,7 @@
     </div>
 
 @code {
-    bool isLoading;
-    int count;
+    bool isLoading = false;
 
     private void ScrollToHome()
     {
