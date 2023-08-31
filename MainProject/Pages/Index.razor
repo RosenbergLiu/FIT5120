@@ -4,6 +4,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @inject NotificationService notificationService
 @inject IConfiguration configuration
+@inject DialogService DialogService
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -37,7 +38,7 @@
         <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH1" Style="margin-top: 5rem; color: #ffffff" TextAlign="Radzen.TextAlign.Center" TagName="Radzen.Blazor.TagName.H1">Food Saver</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%">
-        <RadzenButton Variant="Radzen.Variant.Flat" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="See how the food waste impact the environment" Style="height: 2rem; background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);" Shade="Radzen.Shade.Light" ButtonStyle="Radzen.ButtonStyle.Info" />
+        <RadzenButton Variant="Radzen.Variant.Flat" Size="ButtonSize.Large" Click="ScrollToInfo" Icon="arrow_downward" Text="Learn More about Food Waste" Style="height: 2rem; background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);" Shade="Radzen.Shade.Light" ButtonStyle="Radzen.ButtonStyle.Info" />
     </RadzenRow>
 </div>
 
@@ -51,7 +52,7 @@
         <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Info Page</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="See my impact" />
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" />
     </RadzenRow>
 </div>
 
@@ -326,24 +327,35 @@
             </RadzenTabs>
         </RadzenRow>
     </RadzenStack>
-    
 
     <RadzenStack Visible="@(savedFoodList.Count == 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
             <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">What is your impact to the environment</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
-            <RadzenButton Variant="Radzen.Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" Text="Add some data to see your impact" ButtonStyle="Radzen.ButtonStyle.Secondary" />
+            <RadzenButton Variant="Radzen.Variant.Outlined" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_upward" 
+                          Text="Add some data to see your impact" ButtonStyle="Radzen.ButtonStyle.Secondary" />
         </RadzenRow>
     </RadzenStack>
+
+    <!--------------------------------      Compare with Other      -------------------------------->
+    <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@(!seeOthers)">
+        <RadzenButton Text="Compare my waste with other people" ButtonStyle="ButtonStyle.Secondary"
+                      Click="ShowConfirmedAsync" Size="Radzen.ButtonSize.Large" />
+    </RadzenRow>
+    <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@seeOthers">
+
+    </RadzenRow>
 
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
         <RadzenButton Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToTips" Icon="arrow_downward" Text="How can I help" ButtonStyle="Radzen.ButtonStyle.Secondary" />
     </RadzenRow>
-</div>
 
+
+</div>
     <div id="tips" class="content-section">
         <h2>What You Can Do</h2>
+        <RadzenStack Visible="false">
         <div class="container-fluid">
             <div class="row p-3">
                 <iframe width="600"
@@ -352,10 +364,11 @@
                         loading="lazy"
                         allowfullscreen
                         referrerpolicy="no-referrer-when-downgrade"
-                    src="@googleMapSrc">
+                        src="@googleMapSrc">
                 </iframe>
             </div>
         </div>
+        </RadzenStack>
     </div>
 
 @code {

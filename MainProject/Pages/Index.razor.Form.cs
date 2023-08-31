@@ -27,8 +27,6 @@ namespace MainProject.Pages
             fruitsList = foodList.Where(f => f.CategoryId == 2);
             meatList = foodList.Where(f => f.CategoryId == 3);
             otherList = foodList.Where(f => f.CategoryId == 4);
-
-            var ip = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
         }
 
         /// <summary>
