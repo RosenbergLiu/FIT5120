@@ -3,7 +3,7 @@
 }
 
 .content-section {
-    height: 50rem;
+    height: 40rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+#form {
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+#info {
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
 
 .row {
