@@ -34,6 +34,18 @@ a, .btn-link {
     outline: 1px solid #26b050;
 }
 
+.rz-tick-text {
+    fill: #212121 !important;
+}
+
+.rz-series-data-label {
+    fill: #212121 !important;
+}
+
+.rz-line {
+    stroke: #979797 !important;
+}
+
 .nav-item {
     margin-left: 1rem;
     margin-right: 1rem;
