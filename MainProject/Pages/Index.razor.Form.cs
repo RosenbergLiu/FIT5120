@@ -52,6 +52,7 @@ namespace MainProject.Pages
                 FoodFormViewModel.CerealsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
+                UpdateCompare();
             }
         }
 
@@ -102,6 +103,7 @@ namespace MainProject.Pages
                 FoodFormViewModel.FruitsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
+                UpdateCompare();
             }
         }
 
@@ -152,6 +154,7 @@ namespace MainProject.Pages
                 FoodFormViewModel.MeatsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
+                UpdateCompare();
             }
             else
             {
@@ -206,6 +209,7 @@ namespace MainProject.Pages
                 FoodFormViewModel.OilsAmount = 0;
                 CalculateWasteSum();
                 UpdateVisualization();
+                UpdateCompare();
             }
         }
 
@@ -265,6 +269,53 @@ namespace MainProject.Pages
         {
             savedFoodList.Remove(item);
             StateHasChanged();
+        }
+
+        void UpdateCompare()
+        {
+            if(GHGCompare != null)
+            {
+                foreach(var item in GHGCompare)
+                {
+                    if(item.Category == "Me")
+                    {
+                        item.Amount = GHGSum;
+                    }
+                }
+            }
+
+            if (waterCompare != null)
+            {
+                foreach (var item in waterCompare)
+                {
+                    if (item.Category == "Me")
+                    {
+                        item.Amount = WaterSum;
+                    }
+                }
+            }
+
+            if (landCompare != null)
+            {
+                foreach (var item in landCompare)
+                {
+                    if (item.Category == "Me")
+                    {
+                        item.Amount = LandSum;
+                    }
+                }
+            }
+
+            if (eutrophyingCompare != null)
+            {
+                foreach (var item in eutrophyingCompare)
+                {
+                    if (item.Category == "Me")
+                    {
+                        item.Amount = EutrophyingSum;
+                    }
+                }
+            }
         }
     }
 }

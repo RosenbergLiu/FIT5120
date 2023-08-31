@@ -249,7 +249,7 @@
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
             <RadzenText TextStyle="TextStyle.DisplayH4" Style="margin-top: 5rem">Total impact to environment</RadzenText>
         </RadzenRow>
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem;">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
             <RadzenColumn class="rz-p-5" Size="2">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Green-house Gas Emission</h6>
@@ -257,6 +257,13 @@
                         <RadzenText TextStyle="TextStyle.H2">@GHGSum</RadzenText>
                         kg
                     </RadzenRow>
+                    <RadzenChart Visible="@showCompare">
+                        <RadzenColumnSeries Data="@GHGCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                            <RadzenSeriesDataLabels Visible="true" />
+                        </RadzenColumnSeries>
+                        <RadzenLegend Visible="false" />
+                        <RadzenColumnOptions Radius="5" Width="30" />
+                    </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
@@ -266,6 +273,13 @@
                         <RadzenText TextStyle="TextStyle.H2">@LandSum</RadzenText>
                         m&sup2
                     </RadzenRow>
+                    <RadzenChart Visible="@showCompare">
+                        <RadzenColumnSeries Data="@landCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                            <RadzenSeriesDataLabels Visible="true" />
+                        </RadzenColumnSeries>
+                        <RadzenLegend Visible="false" />
+                        <RadzenColumnOptions Radius="5" Width="30" />
+                    </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
@@ -275,6 +289,13 @@
                         <RadzenText TextStyle="TextStyle.H2">@WaterSum</RadzenText>
                         L
                     </RadzenRow>
+                    <RadzenChart Visible="@showCompare">
+                        <RadzenColumnSeries Data="@waterCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                            <RadzenSeriesDataLabels Visible="true" />
+                        </RadzenColumnSeries>
+                        <RadzenLegend Visible="false" />
+                        <RadzenColumnOptions Radius="5" Width="30" />
+                    </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
             <RadzenColumn class="rz-p-5" Size="2">
@@ -284,6 +305,13 @@
                         <RadzenText TextStyle="TextStyle.H2">@EutrophyingSum</RadzenText>
                         g
                     </RadzenRow>
+                    <RadzenChart Visible="@showCompare">
+                        <RadzenColumnSeries Data="@eutrophyingCompare" CategoryProperty="Category" LineType="LineType.Dashed" ValueProperty="Amount">
+                            <RadzenSeriesDataLabels Visible="true" />
+                        </RadzenColumnSeries>
+                        <RadzenLegend Visible="false" />
+                        <RadzenColumnOptions Radius="5" Width="30" />
+                    </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
         </RadzenRow>
@@ -324,17 +352,19 @@
                             <RadzenValueAxis>
                                 <RadzenGridLines Visible="true" />
                             </RadzenValueAxis>
+                            <RadzenColumnOptions Radius="10" />
                         </RadzenChart>
                     </RadzenTabsItem>
-                    <RadzenTabsItem Text="Water Wasted">
+                    <RadzenTabsItem Text="Water Used">
                         <RadzenChart>
-                            <RadzenColumnSeries Data="@waterVis" CategoryProperty="FoodName" Title="Water wasted" LineType="LineType.Dashed" ValueProperty="FoodWater" Fill="#fff3b0">
+                            <RadzenColumnSeries Data="@waterVis" CategoryProperty="FoodName" Title="Water used" LineType="LineType.Dashed" ValueProperty="FoodWater" Fill="#fff3b0">
                                 <RadzenSeriesDataLabels Visible="true" />
                                 <RadzenLegend Visible="false" />
                             </RadzenColumnSeries>
                             <RadzenValueAxis>
                                 <RadzenGridLines Visible="true" />
                             </RadzenValueAxis>
+                            <RadzenColumnOptions Radius="10" />
                         </RadzenChart>
                     </RadzenTabsItem>
                     <RadzenTabsItem Text="Land Used">
@@ -346,6 +376,7 @@
                             <RadzenValueAxis>
                                 <RadzenGridLines Visible="true" />
                             </RadzenValueAxis>
+                            <RadzenColumnOptions Radius="10" />
                         </RadzenChart>
                     </RadzenTabsItem>
                     <RadzenTabsItem Text="Eutrophying">
@@ -357,6 +388,7 @@
                             <RadzenValueAxis>
                                 <RadzenGridLines Visible="true" />
                             </RadzenValueAxis>
+                            <RadzenColumnOptions Radius="10" />
                         </RadzenChart>
                     </RadzenTabsItem>
                 </Tabs>

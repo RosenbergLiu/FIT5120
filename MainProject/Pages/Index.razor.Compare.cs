@@ -12,7 +12,13 @@ namespace MainProject.Pages
     public partial class Index
     {
         bool seeOthers = false;
-        OtherUserDataViewModel? otherUserDataViewModel = new OtherUserDataViewModel();
+        bool showCompare = false;
+        OtherUserDataViewModel? otherUserDataViewModel;
+
+        CompareViewModel[]? GHGCompare;
+        CompareViewModel[]? waterCompare;
+        CompareViewModel[]? landCompare;
+        CompareViewModel[]? eutrophyingCompare;
 
         public async Task ShowConfirmedAsync()
         {
@@ -27,6 +33,36 @@ namespace MainProject.Pages
             if (seeOthers) {
                 isLoading = true;
                 otherUserDataViewModel = await foodService.GetUserDataRecords();
+
+                if(otherUserDataViewModel!= null)
+                {
+                    GHGCompare = new CompareViewModel[]
+                    {
+                        new CompareViewModel{ Category = "Me", Amount = GHGSum },
+                        new CompareViewModel{ Category = "Average", Amount = Math.Round(otherUserDataViewModel.AvgGHG, 2) }
+                    };
+
+                    waterCompare = new CompareViewModel[]
+                    {
+                        new CompareViewModel{ Category = "Me", Amount = WaterSum },
+                        new CompareViewModel{ Category = "Average", Amount = Math.Round(otherUserDataViewModel.AvgWater, 2) }
+                    };
+
+                    landCompare = new CompareViewModel[]
+                    {
+                        new CompareViewModel{ Category = "Me", Amount = LandSum },
+                        new CompareViewModel{ Category = "Average", Amount = Math.Round(otherUserDataViewModel.AvgLand, 2) }
+                    };
+
+                    eutrophyingCompare = new CompareViewModel[]
+                    {
+                        new CompareViewModel{ Category = "Me", Amount = EutrophyingSum },
+                        new CompareViewModel{ Category = "Average", Amount = Math.Round(otherUserDataViewModel.AvgEutrophying, 2) }
+                    };
+
+                    showCompare = true;
+                }
+
                 isLoading = false;
                 StateHasChanged();
                 await UploadUserData();
