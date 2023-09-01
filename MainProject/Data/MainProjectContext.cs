@@ -14,5 +14,6 @@ namespace MainProject.Data
         }
         public DbSet<Food> Foods { get; set; }
         public DbSet<UserDataRecord> UserDataRecords { get; set; }
+        public DbSet<FoodWaste> FoodWastes { get;set; }
     }
 }

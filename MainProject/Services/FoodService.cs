@@ -45,7 +45,12 @@ namespace MainProject.Services
                 OtherUserDataViewModel results = new OtherUserDataViewModel();
                 return results;
             }
-            
+        }
+
+        public async Task<IEnumerable<FoodWaste>> GetFoodWasteDataAsync()
+        {
+            return await _context.FoodWastes.ToListAsync();
+
         }
     }
 }
