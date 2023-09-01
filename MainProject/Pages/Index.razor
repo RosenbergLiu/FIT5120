@@ -6,6 +6,8 @@
 @inject IConfiguration configuration
 @inject DialogService DialogService
 
+<PageTitle>Food Saver</PageTitle>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
@@ -13,7 +15,7 @@
                 <a @onclick="() => ScrollToHome()" class="btn btn-link nav-link nav-home active">Home</a>
             </li>
             <li class="nav-item">
-                <a @onclick="() => ScrollToInfo()" class="btn btn-link nav-link nav-info">Info</a>
+                <a @onclick="() => ScrollToInfo()" class="btn btn-link nav-link nav-info">Infographic</a>
             </li>
             <li class="nav-item">
                 <a @onclick="() => ScrollToForm()" class="btn btn-link nav-link nav-form">My Waste</a>
@@ -50,10 +52,31 @@
 <!--------------------------------          Info Page           -------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
-<div id="info" class="content-section">
-    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 40rem; width: 100%;">
-        <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Info Page</RadzenText>
+<div id="info">
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
+        <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Food Waste Trend in Victoria</RadzenText>
     </RadzenRow>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
+        <RadzenChart Visible="true" Style="width: 80%; height: 20rem;">
+            <RadzenAreaSeries Data="@foodWasteList" CategoryProperty="Year" ValueProperty="Waste" Interpolation="Radzen.Blazor.Interpolation.Spline" Fill="#56317a" Title="Wasted (kg)">
+                <RadzenSeriesTrendLine Visible="true" Stroke="#565656" LineType="LineType.Dashed" StrokeWidth="3"/>
+            </RadzenAreaSeries>
+            <RadzenLegend Visible="false"></RadzenLegend>
+            <RadzenValueAxis Visible="true" Min="0" Step="5000">
+                <RadzenGridLines Visible="true"></RadzenGridLines>
+                <RadzenAxisTitle Text="Food Waste per Household (kg)"></RadzenAxisTitle>
+            </RadzenValueAxis>
+        </RadzenChart>
+    </RadzenRow>
+
+
+
+
+
+
+
+
+
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
         <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" />
     </RadzenRow>
@@ -113,7 +136,7 @@
                             <HeaderTemplate>
                                 <span class="d-inline-flex align-items-center align-middle">
                                     <img src="svg/pepper.svg" />
-                                    <b style="margin-left: 5px; font-size:smaller;">Fruits, Cereals, and Nuts (kg)</b>
+                                <b style="margin-left: 5px; font-size:smaller;">Fruits, Vegetables, and Nuts (kg)</b>
                                 </span>
                             </HeaderTemplate>
                             <ChildContent>
@@ -221,11 +244,11 @@
 
         <RadzenRow Visible="@(savedFoodList.Count > 0)" JustifyContent="JustifyContent.Center" AlignItems="Radzen.AlignItems.Center" Style="width: 100%; height: auto">
             <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                            Data="@savedFoodList" TItem="SavedFood" LogicalFilterOperator="LogicalFilterOperator.Or" Density="Density.Compact" Style="width: 40%; background-color: rgba(93, 191, 116, 0.2)" AllowSorting="true" GridLines="Radzen.DataGridGridLines.Default">
+                            Data="@savedFoodList" TItem="SavedFood" LogicalFilterOperator="LogicalFilterOperator.Or" Density="Density.Compact" Style="width: 40%; background-color: rgba(231, 210, 118, 0.05); border-radius: 2rem" AllowSorting="true" GridLines="Radzen.DataGridGridLines.Default">
                 <Columns>
                     <RadzenDataGridColumn TItem="SavedFood" Property="FoodItem.FoodName" Filterable="false" Title="Food" Width="30vh" TextAlign="TextAlign.Center" />
                     <RadzenDataGridColumn TItem="SavedFood" Property="FoodAmount" Filterable="true" Title="Amount" Width="20vh" TextAlign="TextAlign.Center" />
-                    <RadzenDataGridColumn TItem="SavedFood" Width="10vh" Filterable="false" TextAlign="TextAlign.Center">
+                    <RadzenDataGridColumn TItem="SavedFood" Width="10vh" Filterable="false" TextAlign="TextAlign.Center" Sortable="false" Reorderable="false">
                         <Template Context="data">
                             <RadzenButton Icon="delete" Size="ButtonSize.Small" ButtonStyle="ButtonStyle.Danger" Click="@(() => DeleteItem(data))"></RadzenButton>
                         </Template>
@@ -234,7 +257,7 @@
             </RadzenDataGrid>
         </RadzenRow>
         <RadzenRow Visible="@(savedFoodList.Count > 0)" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-            <RadzenButton ButtonStyle="Radzen.ButtonStyle.Primary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact" />
+            <RadzenButton ButtonStyle="Radzen.ButtonStyle.Secondary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact" />
         </RadzenRow>
     </div>
 

@@ -11,6 +11,7 @@ namespace MainProject.Pages
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
+            await InitialWasteYearVis();
             await InitialFormAsync();
             InitialMapAsync();
         }

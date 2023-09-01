@@ -49,8 +49,7 @@ namespace MainProject.Services
 
         public async Task<IEnumerable<FoodWaste>> GetFoodWasteDataAsync()
         {
-            return await _context.FoodWastes.ToListAsync();
-
+            return await _context.FoodWastes.OrderBy(f => f.Year).ToListAsync();
         }
     }
 }
