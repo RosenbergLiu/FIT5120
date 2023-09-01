@@ -261,13 +261,15 @@ namespace MainProject.Pages
                 food.FoodWater = Math.Round(food.FoodItem.Water * food.FoodAmount, 2);
                 food.FoodEutrophying = Math.Round(food.FoodItem.Eutrophying * food.FoodAmount, 2);
             }
-
             return food;
         }
 
         void DeleteItem(SavedFood item)
         {
             savedFoodList.Remove(item);
+            CalculateWasteSum();
+            UpdateVisualization();
+            UpdateCompare();
             StateHasChanged();
         }
 
