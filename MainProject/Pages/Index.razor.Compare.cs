@@ -15,11 +15,7 @@ namespace MainProject.Pages
         bool showCompare = false;
         OtherUserDataViewModel? otherUserDataViewModel;
 
-        CompareViewModel[]? GHGCompare = new CompareViewModel[]
-        {
-            new CompareViewModel{ Category = "Me", Amount = 24 },
-            new CompareViewModel{ Category = "Average", Amount = 34 }
-        };
+        CompareViewModel[]? GHGCompare;
         CompareViewModel[]? waterCompare;
         CompareViewModel[]? landCompare;
         CompareViewModel[]? eutrophyingCompare;
@@ -27,9 +23,9 @@ namespace MainProject.Pages
         public async Task ShowConfirmedAsync()
         {
             seeOthers = await DialogService.Confirm(
-                "Seeing other people's data would collect your food waste data.", 
+                "Your food waste data will be collected anonymously and combined with data from other users to form the community data set, which you'll have access to", 
                 "Data collection notice", 
-                new ConfirmOptions() { OkButtonText = "I acknowledge", CancelButtonText = "I refuse" }
+                new ConfirmOptions() { OkButtonText = "I acknowledged", CancelButtonText = "I refuse" }
                 ) ?? false;
 
             StateHasChanged();
@@ -76,7 +72,10 @@ namespace MainProject.Pages
         public async Task UploadUserData()
         {
             string ip = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "null";
+
+#if DEBUG
             notificationService.Notify(NotificationSeverity.Info, "IP", ip);
+#endif
 
             UserDataRecord newRecord = new UserDataRecord()
             {

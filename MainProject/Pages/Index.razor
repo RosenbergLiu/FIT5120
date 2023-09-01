@@ -34,7 +34,7 @@
 <!--------------------------------          Home Page           -------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
-<div id="home" class="content-section" style="background-image: url('/home.jpg') !important; background-repeat: no-repeat; background-size: 100% 100%;">
+<div id="home" class="content-section" >
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 40rem; width: 100%;">
         <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH1" Style="margin-top: 5rem; color: #ffffff" TextAlign="Radzen.TextAlign.Center" TagName="Radzen.Blazor.TagName.H1">Food Saver</RadzenText>
     </RadzenRow>
@@ -249,8 +249,8 @@
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
             <RadzenText TextStyle="TextStyle.DisplayH4" Style="margin-top: 5rem">Total impact to environment</RadzenText>
         </RadzenRow>
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
-            <RadzenColumn class="rz-p-5" Size="2">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; margin-left: 3rem; margin-right: 3rem">
+            <RadzenColumn Size="3">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Green-house Gas Emission</h6>
                     <RadzenRow>
@@ -268,7 +268,7 @@
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
-            <RadzenColumn class="rz-p-5" Size="2">
+            <RadzenColumn class="rz-p-5" Size="3">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Land Used</h6>
                     <RadzenRow>
@@ -286,7 +286,7 @@
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
-            <RadzenColumn class="rz-p-5" Size="2">
+            <RadzenColumn class="rz-p-5" Size="3">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Water Used</h6>
                     <RadzenRow>
@@ -304,7 +304,7 @@
                     </RadzenChart>
                 </RadzenStack>
             </RadzenColumn>
-            <RadzenColumn class="rz-p-5" Size="2">
+            <RadzenColumn class="rz-p-5" Size="3">
                 <RadzenStack Orientation="Orientation.Vertical" AlignItems="AlignItems.Center">
                     <h6>Eutrophying</h6>
                     <RadzenRow>
@@ -416,8 +416,6 @@
                           Text="Add some data to see your impact" ButtonStyle="Radzen.ButtonStyle.Secondary" />
         </RadzenRow>
     </RadzenStack>
-
-    
 
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 5rem; width: 100%;">
         <RadzenButton Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToTips" Icon="arrow_downward" Text="How can I help" ButtonStyle="Radzen.ButtonStyle.Secondary" />
