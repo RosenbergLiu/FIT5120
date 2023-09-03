@@ -53,8 +53,72 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
 <div id="info">
+    <RadzenRow Style="height: 5rem"/>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%">
+        <img src="png/house.png" style="width: 10%"/>
+    </RadzenRow>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%;">
+        <RadzenText TextStyle="TextStyle.DisplayH2" Text="7.6 Million tonnes of household food waste each year" />
+    </RadzenRow>
+
+    <RadzenRow Style="height: 5rem" />
+
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%;">
+        <RadzenColumn Size="3">
+            <RadzenStack>
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+                    <img src="png/co2.png" style="width:45%" />
+                </RadzenRow>
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="7.6 Million tonnes of household food waste each year" />
+            </RadzenStack>
+        </RadzenColumn>
+        <RadzenColumn Size="2">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+                <img src="png/transfer.png" style="width: 40%" />
+            </RadzenRow>
+        </RadzenColumn>
+        <RadzenColumn Size="3">
+            <RadzenStack>
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                    <img src="png/car.png" style="width: 40%"/>
+                    <img src="png/pickup-car.png" style="width: 40%" />
+                </RadzenRow>
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="7.6 Million tonnes of household food waste each year" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+
+    <RadzenRow Style="height: 5rem" />
+
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%;">
+        <RadzenColumn Size="3">
+            <RadzenStack>
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                    <img src="png/water-drop.png" style="width:45%" />
+                </RadzenRow>
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="29 Billion liters of water is wasted which was used to grow the food" />
+            </RadzenStack>
+        </RadzenColumn>
+        <RadzenColumn Size="2">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                <img src="png/transfer.png" style="width: 40%" />
+            </RadzenRow>
+        </RadzenColumn>
+        <RadzenColumn Size="3">
+            <RadzenStack>
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                    <img src="png/sydney-harbour-bridge.png" style="width: 40%" />
+                    <img src="png/building.png" style="width: 40%" />
+                </RadzenRow>
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="5 times water in Sydney Harbour" />
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+
+    <RadzenRow Style="height: 5rem" />
+
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-        <RadzenText TextStyle="TextStyle.DisplayH5" Style="margin-top: 5rem">Food Waste Trend in Victoria</RadzenText>
+        <RadzenText TextStyle="TextStyle.DisplayH2" Style="margin-top: 5rem">Food Waste Trend in Victoria</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
         <RadzenChart Visible="true" Style="width: 80%; height: 20rem;">
@@ -71,12 +135,6 @@
 
 
 
-
-
-
-
-
-
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
         <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" />
     </RadzenRow>
@@ -90,7 +148,7 @@
 <!---------------------------------------------------------------------------------------------->
     <div id="form">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH4" Style="margin-top: 5rem">My Waste</RadzenText>
+            <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">My Waste</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 18rem; width: 100%;">
             <RadzenTemplateForm Data="@FoodFormViewModel" >
@@ -270,7 +328,7 @@
 <div id="visualization">
     <RadzenStack Visible="@(savedFoodList.Count > 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
-            <RadzenText TextStyle="TextStyle.DisplayH4" Style="margin-top: 5rem">Total impact to environment</RadzenText>
+            <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">Total impact to environment</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; margin-left: 3rem; margin-right: 3rem">
             <RadzenColumn Size="3">
@@ -347,28 +405,20 @@
             </RadzenColumn>
         </RadzenRow>
 
-        <!-------------------------------      Compare with Others      -------------------------------->
-        <!----------------->
-        <!----------------->
+
         <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@(!seeOthers)">
             <RadzenButton Text="Compare my impact with other people" ButtonStyle="Radzen.ButtonStyle.Primary"
                           Click="ShowConfirmedAsync" Size="Radzen.ButtonSize.Large" />
         </RadzenRow>
-        <RadzenRow AlignItems="Radzen.AlignItems.Center" JustifyContent="Radzen.JustifyContent.Center" Visible="@seeOthers">
-
-        </RadzenRow>
-        <!----------------->
-        <!----------------->
-        <!---------------------------------------------------------------------------------------------->
 
 
-
+        <RadzenRow Style="height:5rem;"/>
 
         <!-----------------------------      Detailed Impact by Food      ------------------------------>
         <!----------------->
         <!----------------->
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 4rem; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH5" >Detailed Impact by Food</RadzenText>
+            <RadzenText TextStyle="TextStyle.DisplayH3" >Detailed Impact by Food</RadzenText>
         </RadzenRow>
 
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 30rem;">
@@ -446,22 +496,31 @@
 
 
 </div>
-    <div id="tips" class="content-section">
-        <h2>What You Can Do</h2>
-        <RadzenStack Visible="false">
-        <div class="container-fluid">
-            <div class="row p-3">
-                <iframe width="600"
-                        height="450"
-                        style="border:0"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="@googleMapSrc">
-                </iframe>
-            </div>
-        </div>
-        </RadzenStack>
+    <div id="tips">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
+            <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">Tips to reduce food waste</RadzenText>
+        </RadzenRow>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+            <RadzenColumn Size="5">
+                <div class="container-fluid">
+                    <div class="row p-3">
+                        <iframe width="600"
+                                height="450"
+                                style="border:0"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="@googleMapSrc">
+                        </iframe>
+                    </div>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="5">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                    <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can donate your unwanted food to people who need it" />
+                </RadzenRow>
+            </RadzenColumn>
+        </RadzenRow>
     </div>
 
 @code {
