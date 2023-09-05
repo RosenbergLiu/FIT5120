@@ -3,7 +3,7 @@ using NuGet.Packaging;
 
 namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration1
     {
         IEnumerable<FoodWaste>? foodWasteList;
         bool foodWasteVisReady = false;

@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration1
     {
         FoodFormViewModel FoodFormViewModel = new FoodFormViewModel();
 

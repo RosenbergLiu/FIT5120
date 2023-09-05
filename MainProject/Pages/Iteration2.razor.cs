@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration2
     {
         protected override async Task OnInitializedAsync()
         {

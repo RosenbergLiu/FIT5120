@@ -1,6 +1,6 @@
 ﻿namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration1
     {
         string googleMapApi = "";
         string googleMapSrc = "";

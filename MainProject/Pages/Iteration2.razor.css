@@ -1,0 +1,53 @@
+﻿.navbar-nav .nav-item .nav-link.active {
+    font-weight: bold;
+}
+
+.content-section {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#visualization {
+    background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+}
+
+#form-input-area {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#home {
+    background-image: url('/home.jpg') !important; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+}
+
+#form {
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+#info {
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

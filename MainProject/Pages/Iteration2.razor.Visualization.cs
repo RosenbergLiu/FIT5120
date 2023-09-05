@@ -2,7 +2,7 @@
 
 namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration2
     {
         double GHGSum;
         double WaterSum;

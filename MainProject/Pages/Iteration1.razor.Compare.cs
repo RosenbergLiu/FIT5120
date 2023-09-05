@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace MainProject.Pages
 {
-    public partial class Index
+    public partial class Iteration1
     {
         bool seeOthers = false;
         bool showCompare = false;
