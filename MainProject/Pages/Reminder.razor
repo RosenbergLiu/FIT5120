@@ -9,28 +9,39 @@
         <RadzenFormField Text="Food Name" Variant="Variant.Flat" Style="width: 85%">
             <RadzenTextBox @bind-Value="@foodName" />
         </RadzenFormField>
-        <RadzenButton Icon="camera" Click="@(args => OpenCamera("Capturing product name"))" Disabled="@(!cameraAvailable)" Style="width: 10%"></RadzenButton>
+        <RadzenButton Icon="camera" Click="OpenNameCamera" Style="width: 10%"></RadzenButton>
+    </RadzenRow>
+
+    <RadzenRow Visible="@showNameCamera">
+        <RadzenText Text="Capturing product name"></RadzenText>
+        <RadzenStack>
+            <video id="videoElement1" width="640" height="480" autoplay></video>
+            <canvas id="canvasElement1" width="640" height="480"></canvas>
+            <RadzenButton Click="CaptureNameImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
+        </RadzenStack>
     </RadzenRow>
 
     <RadzenRow>
         <RadzenFormField Text="Best Before" Variant="Variant.Flat" Style="width: 85%;">
             <RadzenDatePicker @bind-Value="@expireDate" />
         </RadzenFormField>
-        <RadzenButton Icon="camera" Click="@(args => OpenCamera("Capturing BEST BEFORE"))" Disabled="@(!cameraAvailable)" Style="width: 10%"></RadzenButton>
+        <RadzenButton Icon="camera" Click="OpenDateCamera" Style="width: 10%"></RadzenButton>
    </RadzenRow>
+
+    <RadzenRow Visible="@showDateCamera">
+        <RadzenText Text="Capturing BEST BEFORE"></RadzenText>
+        <RadzenStack>
+            <video id="videoElement2" width="640" height="480" autoplay></video>
+            <canvas id="canvasElement2" width="640" height="480"></canvas>
+            <RadzenButton Click="CaptureDateImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
+        </RadzenStack>
+    </RadzenRow>
 
     <RadzenFormField Text="Calender Event Color" Variant="Variant.Flat" Style="width: 85%">
         <RadzenColorPicker @bind-Value="@color" />
     </RadzenFormField>
 
-    <RadzenRow Visible="@showCamera">
-        <RadzenText Text="@cameraTitle"></RadzenText>
-        <RadzenStack>
-            <video id="videoElement" width="640" height="480" autoplay></video>
-            <canvas id="canvasElement" width="640" height="480"></canvas>
-            <RadzenButton Click="CaptureImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
-        </RadzenStack>
-    </RadzenRow>
+    
 
     <RadzenButton Click="GenerateICS" Style="width: 100%">Add to your calender</RadzenButton>
 </RadzenStack>
@@ -42,31 +53,41 @@
     string foodName;
     DateTime expireDate;
     string color = "rgb(68, 58, 110)";
-    bool showCamera = false;
-    bool cameraAvailable = true;
-    string cameraTitle;
+    bool showNameCamera = false;
+    bool showDateCamera = false;
 
-    private string imageDataUrl;
+    private string nameImageDataUrl;
+    private string dateImageDataUrl;
 
-    private async Task OpenCamera(string title)
+    private async Task OpenNameCamera()
     {
-        bool cameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement");
-        if (cameraAvailable)
+        showDateCamera = false;
+        bool nameCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement1");
+        if (nameCameraAvailable)
         {
-            cameraTitle = title;
-            showCamera = true;
-            StateHasChanged();
-        }
-        else
-        {
-            notificationService.Notify(NotificationSeverity.Error, "Your system does not have a camera");
-            cameraAvailable = false;
-            StateHasChanged();
+            showNameCamera = true;
         }
     }
 
-    private async Task CaptureImage()
+    private async Task CaptureNameImage()
     {
-        imageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement", "canvasElement");
+        nameImageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement1", "canvasElement1");
+        showNameCamera = true;
+    }
+
+    private async Task OpenDateCamera()
+    {
+        showNameCamera = false;
+        bool dateCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement2");
+        if (dateCameraAvailable)
+        {
+            showDateCamera = true;
+        }
+    }
+
+    private async Task CaptureDateImage()
+    {
+        dateImageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement2", "canvasElement2");
+        showDateCamera = false;
     }
 }
