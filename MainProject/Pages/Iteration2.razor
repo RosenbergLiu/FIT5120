@@ -526,13 +526,20 @@
         </RadzenRow>
     </div>
     <div style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height:auto">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 40rem">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 60rem">
             <RadzenColumn Size="4">
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can create a reminder to your prefered calender to remind you before foods expire" Style="color: white" />
                 </RadzenRow>
             </RadzenColumn>
-            <RadzenColumn Size="4">
+            <RadzenColumn Size="1">
+            </RadzenColumn>
+            <RadzenColumn Size="3">
+                <div class="container-fluid" id="freezer">
+                    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+                        <RadzenButton Size="ButtonSize.Large" Click="@ShowReminderDialog">Open calender reminder generator</RadzenButton>
+                    </RadzenRow>
+                </div>
             </RadzenColumn>
         </RadzenRow>
 
@@ -566,5 +573,11 @@
     private void ScrollToTips()
     {
         JSRuntime.InvokeVoidAsync("scrollToTips");
+    }
+
+    private async Task ShowReminderDialog()
+    {
+        await DialogService.OpenAsync("Calender Reminder Generator", ds =>
+        @<Reminder></Reminder>);
     }
 }

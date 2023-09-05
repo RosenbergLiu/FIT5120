@@ -1,5 +1,72 @@
-﻿<h3>Reminder</h3>
+﻿@using System.Text
+@using Microsoft.AspNetCore.Http
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+@inject NotificationService notificationService
 
-@code {
+<RadzenStack>
+    <RadzenRow Style="width: 100%">
+        <RadzenFormField Text="Food Name" Variant="Variant.Flat" Style="width: 85%">
+            <RadzenTextBox @bind-Value="@foodName" />
+        </RadzenFormField>
+        <RadzenButton Icon="camera" Click="@(args => OpenCamera("Capturing product name"))" Disabled="@(!cameraAvailable)" Style="width: 10%"></RadzenButton>
+    </RadzenRow>
 
+    <RadzenRow>
+        <RadzenFormField Text="Best Before" Variant="Variant.Flat" Style="width: 85%;">
+            <RadzenDatePicker @bind-Value="@expireDate" />
+        </RadzenFormField>
+        <RadzenButton Icon="camera" Click="@(args => OpenCamera("Capturing BEST BEFORE"))" Disabled="@(!cameraAvailable)" Style="width: 10%"></RadzenButton>
+   </RadzenRow>
+
+    <RadzenFormField Text="Calender Event Color" Variant="Variant.Flat" Style="width: 85%">
+        <RadzenColorPicker @bind-Value="@color" />
+    </RadzenFormField>
+
+    <RadzenRow Visible="@showCamera">
+        <RadzenText Text="@cameraTitle"></RadzenText>
+        <RadzenStack>
+            <video id="videoElement" width="640" height="480" autoplay></video>
+            <canvas id="canvasElement" width="640" height="480"></canvas>
+            <RadzenButton Click="CaptureImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
+        </RadzenStack>
+    </RadzenRow>
+
+    <RadzenButton Click="GenerateICS" Style="width: 100%">Add to your calender</RadzenButton>
+</RadzenStack>
+
+
+
+
+@code{
+    string foodName;
+    DateTime expireDate;
+    string color = "rgb(68, 58, 110)";
+    bool showCamera = false;
+    bool cameraAvailable = true;
+    string cameraTitle;
+
+    private string imageDataUrl;
+
+    private async Task OpenCamera(string title)
+    {
+        bool cameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement");
+        if (cameraAvailable)
+        {
+            cameraTitle = title;
+            showCamera = true;
+            StateHasChanged();
+        }
+        else
+        {
+            notificationService.Notify(NotificationSeverity.Error, "Your system does not have a camera");
+            cameraAvailable = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task CaptureImage()
+    {
+        imageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement", "canvasElement");
+    }
 }
