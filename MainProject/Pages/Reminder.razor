@@ -3,91 +3,129 @@
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 @inject NotificationService notificationService
+@using System.Drawing
+@using System.IO
+@using System.Text.Json
 
-<RadzenStack>
-    <RadzenRow Style="width: 100%">
-        <RadzenFormField Text="Food Name" Variant="Variant.Flat" Style="width: 85%">
-            <RadzenTextBox @bind-Value="@foodName" />
+<div style="overflow-y: auto; max-height: 35rem;">
+    <RadzenStack>
+        <RadzenRow Style="width: 100%">
+            <RadzenFormField Text="Food Name" Variant="Variant.Flat" Style="width: 85%">
+                <RadzenTextBox @bind-Value="@foodName" />
+            </RadzenFormField>
+            <RadzenButton Icon="camera" Click="OpenNameCamera" Style="width: 10%"></RadzenButton>
+        </RadzenRow>
+
+        <RadzenRow Visible="@showNameCamera" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+            <RadzenStack>
+                <video id="videoElement1" style="height:20rem" autoplay></video>
+                <canvas id="canvasElement1" style="height:20rem; display:none;" hidden></canvas>
+                <RadzenButton Click="CaptureNameImage" ButtonStyle="ButtonStyle.Secondary">Capture Product Name</RadzenButton>
+            </RadzenStack>
+        </RadzenRow>
+
+        <RadzenRow>
+            <RadzenFormField Text="Best Before" Variant="Variant.Flat" Style="width: 85%;">
+                <RadzenDatePicker @bind-Value="@expireDate" />
+            </RadzenFormField>
+            <RadzenButton Icon="camera" Click="OpenDateCamera" Style="width: 10%"></RadzenButton>
+       </RadzenRow>
+
+        <RadzenRow Visible="@showDateCamera" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+            <RadzenStack Style="width:70%">
+                <video id="videoElement2" style="height:20rem" autoplay></video>
+                <canvas id="canvasElement2" style="height:20rem; display:none;" hidden></canvas>
+                <RadzenButton Click="CaptureDateImage" ButtonStyle="ButtonStyle.Secondary">Capture BEST BEFORE</RadzenButton>
+            </RadzenStack>
+        </RadzenRow>
+
+        <RadzenFormField Text="Calender Event Color" Variant="Variant.Flat" Style="width: 85%">
+            <RadzenColorPicker @bind-Value="@color" />
         </RadzenFormField>
-        <RadzenButton Icon="camera" Click="OpenNameCamera" Style="width: 10%"></RadzenButton>
-    </RadzenRow>
-
-    <RadzenRow Visible="@showNameCamera">
-        <RadzenText Text="Capturing product name"></RadzenText>
-        <RadzenStack>
-            <video id="videoElement1" width="640" height="480" autoplay></video>
-            <canvas id="canvasElement1" width="640" height="480"></canvas>
-            <RadzenButton Click="CaptureNameImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
-        </RadzenStack>
-    </RadzenRow>
-
-    <RadzenRow>
-        <RadzenFormField Text="Best Before" Variant="Variant.Flat" Style="width: 85%;">
-            <RadzenDatePicker @bind-Value="@expireDate" />
-        </RadzenFormField>
-        <RadzenButton Icon="camera" Click="OpenDateCamera" Style="width: 10%"></RadzenButton>
-   </RadzenRow>
-
-    <RadzenRow Visible="@showDateCamera">
-        <RadzenText Text="Capturing BEST BEFORE"></RadzenText>
-        <RadzenStack>
-            <video id="videoElement2" width="640" height="480" autoplay></video>
-            <canvas id="canvasElement2" width="640" height="480"></canvas>
-            <RadzenButton Click="CaptureDateImage" ButtonStyle="ButtonStyle.Secondary">Capture Image</RadzenButton>
-        </RadzenStack>
-    </RadzenRow>
-
-    <RadzenFormField Text="Calender Event Color" Variant="Variant.Flat" Style="width: 85%">
-        <RadzenColorPicker @bind-Value="@color" />
-    </RadzenFormField>
 
     
 
-    <RadzenButton Click="GenerateICS" Style="width: 100%">Add to your calender</RadzenButton>
-</RadzenStack>
-
+        <RadzenButton Click="GenerateICS" Style="width: 100%">Add to your calender</RadzenButton>
+    </RadzenStack>
+</div>
 
 
 
 @code{
+    bool isLoading = false;
     string foodName;
     DateTime expireDate;
     string color = "rgb(68, 58, 110)";
     bool showNameCamera = false;
     bool showDateCamera = false;
 
-    private string nameImageDataUrl;
-    private string dateImageDataUrl;
+    bool shouldInitializeNameCamera = false;
+    bool shouldInitializeDateCamera = false;
 
-    private async Task OpenNameCamera()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        showDateCamera = false;
-        bool nameCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement1");
-        if (nameCameraAvailable)
+        if (shouldInitializeNameCamera)
         {
-            showNameCamera = true;
+            var nameCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement1");
+
+            shouldInitializeNameCamera = false;
+        }
+
+        if (shouldInitializeDateCamera)
+        {
+            var dateCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement2");
+
+            shouldInitializeDateCamera = false;
         }
     }
 
+    private void OpenNameCamera()
+    {
+        showDateCamera = false;
+        showNameCamera = true;
+        shouldInitializeNameCamera = true;
+        StateHasChanged();
+    }
+
+
     private async Task CaptureNameImage()
     {
-        nameImageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement1", "canvasElement1");
-        showNameCamera = true;
+        isLoading = true;
+        var apiKey = "AIzaSyAMLTuq5eTM1B_Q2BhMnc4qa6GzgDrnmuw";
+        var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement1", "canvasElement1", apiKey);
+
+        if (!string.IsNullOrEmpty(analysisResult))
+        {
+            foodName = analysisResult;
+            StateHasChanged();
+        }
+        else
+        {
+            notificationService.Notify(NotificationSeverity.Info, "Failed to capture or analyze image", "Error");
+        }
+
+        isLoading = false;
+        showNameCamera = false;
+        StateHasChanged();
     }
+
 
     private async Task OpenDateCamera()
     {
         showNameCamera = false;
-        bool dateCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement2");
-        if (dateCameraAvailable)
-        {
-            showDateCamera = true;
-        }
+        showDateCamera = true;
+        shouldInitializeDateCamera = true;
+        StateHasChanged();
     }
 
     private async Task CaptureDateImage()
     {
-        dateImageDataUrl = await JSRuntime.InvokeAsync<string>("captureImage", "videoElement2", "canvasElement2");
+        isLoading = true;
+
+        //something
+
+        isLoading = false;
         showDateCamera = false;
+        StateHasChanged();
     }
 }

@@ -58,7 +58,7 @@
         <img src="png/house.png" style="width: 10%"/>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%;">
-        <RadzenText TextStyle="TextStyle.DisplayH2" Text="7.6 Million tonnes of household food waste each year in Australia" />
+        <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH2" Text="7.6 Million tonnes of household food waste each year in Australia" Style="width: 70%; text-align: center"/>
     </RadzenRow>
 
     <RadzenRow Style="height: 5rem" />
@@ -69,7 +69,7 @@
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
                     <img src="png/co2.png" style="width:45%" />
                 </RadzenRow>
-                <RadzenText TextStyle="TextStyle.DisplayH4" Text="Generating 3 million tonnes of Green-house Gas" />
+                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="Generating 3 million tonnes of Green-house Gas" />
             </RadzenStack>
         </RadzenColumn>
         <RadzenColumn Size="2">
@@ -83,7 +83,7 @@
                     <img src="png/car.png" style="width: 40%"/>
                     <img src="png/pickup-car.png" style="width: 40%" />
                 </RadzenRow>
-                <RadzenText TextStyle="TextStyle.DisplayH4" Text="6.7 million cars emission" />
+                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="6.7 million cars emission" />
             </RadzenStack>
         </RadzenColumn>
     </RadzenRow>
@@ -96,7 +96,10 @@
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <img src="png/water-drop.png" style="width:45%" />
                 </RadzenRow>
-                <RadzenText TextStyle="TextStyle.DisplayH4" Text="29 Billion liters of water is wasted which was used to grow the food" />
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="width: 70%">
+                    <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="29 Billion liters of water is wasted which was used to grow the food" />
+                </RadzenRow>
+                
             </RadzenStack>
         </RadzenColumn>
         <RadzenColumn Size="2">
@@ -110,7 +113,7 @@
                     <img src="png/sydney-harbour-bridge.png" style="width: 40%" />
                     <img src="png/building.png" style="width: 40%" />
                 </RadzenRow>
-                <RadzenText TextStyle="TextStyle.DisplayH4" Text="5 times water in Sydney Harbour" />
+                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="5 times water in Sydney Harbour" />
             </RadzenStack>
         </RadzenColumn>
     </RadzenRow>
@@ -132,8 +135,6 @@
             </RadzenValueAxis>
         </RadzenChart>
     </RadzenRow>
-
-
 
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
         <RadzenButton ButtonStyle="ButtonStyle.Secondary" Variant="Radzen.Variant.Filled" Size="ButtonSize.Large" Click="ScrollToForm" Icon="arrow_downward" Text="Calculate My Food Waste Impact" Style="background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);"/>
@@ -503,38 +504,36 @@
         </RadzenRow>
     </div>
     <div style="background-image: linear-gradient( 90.1deg, rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 99.9% );">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
-            <RadzenColumn Size="4">
-                <div class="container-fluid">
-                    <div class="row p-3">
-                        <iframe width="600"
-                                height="450"
-                                style="border:0"
-                                loading="lazy"
-                                allowfullscreen
-                                referrerpolicy="no-referrer-when-downgrade"
-                                src="@googleMapSrc">
-                        </iframe>
-                    </div>
-                </div>
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 25rem">
+            <RadzenColumn Size="7">
+                <iframe 
+                        style="height: 25rem; width: 100%"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="@googleMapSrc">
+                </iframe>
             </RadzenColumn>
-            <RadzenColumn Size="4">
+            <RadzenColumn Size="1" />
+            <RadzenColumn Size="3">
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can donate your unwanted food to people who need it" Style="color: white"/>
                 </RadzenRow>
             </RadzenColumn>
+            <RadzenColumn Size="1" />
         </RadzenRow>
     </div>
     <div style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height:auto">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 60rem">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+
+            <RadzenColumn Size="1" />
             <RadzenColumn Size="4">
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can create a reminder to your prefered calender to remind you before foods expire" Style="color: white" />
                 </RadzenRow>
             </RadzenColumn>
-            <RadzenColumn Size="1">
-            </RadzenColumn>
-            <RadzenColumn Size="3">
+            <RadzenColumn Size="1" />
+            <RadzenColumn Size="6">
                 <div class="container-fluid" id="freezer">
                     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
                         <RadzenButton Size="ButtonSize.Large" Click="@ShowReminderDialog">Open calender reminder generator</RadzenButton>
@@ -578,6 +577,6 @@
     private async Task ShowReminderDialog()
     {
         await DialogService.OpenAsync("Calender Reminder Generator", ds =>
-        @<Reminder></Reminder>);
+    @<Reminder></Reminder>, new DialogOptions() { Width = "50rem", Height = "40rem" });
     }
 }
