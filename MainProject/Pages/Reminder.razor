@@ -3,6 +3,7 @@
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 @inject NotificationService notificationService
+@inject IConfiguration configuration
 
 <div style="overflow-y: auto; max-height: 35rem;">
     <RadzenTemplateForm Data="@reminder" Submit="@((ReminderViewModel args) => { GenerateICS(args).Wait(); })">
@@ -99,7 +100,7 @@
     private async Task CaptureNameImage()
     {
         isLoading = true;
-        var apiKey = "AIzaSyAMLTuq5eTM1B_Q2BhMnc4qa6GzgDrnmuw";
+        var apiKey = configuration["GoogleVisionAPI"] ?? "";
         var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement1", "canvasElement1", apiKey);
 
         if (!string.IsNullOrEmpty(analysisResult))
@@ -130,7 +131,7 @@
     {
         isLoading = true;
 
-        var apiKey = "AIzaSyAMLTuq5eTM1B_Q2BhMnc4qa6GzgDrnmuw";
+        var apiKey = configuration["GoogleVisionAPI"] ?? "";
         var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement1", "canvasElement1", apiKey);
 
         if (!string.IsNullOrEmpty(analysisResult))
