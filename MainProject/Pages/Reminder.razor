@@ -134,13 +134,7 @@
         var apiKey = configuration["GoogleVisionAPI"] ?? "";
         var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement1", "canvasElement1", apiKey);
 
-        if (!string.IsNullOrEmpty(analysisResult))
-        {
-        }
-        else
-        {
-            notificationService.Notify(NotificationSeverity.Error, "Failed to capture or analyze image");
-        }
+        notificationService.Notify(NotificationSeverity.Error, "Failed to capture or analyze image");
 
         isLoading = false;
         showDateCamera = false;
