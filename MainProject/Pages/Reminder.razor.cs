@@ -6,6 +6,10 @@ namespace MainProject.Pages
 {
     public partial class Reminder
     {
+        private bool shouldDownload = false;
+        private string downloadDataUrl;
+        private string downloadFileName;
+
         private async Task GenerateICS(ReminderViewModel args)
         {
 
@@ -29,7 +33,15 @@ namespace MainProject.Pages
 
             string icsContent = icsBuilder.ToString();
 
-            await JSRuntime.InvokeVoidAsync("downloadICS", icsContent, "expire_reminder.ics");
+            downloadDataUrl = $"data:text/calendar;charset=utf8,{Uri.EscapeDataString(icsContent)}";
+            downloadFileName = "expire_reminder.ics";
+
+            shouldDownload = true;
+
+            // Request a re-render to eventually hit OnAfterRender
+            StateHasChanged();
         }
+
+
     }
 }

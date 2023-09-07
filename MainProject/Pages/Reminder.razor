@@ -57,6 +57,8 @@
             <RadzenButton ButtonType="ButtonType.Submit" Style="width: 100%" Size="ButtonSize.Large" ButtonStyle="ButtonStyle.Success">Add to your calender</RadzenButton>
         </RadzenStack>
     </RadzenTemplateForm>
+    <a id="downloadLink" href="" download="" style="display: none;"></a>
+
 </div>
 
 
@@ -85,6 +87,13 @@
             var dateCameraAvailable = await JSRuntime.InvokeAsync<bool>("initializeCamera", "videoElement2");
 
             shouldInitializeDateCamera = false;
+        }
+
+        if (shouldDownload)
+        {
+            await JSRuntime.InvokeVoidAsync("triggerDownload", downloadDataUrl, downloadFileName);
+
+            shouldDownload = false;
         }
     }
 
@@ -132,7 +141,7 @@
         isLoading = true;
 
         var apiKey = configuration["GoogleVisionAPI"] ?? "";
-        var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement1", "canvasElement1", apiKey);
+        var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement2", "canvasElement2", apiKey);
 
         notificationService.Notify(NotificationSeverity.Error, "Failed to capture or analyze image");
 
@@ -140,4 +149,5 @@
         showDateCamera = false;
         StateHasChanged();
     }
+
 }
