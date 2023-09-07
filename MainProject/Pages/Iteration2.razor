@@ -158,7 +158,7 @@
             <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">My Waste</RadzenText>
         </RadzenRow>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 18rem; width: 100%;">
-            <RadzenTemplateForm Data="@FoodFormViewModel" >
+            <RadzenTemplateForm Data="@foodFormViewModel" >
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenColumn Size="3" class="rz-color-on-info-lighter rz-p-5">
                         <RadzenFieldset Style="border-radius: 1rem; border: 2px solid rgba(216, 157, 106, 0.2)">
@@ -171,7 +171,7 @@
                             <ChildContent>
                                 <RadzenStack>
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@foodFormViewModel.CerealsId Data=@vegetablesList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -179,7 +179,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusCereals" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.CerealsAmount ShowUpDown="false" Name="Cereal"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormViewModel.CerealsAmount ShowUpDown="false" Name="Cereal"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddCereals" />
@@ -207,7 +207,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@foodFormViewModel.FruitsId Data=@fruitsList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -215,7 +215,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusFruits" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormViewModel.FruitsAmount ShowUpDown="false" Name="Fruit"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddFruits" />
@@ -243,7 +243,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@foodFormViewModel.MeatsId Data=@meatList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -251,7 +251,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusMeats" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormViewModel.MeatsAmount ShowUpDown="false" Name="Meat"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddMeats" />
@@ -279,7 +279,7 @@
                             <ChildContent>
                                 <RadzenStack Gap="1rem">
                                     <RadzenRow>
-                                        <RadzenDropDown @bind-Value=@FoodFormViewModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
+                                        <RadzenDropDown @bind-Value=@foodFormViewModel.OilsId Data=@otherList TextProperty="FoodName" ValueProperty="FoodId" AllowClear=true Placeholder="Select product" Style="width: 100%; max-width: 400px;" AllowVirtualization="true"
                                                         AllowFiltering="true" />
                                     </RadzenRow>
                                     <RadzenRow>
@@ -287,7 +287,7 @@
                                             <RadzenButton Icon="remove" ButtonStyle="Radzen.ButtonStyle.Success" Click="MinusOils" />
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="8">
-                                            <RadzenNumeric @bind-Value=@FoodFormViewModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
+                                            <RadzenNumeric @bind-Value=@foodFormViewModel.OilsAmount ShowUpDown="false" Name="Oil"></RadzenNumeric>
                                         </RadzenColumn>
                                         <RadzenColumn class="centered-content" Size="2">
                                             <RadzenButton Icon="add" ButtonStyle="Radzen.ButtonStyle.Success" Click="AddOils" />
@@ -542,7 +542,7 @@
             <RadzenColumn Size="6">
                 <div class="container-fluid" id="freezer">
                     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
-                        <RadzenButton Size="ButtonSize.Large" Click="@ShowReminderDialog">Open calender reminder generator</RadzenButton>
+                        <RadzenButton Size="ButtonSize.Large" Click="@ShowReminderDialog" Style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height: 5rem">Open calender reminder generator</RadzenButton>
                     </RadzenRow>
                 </div>
             </RadzenColumn>
@@ -550,7 +550,6 @@
 
     </div>
 </div>
-
 
 @code {
     bool isLoading = false;
@@ -583,6 +582,6 @@
     private async Task ShowReminderDialog()
     {
         await DialogService.OpenAsync("Calender Reminder Generator", ds =>
-    @<Reminder></Reminder>, new DialogOptions() { Width = "50rem", Height = "40rem" });
+    @<Reminder></Reminder>, new DialogOptions() { Width = "50rem" });
     }
 }
