@@ -22,6 +22,14 @@ function scrollToForm() {
     }
 }
 
+function scrollToVisualization() {
+    var element = document.getElementById("visualization");
+    if (element) {
+        var position = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: position, behavior: 'smooth' });
+    }
+}
+
 function scrollToTips() {
     var element = document.getElementById("tips");
     if (element) {

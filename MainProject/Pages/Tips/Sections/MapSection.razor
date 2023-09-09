@@ -1,0 +1,39 @@
+﻿@inject IConfiguration configuration
+
+<div id="map" style="background-image: linear-gradient( 90.1deg, rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 99.9% );">
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 25rem">
+        <RadzenColumn Size="7">
+            <iframe style="height: 25rem; width: 100%"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="@googleMapSrc">
+            </iframe>
+        </RadzenColumn>
+        <RadzenColumn Size="1" />
+        <RadzenColumn Size="3">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can donate your unwanted food to people who need it" Style="color: white" />
+            </RadzenRow>
+        </RadzenColumn>
+        <RadzenColumn Size="1" />
+    </RadzenRow>
+</div>
+
+@code {
+    string googleMapApi = "";
+    string googleMapSrc = "";
+    string googleMapZoom = "9";
+
+    public void InitialMapAsync()
+    {
+        googleMapApi = configuration["GoogleMapAPI"] ?? "";
+        googleMapSrc = $"https://www.google.com/maps/embed/v1/search?key={googleMapApi}&q=foodbank+in+Melbourne&zoom={googleMapZoom}";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        InitialMapAsync();
+    }
+}

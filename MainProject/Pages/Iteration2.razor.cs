@@ -13,7 +13,6 @@ namespace MainProject.Pages
             await base.OnInitializedAsync();
             await InitialWasteYearVis();
             await InitialFormAsync();
-            InitialMapAsync();
         }
     }
 }

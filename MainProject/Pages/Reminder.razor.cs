@@ -11,7 +11,7 @@ namespace MainProject.Pages
     {
         private bool shouldDownload = false;
         private string downloadDataUrl = string.Empty;
-        private string downloadFileName = string.Empty;;
+        private string downloadFileName = string.Empty;
 
         private void GenerateICS(ReminderViewModel args)
         {

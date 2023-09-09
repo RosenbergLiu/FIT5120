@@ -1,0 +1,28 @@
+@inject DialogService dialogService
+
+<div id="reminder" style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height:auto">
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+        <RadzenColumn Size="1" />
+        <RadzenColumn Size="4">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can create a reminder to your prefered calender to remind you before foods expire" Style="color: white" />
+            </RadzenRow>
+        </RadzenColumn>
+        <RadzenColumn Size="1" />
+        <RadzenColumn Size="6">
+            <div class="container-fluid" id="freezer">
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+                    <RadzenButton Size="Radzen.ButtonSize.Large" Click="@ShowReminderDialog" Style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height: 5rem;" Variant="Variant.Filled">Open calender reminder generator</RadzenButton>
+                </RadzenRow>
+            </div>
+        </RadzenColumn>
+    </RadzenRow>
+</div>
+
+@code {
+    private async Task ShowReminderDialog()
+    {
+        await dialogService.OpenAsync("Calender Reminder Generator", ds =>
+    @<Reminder></Reminder>, new DialogOptions() { Width = "50rem" });
+    }
+}

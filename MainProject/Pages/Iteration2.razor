@@ -341,7 +341,7 @@
 <!--------------------------------      Visualization Page      -------------------------------->
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
-
+    <div id="visualization">
     <RadzenStack Visible="@(savedFoodList.Count > 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
             <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">Total impact to environment</RadzenText>
@@ -495,6 +495,7 @@
     <!----------------->
     <!----------------->
     <!---------------------------------------------------------------------------------------------->
+    </div>
 
     <RadzenStack Visible="@(savedFoodList.Count == 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
@@ -512,53 +513,7 @@
 
 
 </div>
-<div id="tips">
-    <div style="background: linear-gradient(to right, #ad5389, #3c1053);">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 20rem; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH3" Style="color: white;">Tips to reduce food waste</RadzenText>
-        </RadzenRow>
-    </div>
-    <div style="background-image: linear-gradient( 90.1deg, rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 99.9% );">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 25rem">
-            <RadzenColumn Size="7">
-                <iframe 
-                        style="height: 25rem; width: 100%"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="@googleMapSrc">
-                </iframe>
-            </RadzenColumn>
-            <RadzenColumn Size="1" />
-            <RadzenColumn Size="3">
-                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can donate your unwanted food to people who need it" Style="color: white"/>
-                </RadzenRow>
-            </RadzenColumn>
-            <RadzenColumn Size="1" />
-        </RadzenRow>
-    </div>
-    <div style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height:auto">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
-
-            <RadzenColumn Size="1" />
-            <RadzenColumn Size="4">
-                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
-                    <RadzenText TextStyle="TextStyle.DisplayH4" Text="You can create a reminder to your prefered calender to remind you before foods expire" Style="color: white" />
-                </RadzenRow>
-            </RadzenColumn>
-            <RadzenColumn Size="1" />
-            <RadzenColumn Size="6">
-                <div class="container-fluid" id="freezer">
-                    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
-                        <RadzenButton Size="ButtonSize.Large" Click="@ShowReminderDialog" Style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height: 5rem">Open calender reminder generator</RadzenButton>
-                    </RadzenRow>
-                </div>
-            </RadzenColumn>
-        </RadzenRow>
-
-    </div>
-</div>
+<Tips />
 
 @code {
     bool isLoading = false;
@@ -586,11 +541,5 @@
     private void ScrollToTips()
     {
         JSRuntime.InvokeVoidAsync("scrollToTips");
-    }
-
-    private async Task ShowReminderDialog()
-    {
-        await DialogService.OpenAsync("Calender Reminder Generator", ds =>
-    @<Reminder></Reminder>, new DialogOptions() { Width = "50rem" });
     }
 }

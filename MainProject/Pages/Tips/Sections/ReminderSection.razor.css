@@ -1,0 +1,9 @@
+﻿body {
+}
+
+#freezer {
+    background-image: url('/jpg/freezer.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
