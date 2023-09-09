@@ -1,7 +1,29 @@
 ﻿@inject DialogService dialogService
+@inject NavigationManager navigationManager
 
-<div id="recipes" style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); height:auto">
+<div id="recipes" style="background-image: linear-gradient( 90.1deg, rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 99.9% ); height:auto">
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+        <RadzenColumn Size="6">
+            <div class="container-fluid" id="freezer">
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 50rem">
+                    <RadzenButton Size="Radzen.ButtonSize.Large" Click="@NavigateToRecipesPage" Style="background-image: linear-gradient( 90.1deg, rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 99.9% ); height: 5rem;" Variant="Variant.Filled">Open food recipes hub</RadzenButton>
+                </RadzenRow>
+            </div>
+        </RadzenColumn>
+        <RadzenColumn Size="1" />
+        <RadzenColumn Size="4">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+                <RadzenText TextStyle="TextStyle.DisplayH4" Text="Consume your food to prevent waste" Style="color: white" />
+            </RadzenRow>
+        </RadzenColumn>
+        <RadzenColumn Size="1" />
+        
+    </RadzenRow>
 </div>
 
 @code {
+    private void NavigateToRecipesPage()
+    {
+        navigationManager.NavigateTo("iteration2/recipes");
+    }
 }

@@ -31,7 +31,6 @@ namespace MainProject.Pages
             StateHasChanged();
 
             if (seeOthers) {
-                isLoading = true;
                 otherUserDataViewModel = await foodService.GetUserDataRecords();
 
                 if(otherUserDataViewModel!= null)
@@ -63,7 +62,6 @@ namespace MainProject.Pages
                     showCompare = true;
                 }
 
-                isLoading = false;
                 StateHasChanged();
                 await UploadUserData();
             }

@@ -138,7 +138,7 @@
         <RadzenText TextStyle="TextStyle.DisplayH2" Style="margin-top: 5rem">Food Waste Trend in Victoria</RadzenText>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
-        <RadzenChart Visible="true" Style="width: 80%; height: 20rem;">
+        <RadzenChart Visible="@foodWasteVisReady" Style="width: 80%; height: 20rem;">
             <RadzenAreaSeries Data="@foodWasteList" CategoryProperty="Year" ValueProperty="Waste" Interpolation="Radzen.Blazor.Interpolation.Spline" Fill="#56317a" Title="Wasted (kg)">
                 <RadzenSeriesTrendLine Visible="true" Stroke="#565656" LineType="LineType.Dashed" StrokeWidth="3"/>
             </RadzenAreaSeries>
@@ -516,8 +516,6 @@
 <Tips />
 
 @code {
-    bool isLoading = false;
-
     private void ScrollToHome()
     {
         JSRuntime.InvokeVoidAsync("scrollToHome");
