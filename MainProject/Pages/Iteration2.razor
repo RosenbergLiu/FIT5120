@@ -18,10 +18,7 @@
                 <a @onclick="() => ScrollToInfo()" class="btn btn-link nav-link nav-info">Infographic</a>
             </li>
             <li class="nav-item">
-                <a @onclick="() => ScrollToForm()" class="btn btn-link nav-link nav-form">My Waste</a>
-            </li>
-            <li class="nav-item">
-                <a @onclick="() => ScrollToVisualization()" class="btn btn-link nav-link nav-visualization">My Impact</a>
+                <a @onclick="() => ScrollToForm()" class="btn btn-link nav-link nav-form">My Impact</a>
             </li>
             <li class="nav-item">
                 <a @onclick="() => ScrollToTips()" class="btn btn-link nav-link nav-tips">Actions</a>
@@ -59,12 +56,17 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
 <div id="info">
+    <div id="info-title" style="background: linear-gradient(to right, #ad5389, #3c1053);">
+        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15rem; width: 100%;">
+            <RadzenText TextStyle="TextStyle.DisplayH3" Style="color: white;">Food waste impacts the environment</RadzenText>
+        </RadzenRow>
+    </div>
     <RadzenRow Style="height: 5rem"/>
-    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%">
-        <img src="png/house.png" style="width: 10%"/>
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto;">
+        <img src="png/house.png" style="width: 5%"/>
     </RadzenRow>
     <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: auto; width: 100%;">
-        <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH2" Text="7.6 Million tonnes of household food waste each year in Australia" Style="width: 70%; text-align: center"/>
+        <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH2" Text="7.6 Million tonnes of household food waste each year in Australia" Style="width: 70%; text-align: center" />
     </RadzenRow>
 
     <RadzenRow Style="height: 5rem" />
@@ -75,7 +77,9 @@
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
                     <img src="png/co2.png" style="width:20%" />
                 </RadzenRow>
-                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="Generating 3 million tonnes of Green-house Gas" />
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+                    <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="Generating 3 million tonnes of Green-house Gas" />
+                </RadzenRow>
             </RadzenStack>
         </RadzenColumn>
         <RadzenColumn Size="2">
@@ -89,7 +93,9 @@
                     <img src="png/car.png" style="width: 20%"/>
                     <img src="png/pickup-car.png" style="width: 20%" />
                 </RadzenRow>
-                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="6.7 million cars emission" />
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+                    <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="6.7 million cars emission" />   
+                </RadzenRow>
             </RadzenStack>
         </RadzenColumn>
     </RadzenRow>
@@ -102,7 +108,7 @@
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <img src="png/water-drop.png" style="width:20%" />
                 </RadzenRow>
-                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="width: 70%">
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
                     <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="29 Billion liters of water is wasted which was used to grow the food" />
                 </RadzenRow>
                 
@@ -119,7 +125,9 @@
                     <img src="png/sydney-harbour-bridge.png" style="width: 20%" />
                     <img src="png/building.png" style="width: 20%" />
                 </RadzenRow>
-                <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="5 times water in Sydney Harbour" />
+                <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+                    <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH5" Text="5 times water in Sydney Harbour" />
+                </RadzenRow>
             </RadzenStack>
         </RadzenColumn>
     </RadzenRow>
@@ -154,9 +162,11 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
     <div id="form">
-        <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
-            <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">My Waste</RadzenText>
-        </RadzenRow>
+        <div id="form-title" style="background: linear-gradient(to right, #ad5389, #3c1053);">
+            <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 15rem; width: 100%;">
+                <RadzenText TextStyle="TextStyle.DisplayH3" Style="color: white;">Calculate my waste impact</RadzenText>
+            </RadzenRow>
+        </div>
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 18rem; width: 100%;">
             <RadzenTemplateForm Data="@foodFormViewModel" >
                 <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
@@ -312,7 +322,7 @@
                             Data="@savedFoodList" TItem="SavedFood" LogicalFilterOperator="LogicalFilterOperator.Or" Density="Density.Compact" Style="width: 40%; background-color: rgba(231, 210, 118, 0.05); border-radius: 2rem" AllowSorting="true" GridLines="Radzen.DataGridGridLines.Default">
                 <Columns>
                     <RadzenDataGridColumn TItem="SavedFood" Property="FoodItem.FoodName" Filterable="false" Title="Food" Width="30vh" TextAlign="TextAlign.Center" />
-                    <RadzenDataGridColumn TItem="SavedFood" Property="FoodAmount" Filterable="true" Title="Amount" Width="20vh" TextAlign="TextAlign.Center" />
+                    <RadzenDataGridColumn TItem="SavedFood" Property="FoodAmount" Filterable="true" Title="Amount in kg" Width="20vh" TextAlign="TextAlign.Center" />
                     <RadzenDataGridColumn TItem="SavedFood" Width="10vh" Filterable="false" TextAlign="TextAlign.Center" Sortable="false" Reorderable="false">
                         <Template Context="data">
                             <RadzenButton Icon="delete" Size="ButtonSize.Small" ButtonStyle="ButtonStyle.Danger" Click="@(() => DeleteItem(data))"></RadzenButton>
@@ -324,7 +334,7 @@
         <RadzenRow Visible="@(savedFoodList.Count > 0)" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%;">
             <RadzenButton ButtonStyle="Radzen.ButtonStyle.Secondary" Size="ButtonSize.Large" Click="ScrollToVisualization" Icon="arrow_downward" Text="Calculate My Impact" Style="background-image: linear-gradient(to left, #243949 0%, #517fa4 100%);"/>
         </RadzenRow>
-    </div>
+
 
 <!---------------------------------------------------------------------------------------------->
 <!-----------------------------------                        ----------------------------------->
@@ -332,7 +342,6 @@
 <!-----------------------------------                        ----------------------------------->
 <!---------------------------------------------------------------------------------------------->
 
-<div id="visualization">
     <RadzenStack Visible="@(savedFoodList.Count > 0)">
         <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" Style="height: 10rem; width: 100%; margin-bottom: 2rem;">
             <RadzenText TextStyle="TextStyle.DisplayH3" Style="margin-top: 5rem">Total impact to environment</RadzenText>

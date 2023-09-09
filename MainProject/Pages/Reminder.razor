@@ -6,7 +6,7 @@
 @inject IConfiguration configuration
 
 <div style="overflow-y: auto; max-height: 35rem;">
-    <RadzenTemplateForm Data="@reminder" Submit="@((ReminderViewModel args) => { GenerateICS(args).Wait(); })">
+    <RadzenTemplateForm Data="@reminder" Submit="@((ReminderViewModel args) => { GenerateICS(args); })">
         <RadzenStack>
             <RadzenRow Style="width: 100%;">
                 <RadzenColumn Size="10">

@@ -1,5 +1,8 @@
-﻿using MainProject.Data;
+﻿using Azure;
+using MainProject.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.JSInterop;
+using System.IO;
 using System.Text;
 
 namespace MainProject.Pages
@@ -7,12 +10,11 @@ namespace MainProject.Pages
     public partial class Reminder
     {
         private bool shouldDownload = false;
-        private string downloadDataUrl;
-        private string downloadFileName;
+        private string downloadDataUrl = string.Empty;
+        private string downloadFileName = string.Empty;;
 
-        private async Task GenerateICS(ReminderViewModel args)
+        private void GenerateICS(ReminderViewModel args)
         {
-
             string formattedDate = args.ExpireDate.ToString("yyyyMMdd");
             string? foodName = args.FoodName;
 
@@ -41,7 +43,5 @@ namespace MainProject.Pages
             // Request a re-render to eventually hit OnAfterRender
             StateHasChanged();
         }
-
-
     }
 }

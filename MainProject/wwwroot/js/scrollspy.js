@@ -2,7 +2,7 @@
     var navbarHeight = 70;
     var viewportCenter = window.scrollY + window.innerHeight / 4; // This gets the middle of the screen
 
-    var sections = ['home', 'info', 'form', 'visualization', 'tips'];
+    var sections = ['home', 'info', 'form', 'tips'];
     var activeSection = null;
 
     sections.forEach(function (sectionId) {
