@@ -19,10 +19,7 @@ namespace MainProject.Pages
     {
         bool isLoading = false;
         string? apiKey;
-        RestClient client = new RestClient(new RestClientOptions("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
-        {
-            MaxTimeout = -1,
-        });
+        RestClient client;
 
         List<Ingredient> ingredientsResult = new List<Ingredient>();
         List<Ingredient> ingredientsList = new List<Ingredient>();
@@ -66,6 +63,10 @@ namespace MainProject.Pages
         {
             await base.OnInitializedAsync();
             apiKey = configration["X-RapidAPI-Key"] ?? null;
+            client = new RestClient(new RestClientOptions("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+            {
+                MaxTimeout = -1,
+            });
         }
 
         void Add(Ingredient ingredient)
