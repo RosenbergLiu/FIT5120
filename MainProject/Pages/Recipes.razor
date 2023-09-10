@@ -1,47 +1,64 @@
 @inject IConfiguration configration
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
 
 @page "/iteration2/recipes"
+<PageTitle>Recipes</PageTitle>
 
-<div id="recipes">
-    <PageTitle>Recipes</PageTitle>
-    <RadzenRow Style="height: 10%; background-color: #90e0ef">
-        <RadzenColumn Size="2">
-            <RadzenText Text="Back" TextStyle="TextStyle.H3" TagName="TagName.H1" />
+<div id="recipes" >
+
+    <RadzenRow Style="height: 10rem" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+        <RadzenColumn Size="2" Style="text-align: center">
+            <RadzenButton ButtonStyle="ButtonStyle.Dark" Size="ButtonSize.Large" Variant="Variant.Text" Click="GoBack">
+                <RadzenText TextStyle="TextStyle.H3">Back</RadzenText>
+            </RadzenButton>
         </RadzenColumn>
+        <RadzenColumn Size="8" Style="text-align: center">
+            <RadzenText TextStyle="TextStyle.H2">Food Recipes Hub</RadzenText>
+        </RadzenColumn>
+        <RadzenColumn Size="2"></RadzenColumn>
     </RadzenRow>
-    <RadzenRow Style="height: 90%; width: 100%" Gap="0">
-        <RadzenColumn Size="3" Style="background-color: #ade8f4">
-            <RadzenStack Style="margin: 2rem" Gap="10" >
-                <RadzenText Text="Add Ingredients" TextStyle="TextStyle.DisplayH4" />
-                <RadzenRow>
-                    @if (ingredientsList.Count > 0)
-                    {
-                        foreach (var item in ingredientsList)
-                        {
-                            <RadzenCard>
-                                @item.IngredientName
-                                <RadzenButton Icon="close" Variant="Variant.Text"></RadzenButton>
-                            </RadzenCard>
-                        }
-                    }
-                </RadzenRow>
-                <RadzenTextBox @bind-Value="ingredientInput"></RadzenTextBox>
-                <RadzenButton Click="Search" IsBusy="isLoading" BusyText="Searching ...">Search Ingradient</RadzenButton>
-                
-                    @if (ingredientsResult.Count > 0)
-                    {
-                        foreach (var item in ingredientsResult)
-                        {
-                            <RadzenButton Variant="Variant.Text" Click="@(args => Add(item))">@item.IngredientName</RadzenButton>
-                        }
-                    }
-            </RadzenStack>
-        </RadzenColumn>
-        <RadzenColumn Size="9" Style="background-color: #caf0f8">
 
+    <RadzenRow JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center" >
+        <RadzenColumn Size="8" Style="background-color: #90e0ef; border-radius: 2rem">
+            <RadzenRow Style="margin: 2rem">
+                @if (ingredientsList.Count > 0)
+                {
+                    foreach (var item in ingredientsList)
+                    {
+                        <RadzenCard>
+                            @item.IngredientName
+                            <RadzenButton Icon="close" Variant="Variant.Text" Click="@(args => Delete(item))"></RadzenButton>
+                        </RadzenCard>
+                    }
+                }
+            </RadzenRow>
+            <RadzenTemplateForm Data="@searchViewModel" Submit="@((SearchViewModel args) => { Search(args); })">
+                <radzenRow JustifyContent="Radzen.JustifyContent.Center" AlignItems="Radzen.AlignItems.Center" Style="height:4rem" Gap="2rem">
+                    <RadzenLabel>
+                        <RadzenText TextStyle="TextStyle.H5">Search Ingredient</RadzenText>
+                    </RadzenLabel>
+                    <RadzenTextBox @bind-Value="searchViewModel.IngredientInput" Style="height: 3rem; width: 40vh"></RadzenTextBox>
+                    <RadzenButton Icon="search" IsBusy="@isLoading" BusyText="Searching ..." Variant="Variant.Flat" ButtonType="ButtonType.Submit" Text="Search" Style="height: 3rem" Size="Radzen.ButtonSize.Large"></RadzenButton>
+                </RadzenRow>
+            </RadzenTemplateForm>
+            <RadzenRow Style="margin: 2rem">
+                @if (ingredientsResult.Count > 0)
+                {
+                    foreach (var item in ingredientsResult)
+                    {
+                        <RadzenButton Variant="Variant.Text" ButtonStyle="ButtonStyle.Dark" Size="ButtonSize.ExtraSmall" Click="@(args => Add(item))" Text="@item.IngredientName" Icon="add"></RadzenButton>
+                    }
+                }
+            </RadzenRow>
         </RadzenColumn>
     </RadzenRow>
 
 </div>
 
-    
+@code{
+    private void GoBack()
+    {
+        navigationManager.NavigateTo("/iteration2");
+    }
+}

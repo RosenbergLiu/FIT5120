@@ -135,7 +135,6 @@
 
     private async Task CaptureDateImage()
     {
-
         var apiKey = configuration["GoogleVisionAPI"] ?? "";
         var analysisResult = await JSRuntime.InvokeAsync<string>("captureAndAnalyzeFrame", "videoElement2", "canvasElement2", apiKey);
 
@@ -144,5 +143,4 @@
         showDateCamera = false;
         StateHasChanged();
     }
-
 }

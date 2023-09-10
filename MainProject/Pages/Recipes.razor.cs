@@ -18,7 +18,6 @@ namespace MainProject.Pages
     public partial class Recipes
     {
         bool isLoading = false;
-        string? ingredientInput;
         string? apiKey;
         RestClient client = new RestClient(new RestClientOptions("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
         {
@@ -34,14 +33,21 @@ namespace MainProject.Pages
             public string? IngredientName;
         }
 
-        async Task Search()
+        class SearchViewModel
+        {
+            public string? IngredientInput;
+        }
+
+        SearchViewModel searchViewModel = new SearchViewModel();
+
+        async Task Search(SearchViewModel args)
         {
             isLoading = true;
             if(apiKey!=null)
             {
-                if (ingredientInput != null)
+                if (args.IngredientInput != null)
                 {
-                    var request = new RestRequest($"/food/ingredients/autocomplete?query={ingredientInput}&number=15", Method.Get);
+                    var request = new RestRequest($"/food/ingredients/autocomplete?query={args.IngredientInput}&number=15", Method.Get);
                     request.AddHeader("X-RapidAPI-Key", "bffaa60994mshad99b0c495fe234p1bbc5fjsn7179305ed32f");
                     request.AddHeader("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
                     RestResponse response = await client.ExecuteAsync(request);
@@ -53,6 +59,7 @@ namespace MainProject.Pages
                 }
             }
             isLoading = false;
+            StateHasChanged();
         }
 
         protected override async Task OnInitializedAsync()
@@ -63,8 +70,15 @@ namespace MainProject.Pages
 
         void Add(Ingredient ingredient)
         {
-            ingredientsResult.Remove(ingredient);
+
             ingredientsList.Add(ingredient);
+            ingredientsResult = new List<Ingredient>();
+            searchViewModel = new SearchViewModel();
+        }
+
+        void Delete(Ingredient ingredient)
+        {
+            ingredientsList.Remove(ingredient);
         }
     }
 }
