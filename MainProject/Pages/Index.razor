@@ -1,7 +1,8 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
 
-<h3>Please select an iteration</h3>
+<PageTitle>Food Saver</PageTitle>
+<h3>Auto redirecting to iteration2</h3>
 
 <a class="btn btn-primary" href="https://foodsaver.azurewebsites.net/iteration1">iteration1</a>
 <a class="btn btn-primary" href="https://foodsaver.azurewebsites.net/iteration2">iteration2</a>
@@ -9,6 +10,6 @@
 @code {
     protected override void OnAfterRender(bool firstRender)
     {
-        NavigationManager.NavigateTo("/iteration2/recipes", true);
+        NavigationManager.NavigateTo("/iteration2", true);
     }
 }
