@@ -10,11 +10,11 @@
     <RadzenRow Style="height: 10rem" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
         <RadzenColumn Size="2" Style="text-align: center">
             <RadzenButton ButtonStyle="ButtonStyle.Dark" Size="ButtonSize.Large" Variant="Variant.Text" Click="GoBack">
-                <RadzenText TextStyle="TextStyle.H3">Back</RadzenText>
+                <RadzenText TextStyle="TextStyle.H4">Back</RadzenText>
             </RadzenButton>
         </RadzenColumn>
         <RadzenColumn Size="8" Style="text-align: center">
-            <RadzenText TextStyle="TextStyle.H2">Food Recipes Hub</RadzenText>
+            <RadzenText TextStyle="TextStyle.H3">Food Recipes Hub</RadzenText>
         </RadzenColumn>
         <RadzenColumn Size="2"></RadzenColumn>
     </RadzenRow>
@@ -38,8 +38,8 @@
                     <RadzenLabel>
                         <RadzenText TextStyle="TextStyle.H5">Search Ingredient</RadzenText>
                     </RadzenLabel>
-                    <RadzenTextBox @bind-Value="searchViewModel.IngredientInput" Style="height: 3rem; width: 30vh"></RadzenTextBox>
-                    <RadzenButton Icon="search" IsBusy="@isLoading" BusyText="Searching ..." Variant="Variant.Flat" ButtonType="ButtonType.Submit" Text="Search" Style="height: 3rem" Size="Radzen.ButtonSize.Large"></RadzenButton>
+                    <RadzenTextBox @bind-Value="searchViewModel.IngredientInput" Style="width: 30vh"></RadzenTextBox>
+                    <RadzenButton Icon="search" IsBusy="@isSearching" BusyText="Searching ..." Variant="Variant.Flat" ButtonType="ButtonType.Submit" Text="Search" Size="Radzen.ButtonSize.Medium"></RadzenButton>
                 </RadzenRow>
             </RadzenTemplateForm>
             <RadzenRow Style="margin: 2rem">
@@ -51,11 +51,33 @@
                     }
                 }
             </RadzenRow>
+
         </RadzenColumn>
     </RadzenRow>
 
-    <RadzenRow Style="margin-left: 60px; margin-right:60px; margin-top: 30px">
-
+    <RadzenButton Click="SearchRecipesAsync">Search Recipes</RadzenButton>
+    
+    <RadzenRow Style="margin-left: 60px; margin-right:60px; margin-top: 30px" JustifyContent="JustifyContent.Center" AlignItems="AlignItems.Center">
+        @if (!isLoading)
+        {
+            <RadzenDataList AllowVirtualization="false" WrapItems="true" AllowPaging="true"
+                            Data="@recipesDetailedResult" TItem="RecipeDetailModel" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
+                <Template Context="recipe">
+                    <RadzenCard Style="width: 15rem">
+                        <a href="@recipe.SourceUrl" target="_blank">
+                            <RadzenImage Path="@recipe.Image" Style="width: 15rem;" />
+                        </a>
+                        <a href="@recipe.SourceUrl" target="_blank">@recipe.Title</a>
+                    </RadzenCard>
+                </Template>
+            </RadzenDataList>
+        }
+        else
+        {
+            <RadzenProgressBarCircular ShowValue="true" Mode="ProgressBarMode.Indeterminate" Size="ProgressBarCircularSize.Large">
+                <Template>Wait</Template>
+            </RadzenProgressBarCircular>
+        }
     </RadzenRow>
 
 </div>

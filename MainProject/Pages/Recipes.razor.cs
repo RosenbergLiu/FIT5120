@@ -12,6 +12,7 @@ using Microsoft.DotNet.MSIdentity.Shared;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Collections.ObjectModel;
+using MainProject.Data;
 
 namespace MainProject.Pages
 {
@@ -20,7 +21,10 @@ namespace MainProject.Pages
         bool isLoading = false;
         string? apiKey;
         RestClient client;
+        bool isSearching = false;
 
+        List<RecipeModel> recipesResult = new List<RecipeModel>();
+        List<RecipeDetailModel> recipesDetailedResult = new List<RecipeDetailModel>();
         List<Ingredient> ingredientsResult = new List<Ingredient>();
         List<Ingredient> ingredientsList = new List<Ingredient>();
 
@@ -39,13 +43,13 @@ namespace MainProject.Pages
 
         async Task Search(SearchViewModel args)
         {
-            isLoading = true;
+            isSearching = true;
             if(apiKey!=null)
             {
                 if (args.IngredientInput != null)
                 {
                     var request = new RestRequest($"/food/ingredients/autocomplete?query={args.IngredientInput}&number=15", Method.Get);
-                    request.AddHeader("X-RapidAPI-Key", "bffaa60994mshad99b0c495fe234p1bbc5fjsn7179305ed32f");
+                    request.AddHeader("X-RapidAPI-Key", apiKey);
                     request.AddHeader("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
                     RestResponse response = await client.ExecuteAsync(request);
                     var content = response.Content;
@@ -55,7 +59,7 @@ namespace MainProject.Pages
                     }
                 }
             }
-            isLoading = false;
+            isSearching = false;
             StateHasChanged();
         }
 
@@ -71,7 +75,6 @@ namespace MainProject.Pages
 
         void Add(Ingredient ingredient)
         {
-
             ingredientsList.Add(ingredient);
             ingredientsResult = new List<Ingredient>();
             searchViewModel = new SearchViewModel();
@@ -80,6 +83,66 @@ namespace MainProject.Pages
         void Delete(Ingredient ingredient)
         {
             ingredientsList.Remove(ingredient);
+        }
+
+        private async Task<List<RecipeModel>> GetRecipesListAsync()
+        {
+            if (apiKey != null)
+            {
+                string ingredients = string.Join("%2C", ingredientsList.Select(i => i.IngredientName).ToList());
+                var request = new RestRequest($"/recipes/findByIngredients?ingredients={ingredients}&number=200&ignorePantry=true&ranking=1", Method.Get);
+                request.AddHeader("X-RapidAPI-Key", apiKey);
+                request.AddHeader("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+                RestResponse response = await client.ExecuteAsync(request);
+                var content = response.Content;
+                if (content != null)
+                {
+                    return JsonConvert.DeserializeObject<List<RecipeModel>>(content).ToList();
+                }
+            }
+            return null;
+        }
+
+        private async Task GetImgAsync()
+        {
+            foreach(var item in recipesResult)
+            {
+
+            }
+        }
+
+        private async Task<List<RecipeDetailModel>> GetDetailsAsync()
+        {
+            if (apiKey != null)
+            {
+                string ids = string.Join("%2C", recipesResult.Select(i => i.Id).ToList());
+                var request = new RestRequest($"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids={ids}", Method.Get);
+                request.AddHeader("X-RapidAPI-Key", apiKey);
+                request.AddHeader("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+                RestResponse response = await client.ExecuteAsync(request);
+                var content = response.Content;
+                if (content != null)
+                {
+                    return JsonConvert.DeserializeObject<List<RecipeDetailModel>>(content).ToList();
+                }
+            }
+
+            return null;
+        }
+
+        public async Task SearchRecipesAsync()
+        {
+            if (ingredientsList != null)
+            {
+                isLoading = true;
+                recipesResult = await GetRecipesListAsync();
+                if (recipesResult != null)
+                {
+                    recipesDetailedResult = await GetDetailsAsync();
+                }
+                isLoading = false;
+                StateHasChanged();
+            }
         }
     }
 }
