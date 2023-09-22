@@ -3,6 +3,40 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <h1 class="text-light"><a href="index.html"><span>FoodSaver</span></a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        </div>
+
+        <nav id="navbar" class="navbar" style="margin-right: 5rem">
+            <ul>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#services">Impact</a></li>
+            <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <li class="dropdown"><a href="#"><span>Actions</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                <li><a href="#">Donation Points</a></li>
+                <li><a href="#">Reminder Generator</a></li>
+                <li><a href="#">Recipes Hub</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+                </ul>
+            </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        </div><!-- End Header Container -->
+    </div>
+</header><!-- End Header -->
+
+
+
 
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -180,8 +214,8 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="section-title" data-aos="fade-right">
-              <h2>Services</h2>
-              <p>Magnam dolores commodi suscipit nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+              <h2>Actions</h2>
+              <p>Useful tools to reduce impact of food waste</p>
             </div>
           </div>
           <div class="col-lg-8">
@@ -225,7 +259,7 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= Portfolio Section 
     <section id="portfolio" class="portfolio">
       <div class="container">
 
@@ -376,7 +410,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section> End Portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
@@ -484,51 +518,33 @@
 
               <div class="col-lg-6">
                 <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                                <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
-                    <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                    <div class="social">
-                      <a href=""><i class="ri-twitter-fill"></i></a>
-                      <a href=""><i class="ri-facebook-fill"></i></a>
-                      <a href=""><i class="ri-instagram-fill"></i></a>
-                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                    </div>
+                    <h4>Donation points</h4>
+                    <p>You can donate unwanted food to those location</p>
                   </div>
                 </div>
               </div>
 
               <div class="col-lg-6 mt-4 mt-lg-0">
                 <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                  <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+                  <div class="pic">
+                      <img src="~/jpg/freezer.jpg" class="img-fluid" alt="">
+                  </div>
                   <div class="member-info">
                     <h4>Sarah Jhonson</h4>
                     <span>Product Manager</span>
-                    <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                    <div class="social">
-                      <a href=""><i class="ri-twitter-fill"></i></a>
-                      <a href=""><i class="ri-facebook-fill"></i></a>
-                      <a href=""><i class="ri-instagram-fill"></i></a>
-                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                    </div>
+                    <p>You can create a reminder</p>
                   </div>
                 </div>
               </div>
 
               <div class="col-lg-6 mt-4">
                 <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+                  <div class="pic"><img src="~/jpg/cooking.jpg" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
-                    <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                    <div class="social">
-                      <a href=""><i class="ri-twitter-fill"></i></a>
-                      <a href=""><i class="ri-facebook-fill"></i></a>
-                      <a href=""><i class="ri-instagram-fill"></i></a>
-                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                    </div>
+                    <h4>Food Recipes Hub</h4>
+                    <p>Use what you have to cook. Don't waste'</p>
                   </div>
                 </div>
               </div>

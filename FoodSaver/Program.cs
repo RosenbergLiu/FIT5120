@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using FoodSaver.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<FoodSaverContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("FoodSaverContext") ?? throw new InvalidOperationException("Connection string 'FoodSaverContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FoodSaverContext") ?? throw new InvalidOperationException("Connection string 'FoodSaverContext' not found.")));
 
 var app = builder.Build();
 
