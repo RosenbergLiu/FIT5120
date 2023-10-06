@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using FoodSaver.Data;
+using Syncfusion.Licensing;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["Syncfusion"]);
-
+SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["Syncfusion"]);
 
 // Add services to the container.
 builder.Services.AddRazorPages();

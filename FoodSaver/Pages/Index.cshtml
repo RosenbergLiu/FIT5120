@@ -1,20 +1,17 @@
 ﻿
-@page
+@page "/"
 @using Syncfusion.EJ2
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
-
-<!-- Syncfusion ASP.NET Core Script Manager -->
-<ejs-scripts></ejs-scripts>
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">
         <div class="header-container d-flex align-items-center justify-content-between">
         <div class="logo">
-            <h1 class="text-light"><a href="index.html"><span>FoodSaver</span></a></h1>
+            <h1 class="text-light"><a href="index.html"><span>Food Saver</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -27,10 +24,10 @@
             <li><a class="nav-link scrollto" href="#team">Actions</a></li>
             <li class="dropdown"><a href="#"><span>Tools</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                <li><a href="#">Donation Points</a></li>
-                <li><a href="#">Expire Reminder</a></li>
-                <li><a href="#">Recipes Hub</a></li>
-                <li><a href="#">Meal Planner</a></li>
+                <li><a href="/donation">Donation Points</a></li>
+                <li><a href="/reminder">Expire Reminder</a></li>
+                <li><a href="/recipes">Recipes Hub</a></li>
+                <li><a href="/planner">Meal Planner</a></li>
                 </ul>
             </li>
             </ul>
@@ -138,35 +135,47 @@
 
 
 
-
-
-<ejs-chart id="container"></ejs-chart>
-<ejs-calendar id="calendar"></ejs-calendar>
 <!-- ======= Why Us Section ======= -->
 <section id="why-us" class="why-us">
     <div class="container">
-
-    <div class="row">
-        <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
-        <div class="content">
-            <h3>Food waste getting worse</h3>
-            <p>
-                This is the recent years average food waste per householde per year in Victoria
-            </p>
-        </div>
-        </div>
-        <div class="col-lg-8 d-flex align-items-stretch">
-        <div class="icon-boxes d-flex flex-column justify-content-center">
-            <div class="row">
-            <div class="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box mt-4 mt-xl-0">
-                    Graph here
+        <div class="row">
+            <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
+                <div class="content">
+                    <h3>In Australia, 27% of food waste is from household</h3>
+                    
+                    <div class="text-center">
+                            <a href="https://zzha0352.shinyapps.io/food/" target="_blank" class="more-btn">Wastes from other places<i class="bx bx-chevron-right"></i></a>
+                    </div>
+                    <br />
+                    <br />
+                    <h4>
+                        And it is getting worse
+                    </h4>
                 </div>
             </div>
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="icon-boxes d-flex flex-column justify-content-center" style="width: 100%">
+                    <div class="row">
+                        <div class="d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="icon-box mt-4 mt-xl-0">
+                                @if(Model.FoodWastes != null){
+                                    <ejs-chart id="container" width="100%" title="Average waste per household per year in Victoria">
+                                        <e-chart-primaryxaxis valueType="DateTime" labelFormat="yyyy" interval="2" title="Year">
+                                        </e-chart-primaryxaxis>
+                                        <e-chart-primaryyaxis title="Waste (kg)" minimum="0">
+                                        </e-chart-primaryyaxis>
+                                        <e-series-collection>
+                                                <e-series dataSource="@Model.FoodWastes" xName="FinancialYear" yName="Waste"
+                                                        type="@Syncfusion.EJ2.Charts.ChartSeriesType.Area"></e-series>
+                                        </e-series-collection>
+                                    </ejs-chart>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </section> <!-- End Why Us Section -->
 
@@ -176,7 +185,7 @@
 
     <div class="text-center" data-aos="zoom-in">
         <h3>How impact are generated during the food production</h3>
-                <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More</a>
+            <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More</a>
     </div>
 
     </div>
@@ -188,49 +197,49 @@
 
     <div class="row">
         <div class="col-lg-4">
-        <div class="section-title" data-aos="fade-right">
-            <h2>Impacts</h2>
-            <p>caused by food waste</p>
-        </div>
+            <div class="section-title" data-aos="fade-right">
+                <h2>Impacts</h2>
+                <p>caused by food waste</p>
+            </div>
         </div>
         <div class="col-lg-8">
-        <div class="row">
-            <div class="col-md-6 d-flex align-items-stretch">
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon"><iconify-icon icon="ion:water" width="32" height="32"></div>
-                <h4><a href="">Water Used</a></h4>
-                                <p>Producing food necessitates water due to its pivotal role in the photosynthesis of plants, hydration needs of livestock, irrigation to supplement insufficient rainfall for crops, processing stages that include cleaning and cooking, maintaining soil health, cooling machinery in production facilities, cleansing of infrastructures, and indirectly through the transportation and distribution phases where water is integral both for vehicle washing and in the production of fuels.</p>
-            </div>
-            </div>
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon"><iconify-icon icon="ion:water" width="32" height="32"></div>
+                        <h4><a href="">Water Used</a></h4>
+                                        <p>Producing food necessitates water due to its pivotal role in the photosynthesis of plants, hydration needs of livestock, irrigation to supplement insufficient rainfall for crops, processing stages that include cleaning and cooking, maintaining soil health.</p>
+                    </div>
+                </div>
 
-            <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-                <div class="icon"><iconify-icon icon="ion:earth" width="32" height="32"></iconify-icon></div>
-                <h4><a href="">Land Used</a></h4>
-                <p>
-                    Producing food requires land as it serves as the foundational medium for cultivating various crops, offers grazing and habitat areas for livestock, supports infrastructure for agricultural practices, and plays a role in the ecosystem services essential for maintaining soil health, nutrient cycling, and water management, all of which are integral to the food production process.
-                </p>
-            </div>
-            </div>
+                <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon"><iconify-icon icon="ion:earth" width="32" height="32"></iconify-icon></div>
+                        <h4><a href="">Land Used</a></h4>
+                        <p>
+                            Producing food requires land as it serves as the foundational medium for cultivating various crops, offers grazing and habitat areas for livestock, supports infrastructure for agricultural practices, and plays a role in the ecosystem services essential for maintaining soil health, nutrient cycling, and water management.
+                        </p>
+                    </div>
+                </div>
 
-            <div class="col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-                <div class="icon"><iconify-icon icon="material-symbols:co2" width="48" height="48"></iconify-icon></div>
-                <h4><a href="">GHG Emissions</a></h4>
-                                <p>
-                                    Producing food generates greenhouse gases due to agricultural practices like livestock methane emissions, crop cultivation, deforestation for farmland, and the energy-intensive nature of food processing and transportation.
-                                </p>
-            </div>
-            </div>
+                <div class="col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon"><iconify-icon icon="material-symbols:co2" width="48" height="48"></iconify-icon></div>
+                        <h4><a href="">GHG Emissions</a></h4>
+                        <p>
+                            Producing food generates greenhouse gases due to agricultural practices like livestock methane emissions, crop cultivation, deforestation for farmland, and the energy-intensive nature of food processing and transportation.
+                        </p>
+                    </div>
+                </div>
 
-            <div class="col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
-                <div class="icon"><iconify-icon icon="mdi:dirty" width="32" height="32"></iconify-icon></div>
-                    <h4><a href="">Eutrophying Emissions</a></h4>
-                    <p>Food waste intensifies eutrophying emissions because wasted food means wasted fertilizers, especially nitrogen and phosphorus. When these nutrients enter water bodies, they trigger excessive algae growth. Decomposing algae consume oxygen, leading to aquatic "dead zones" from eutrophication.</p>
+                <div class="col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="icon"><iconify-icon icon="mdi:dirty" width="32" height="32"></iconify-icon></div>
+                        <h4><a href="">Eutrophying Emissions</a></h4>
+                        <p>Food waste intensifies eutrophying emissions because wasted food means wasted fertilizers, especially nitrogen and phosphorus. When these nutrients enter water bodies, they trigger excessive algae growth. Decomposing algae consume oxygen, leading to aquatic "dead zones" from eutrophication.</p>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         </div>
     </div>
     </div>

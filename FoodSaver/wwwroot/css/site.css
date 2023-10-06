@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+text {
+    font-family: "Raleway", sans-serif !important;
+}

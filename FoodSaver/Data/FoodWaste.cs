@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoodSaver.Data;
 
-public class FoodWastes
+public class FoodWaste
 {
     [Key]
     public DateTime FinancialYear { get; set; }

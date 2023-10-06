@@ -13,6 +13,6 @@ namespace FoodSaver.Data
         {
         }
 
-        public DbSet<FoodSaver.Data.FoodWastes> FoodWastes { get; set; } = default!;
+        public DbSet<FoodWaste> FoodWastes { get; set; } = default!;
     }
 }
