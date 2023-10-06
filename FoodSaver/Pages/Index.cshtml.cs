@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 
 namespace FoodSaver.Pages;
@@ -30,12 +31,9 @@ public class IndexModel : PageModel
         Products = Products.OrderBy(x => random.Next()).Take(4).ToList();
     }
 
-    public async Task<IActionResult> OnGetRefreshProducts()
+    public JsonResult OnPostRefreshProducts()
     {
-        Random random = new Random();
-        Products = await _context.Products.ToListAsync();
-        Products = Products.OrderBy(x => random.Next()).Take(4).ToList();
-
+        Products = _context.Products.ToList();
         return new JsonResult(Products);
     }
 }
