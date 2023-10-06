@@ -144,7 +144,7 @@
                     <h3>In Australia, 27% of food waste is from household</h3>
                     
                     <div class="text-center">
-                            <a href="https://zzha0352.shinyapps.io/food/" target="_blank" class="more-btn">Wastes from other places<i class="bx bx-chevron-right"></i></a>
+                        <a href="https://zzha0352.shinyapps.io/food/" target="_blank" class="more-btn">Wastes from other places<i class="bx bx-chevron-right"></i></a>
                     </div>
                     <br />
                     <br />
@@ -156,17 +156,17 @@
             <div class="col-lg-8 d-flex align-items-stretch">
                 <div class="icon-boxes d-flex flex-column justify-content-center" style="width: 100%">
                     <div class="row">
-                        <div class="d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="d-flex align-items-stretch" data-aos="fade-in" data-aos-delay="100">
                             <div class="icon-box mt-4 mt-xl-0">
                                 @if(Model.FoodWastes != null){
-                                    <ejs-chart id="container" width="100%" title="Average waste per household per year in Victoria">
+                                    <ejs-chart id="container" title="Average waste per household per year in Victoria">
                                         <e-chart-primaryxaxis valueType="DateTime" labelFormat="yyyy" interval="2" title="Year">
                                         </e-chart-primaryxaxis>
                                         <e-chart-primaryyaxis title="Waste (kg)" minimum="0">
                                         </e-chart-primaryyaxis>
                                         <e-series-collection>
-                                                <e-series dataSource="@Model.FoodWastes" xName="FinancialYear" yName="Waste"
-                                                        type="@Syncfusion.EJ2.Charts.ChartSeriesType.Area"></e-series>
+                                            <e-series dataSource="@Model.FoodWastes" xName="FinancialYear" yName="Waste"
+                                                    type="@Syncfusion.EJ2.Charts.ChartSeriesType.Area"></e-series>
                                         </e-series-collection>
                                     </ejs-chart>
                                 }
@@ -185,7 +185,7 @@
 
     <div class="text-center" data-aos="zoom-in">
         <h3>How impact are generated during the food production</h3>
-            <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More</a>
+        <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More</a>
     </div>
 
     </div>
@@ -249,81 +249,37 @@
 <section id="portfolio" class="portfolio">
     <div class="container">
 
-    <div class="section-title" data-aos="fade-left">
-        <h2>Try the waste simulator</h2>
-        <p> See the impact to the environment if you waste a certain grocery</p>
-    </div>
-
-    <!--
+        <div class="section-title" data-aos="fade-left">
+            <h2>Try the waste simulator</h2>
+            <p> See the impact to the environment if you waste a certain grocery</p>
+        </div>
         <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-card">Card</li>
-                <li data-filter=".filter-web">Web</li>
-            </ul>
+                <button id="refreshProductsBtn" class="btn btn-refesh">Change Products <i class="bx bx-refresh"></i></button>
             </div>
         </div>
-    -->
-        
+        <br/>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-        <div class="portfolio-wrap">
-            <img src="~/assets/products/beef.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-            <h4>Beef</h4>
-            <p>500g</p>
-            <div class="portfolio-links">
-                <a><i class="bx bx-plus"></i></a>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-        <div class="portfolio-wrap">
-            <img src="~/assets/products/toufu.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-            <h4>Toufu</h4>
-            <p>500g</p>
-            <div class="portfolio-links">
-                <a><i class="bx bx-plus"></i></a>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-        <div class="portfolio-wrap">
-                    <img src="~/assets/products/egg.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-            <h4>Egg</h4>
-            <p>50g</p>
-            <div class="portfolio-links">
-                <a><i class="bx bx-plus"></i></a>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-                <img src="~/assets/products/tomato.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                    <h4>Tomato</h4>
-                    <p>70g</p>
-                    <div class="portfolio-links">
-                        <a><i class="bx bx-plus"></i></a>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            @if(Model.Products != null)
+            {
+                foreach (var item in Model.Products)
+                {
+                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="@item.Url" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>@item.Name</h4>
+                                <p>@item.Qty</p>
+                                <div class="portfolio-links">
+                                    <a><i class="bx bx-plus"></i> Add</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+            }
         </div>
-
-    </div>
-
     </div>
 </section>
 
@@ -471,7 +427,9 @@
 
             <div class="col-lg-6">
             <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="pic"><img src="~/jpg/donate.jpg" class="img-fluid" alt=""></div>
+                <div class="pic">
+                    <img src="~/jpg/donate.jpg" class="img-fluid" alt="">
+                </div>
                 <div class="member-info">
                 <h4>Donation Points</h4>
                 <p>You can donate unwanted food to people who need it</p>

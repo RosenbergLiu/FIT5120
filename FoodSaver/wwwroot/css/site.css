@@ -24,3 +24,11 @@ body {
 text {
     font-family: "Raleway", sans-serif !important;
 }
+
+.btn-refesh {
+    background: #009970 !important;
+    color: white !important;
+    border-radius: 50px !important;
+    width: 15rem !important;
+    font-family: "Poppins", sans-serif !important;
+}

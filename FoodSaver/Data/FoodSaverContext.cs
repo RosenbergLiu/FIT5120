@@ -14,5 +14,6 @@ namespace FoodSaver.Data
         }
 
         public DbSet<FoodWaste> FoodWastes { get; set; } = default!;
+        public DbSet<Product> Products { get; set; }
     }
 }
