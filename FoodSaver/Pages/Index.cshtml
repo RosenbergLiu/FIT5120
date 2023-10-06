@@ -1,5 +1,5 @@
-﻿
-@page "/"
+﻿@page "/"
+@Html.AntiForgeryToken()
 @using Syncfusion.EJ2
 @model IndexModel
 @{
@@ -259,26 +259,47 @@
             </div>
         </div>
         <br/>
+        <script>
+            let allProducts = @Html.Raw(Json.Serialize(Model.Products));
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-            @if(Model.Products != null)
-            {
-                foreach (var item in Model.Products)
-                {
-                    <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="@item.Url" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>@item.Name</h4>
-                                <p>@item.Qty</p>
-                                <div class="portfolio-links">
-                                    <a><i class="bx bx-plus"></i> Add</a>
+            function displayRandomProducts() {
+                let displayedProducts = [];
+                let productContainer = document.getElementById('productContainer');
+
+                // Clear the previous products
+                productContainer.innerHTML = "";
+                // Get 4 random products
+                while (displayedProducts.length < 4) {
+                    let randomIndex = Math.floor(Math.random() * allProducts.length);
+                    if (displayedProducts.indexOf(randomIndex) === -1) {
+                        displayedProducts.push(randomIndex);
+                        let product = allProducts[randomIndex];
+
+                        let productDiv = `
+                        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <img src="${product.url}" class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4>${product.name}</h4>
+                                    <p>${product.qty}</p>
+                                    <div class="portfolio-links">
+                                    <a id="${product.name}" class="productAdd"><i class="bx bx-plus"></i> Add</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>`;
+
+                        productContainer.innerHTML += productDiv;
+                    }
                 }
             }
+
+            document.getElementById('refreshProductsBtn').addEventListener('click', displayRandomProducts);
+        </script>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200" id="productContainer" style="height: 20rem">
+            <script>
+                displayRandomProducts();
+            </script>
         </div>
     </div>
 </section>
@@ -536,6 +557,43 @@
 
     </div>
 </section> End Contact Section -->
+    <button id="refreshButton">Refresh Products</button>
+
+    <div id="productsList">
+        <!-- Products will be displayed here -->
+    </div>
+    @section Scripts {
+        <script>
+            var token = $('[name="__RequestVerificationToken"]').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Page("Index", "RefreshProducts")", // Replace "YourRazorPageName" with the correct name of your Razor page
+                        headers: {
+                            "RequestVerificationToken": token // Add this
+                        },
+                        success: function (data) {
+                            // Clear current list
+                            $("#productsList").empty();
+                            // Append new product details
+                            data.forEach(product => {
+                                $("#productsList").append(`<div class="product">
+                                                                <h3>${product.name}</h3>
+                                                                <a href="${product.url}">Link</a>
+                                                                <p>Qty: ${product.qty}</p>
+                                                            </div>`);
+                            });
+                        },
+                        error: function () {
+                            alert("An error occurred while fetching products.");
+                        }
+            });
+        </script>
+    }
 <br/>
 <br/>
+
 </main><!-- End #main -->
+
+
+
+
