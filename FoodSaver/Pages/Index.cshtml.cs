@@ -12,7 +12,10 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
     private readonly FoodSaverContext _context;
 
+    [BindProperty]
     public List<FoodWaste> FoodWastes { get; set; }
+
+    [BindProperty]
     public List<Product> Products { get; set; }
 
     public string? selectedGrocery = null;
@@ -28,7 +31,6 @@ public class IndexModel : PageModel
         FoodWastes = await _context.FoodWastes.ToListAsync();
         Random random = new Random();
         Products = await _context.Products.ToListAsync();
-        Products = Products.OrderBy(x => random.Next()).Take(4).ToList();
     }
 
     public JsonResult OnPostRefreshProducts()

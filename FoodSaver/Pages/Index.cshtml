@@ -116,20 +116,20 @@
 <section id="counts" class="counts">
     <div class="container">
 
-    <div class="row counters">
+        <div class="row counters">
 
-        <div class="col-lg-6 col-6 text-center">
-            <p>The Green-house emission in equivelent to </p>
-                <span data-purecounter-start="0" data-purecounter-end="6.7" data-purecounter-duration="1" class="purecounter"></span>
-            <p>million cars</p>
-        </div>
+            <div class="col-lg-6 col-6 text-center">
+                <p>The Green-house emission in equivelent to </p>
+                    <span data-purecounter-start="0" data-purecounter-end="6.7" data-purecounter-duration="1" class="purecounter"></span>
+                <p>million cars</p>
+            </div>
 
-        <div class="col-lg-6 col-6 text-center">
-                <p>The wasted water can fill Sydney Harbour</p>
-            <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-                <p>times</p>
+            <div class="col-lg-6 col-6 text-center">
+                    <p>The wasted water can fill Sydney Harbour</p>
+                <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
+                    <p>times</p>
+            </div>
         </div>
-    </div>
     </div>
 </section><!-- End Counts Section -->
 
@@ -276,14 +276,14 @@
                         let product = allProducts[randomIndex];
 
                         let productDiv = `
-                        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                        <div class="col-lg-3 col-md-6 portfolio-item filter-app" data-aos="zoom-in-up" data-aos-delay="80">
                             <div class="portfolio-wrap">
                                 <img src="${product.url}" class="img-fluid" alt="">
                                 <div class="portfolio-info">
                                     <h4>${product.name}</h4>
                                     <p>${product.qty}</p>
                                     <div class="portfolio-links">
-                                    <a id="${product.name}" class="productAdd"><i class="bx bx-plus"></i> Add</a>
+                                        <a href="#" id="${product.name}" class="productAdd" data-water="${product.water}" data-land="${product.land}" data-eut="${product.eut}" data-ghg="${product.ghg}" data-name="${product.name}" data-qty="${product.qty}"><i class="bx bx-plus"></i> Add</a>
                                     </div>
                                 </div>
                             </div>
@@ -292,6 +292,58 @@
                         productContainer.innerHTML += productDiv;
                     }
                 }
+
+                let addButtons = document.querySelectorAll('.productAdd');
+                addButtons.forEach(btn => {
+                    btn.addEventListener('click', function (event) {
+                        event.preventDefault();
+                            // Extract data attributes
+
+                        let resultContainer = document.getElementById("resultContainer");
+                        resultContainer.innerHTML = `
+                            <div class="row counters counts" data-aos="fade-down" data-aos-delay="60">
+                                <div class="text-center">
+                                    <h4>If you wasted <span id="productQty"></span> <span id="productName"></span></h4>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-lg-3 col-6 text-center">
+                                        <p>Water Used</p>
+                                        <span id="waterResult"></span> L
+                                    </div>
+                                    <div class="col-lg-3 col-6 text-center">
+                                        <p>Land Used</p>
+                                        <span id="landResult"></span> m²
+                                    </div>
+                                    <div class="col-lg-3 col-6 text-center">
+                                        <p>GHG Emissions</p>
+                                        <span id="ghgResult"></span> kg
+                                    </div>
+                                        <div class="col-lg-3 col-6 text-center">
+                                        <p>Eutropphying Emissions</p>
+                                        <span id="eutResult"></span> kg
+                                    </div>
+                                </div>
+                            </div>`;
+
+
+                        let waterContent = btn.getAttribute('data-water');
+                        let landContent = btn.getAttribute('data-land');
+                        let eutContent = btn.getAttribute('data-eut');
+                        let ghgContent = btn.getAttribute('data-ghg');
+                        let productName = btn.getAttribute('data-name');
+                        let productQty = btn.getAttribute('data-qty');
+
+                        // Populate the result div
+                        document.getElementById('waterResult').innerText = waterContent;
+                        document.getElementById('landResult').innerText = landContent;
+                        document.getElementById('eutResult').innerText = eutContent;
+                        document.getElementById('ghgResult').innerText = ghgContent;
+                        document.getElementById('productName').innerText = productName;
+                        document.getElementById('productQty').innerText = productQty;
+                    });
+                });
             }
 
             document.getElementById('refreshProductsBtn').addEventListener('click', displayRandomProducts);
@@ -301,45 +353,19 @@
                 displayRandomProducts();
             </script>
         </div>
+        <div id="resultContainer">
+        </div>
     </div>
 </section>
 
-@if (Model.selectedGrocery != null)
-{
-    <section id="counts" class="counts">
-        <div class="container">
-
-            <div class="row counters">
-
-                <div class="col-lg-3 col-6 text-center">
-                    <p>Water Wasted</p>
-                    <span data-purecounter-start="0" data-purecounter-end="6700000" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>Liters</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <p>Land Used</p>
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>Sqare Kilometer</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <p>Green-house Gas Emission</p>
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>Kilogram</p>
-                </div>
-
-                <div class="col-lg-3 col-6 text-center">
-                    <p>The wasted water can fill Sydney Harbour</p>
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>times</p>
-                </div>
-            </div>
+<section class="cta">
+    <div class="container">
+        <div class="text-center" data-aos="zoom-in">
+                <h3>Want to see more foods?</h3>
+                <a class="cta-btn" href="https://tienmonash.shinyapps.io/Food_GHG_Emission/" target="_blank">Learn More <i class="bi bi-box-arrow-up-right"></i></a>
         </div>
-    </section>
-
-    <!-- End Counts Section -->
-}
+    </div>
+</section>
     
 
 <!-- ======= Testimonials Section ======= 
