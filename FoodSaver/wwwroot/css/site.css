@@ -34,11 +34,13 @@ text {
 }
 
 #autocomplete-results {
+    position: absolute !important;
+    width: 20rem;
     border: 1px solid #ccc;
-    position: absolute;
     display: none;
     padding: 5px;
     background: white;
+    z-index: 9999;
 }
 
     #autocomplete-results p {
@@ -77,6 +79,35 @@ text {
             background: #00805d;
         }
 
-    .contact .shadow-form .form-group {
-        padding-bottom: 2rem;
-    }
+
+.green-btn {
+    background: #009970;
+    border: 0;
+    padding: 10px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 200px; /* Or any preferred width */
+    text-align: center;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.recipe-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

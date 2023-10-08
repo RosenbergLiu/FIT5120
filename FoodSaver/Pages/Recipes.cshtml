@@ -6,6 +6,11 @@
     ViewData["Title"] = "Recipes Hub";
     ViewData["Ingradients"] = new List<Ingradient>();
 }
+<script>
+    let ingredientsList = [];
+    let recipesIds = [];
+    var token = $('[name="__RequestVerificationToken"]').val();
+</script>
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
@@ -51,30 +56,32 @@
 
     
 
-    <section id="contact" class="contact" >
+    <section id="contact" class="contact">
         <div class="container" >
             <div class="row" >
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                    <form class="shadow-form mt-4" style="height: 15rem">
-                        <h5>Search Ingradient to Add</h5>
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="section-title">
+                        <h2>Recipes</h2>
+                        <p>Search and add your ingradients to list then click Search Recipes button to fetch cooking recipes based on ingradients you have.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+                    <form class="shadow-form mt-4" style="height: 15rem" id="addIngredient">
+                        <h5>Search Ingradient</h5>
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="ingradient" placeholder="Ingradient Name" required>
+                            <input type="text" class="form-control" id="ingradient" placeholder="Type an ingradient ...">
+                            <div id="autocomplete-results"></div>
                         </div>
-                        <div id="autocomplete-results"></div>
 
                         <script>
                             const inputEl = document.getElementById('ingradient');
                             const resultList = document.getElementById('autocomplete-results');
-                            let delayTimeout = null;
                             var token = $('[name="__RequestVerificationToken"]').val();
 
                             inputEl.addEventListener('input', function () {
-                                resultList.innerHTML = '';
                                 resultList.style.display = 'none';
-                                clearTimeout(delayTimeout);
 
                                 if (inputEl.value.trim().length > 0) {
-                                    delayTimeout = setTimeout(() => {   // Set a new timeout
                                         const settings = {
                                             async: true,
                                             crossDomain: true,
@@ -89,8 +96,10 @@
 
                                         $.ajax(settings).done(function (response) {
                                             if (response.length) {
+                                                resultList.innerHTML = '';
                                                 resultList.style.display = 'block';
                                                 response.forEach(ingredient => {
+                                                    
                                                     const listItem = document.createElement('p');
                                                     listItem.textContent = ingredient.name;
                                                     listItem.addEventListener('click', function () {
@@ -101,30 +110,52 @@
                                                 });
                                             }
                                         });
-                                    }, 500);
                                 }
                             });
                         </script>
                         <div class="text-center">
-                            <button type="submit" onclick="addToList()">Add to List <i class="bi bi-arrow-right"></i></button>
+                            <button type="submit" onclick="addToList()" style="margin-top: 30px">Add to List <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </form>
+                    <script>
+                        const formElement = document.getElementById('addIngredient');
+
+                        formElement.addEventListener('submit', function (e) {
+                            if (inputEl.value.trim() === "") {
+                                e.preventDefault(); // Prevent form submission
+                            }
+                        });
+                    </script>
                 </div>
-                <div class="col-lg-4" data-aos="fade-left" data-aos-delay="100">
+                <div class="col-lg-3" data-aos="fade-left" data-aos-delay="100">
                     <div class="shadow-form mt-4" style="height: 15rem">
-                        <h5>Added Ingradient</h5>
+                        <h5>Ingradient List</h5>
                         <div id="listContainer" style="overflow-y: auto; overflow-x: hidden; height: 10rem" class="mt-3">
 
                         </div>
                     </div>
                 </div>
             </div>
-
+            
         </div>
-    </section> 
-    <button>
-
-    </button>
+        
+        
+    </section>
+    <section class="portfolio" style="padding-top: 0 !important;">
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <button type="submit" class="green-btn" onclick="fetchRecipes()" style="width: 20rem" data-aos="zoom-in" data-aos-delay="100">
+                    Search Recipes
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-3">
+            <h5 id="resultTile"></h5>
+        </div>
+        <div class="container" style="margin-top: 30px; margin-bottom: 60px">
+            <div class="row" id="recipesContainer"></div>
+        </div>
+    </section>
 
 </main><!-- End #main -->
 <!--
