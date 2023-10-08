@@ -7,8 +7,6 @@ function addToList() {
     const inputEl = document.getElementById('ingradient');
     const listContainer = document.getElementById('listContainer');
 
-    
-
     // Check if the input has a value
     if (inputEl.value.trim() !== "") {
         ingredientsList.push(inputEl.value);
@@ -16,7 +14,7 @@ function addToList() {
         rowDiv.className = 'row';
 
         const nameDiv = document.createElement('div');
-        nameDiv.className = 'col-8';
+        nameDiv.className = 'col';
         const nameP = document.createElement('p');
         nameP.textContent = inputEl.value;
         nameDiv.appendChild(nameP);
@@ -92,8 +90,6 @@ function fetchDetailedRecipes() {
         };
 
         $.ajax(settings).done(function (response) {
-            console.log(response); // Log detailed recipes to the console
-            // You can also call a function here to display these detailed recipes on your webpage if needed
             displayDetailedRecipes(response);
         }).fail(function (error) {
             console.error("There was an error fetching the detailed recipes:", error);

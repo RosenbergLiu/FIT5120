@@ -1,4 +1,62 @@
-﻿@page
+﻿@page "Donation"
 @model FoodSaver.Pages.DonationModel
 @{
 }
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1 class="text-light"><a href="index.html"><span>Food Saver</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar" style="margin-right: 5rem">
+                <ul>
+                    <li><a class="nav-link" href="/">Home</a></li>
+                    <li><a class="nav-link active" href="/Donation">Donation Points</a></li>
+                    <li><a class="nav-link" href="/Reminder">Expire Reminder</a></li>
+                    <li><a class="nav-link" href="/Recipes">Recipes Hub</a></li>
+                    <li><a class="nav-link" href="/Planner">Meal Planner</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div><!-- End Header Container -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Donation Points</h2>
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Donation Points</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="section-title">
+                        <h2>Donate</h2>
+                        <p>Those points showed on map is the place that accpte food donation in Melbourne metropolitan. You can donate your unwanted food to those points to help others and reduce food waste.</p>
+                        <p>You can click a point to see its address and the link to Google Map and navigation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                    <iframe style="border:0; width: 100%; height: 40rem;" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAMLTuq5eTM1B_Q2BhMnc4qa6GzgDrnmuw&q=foodbank+in+Melbourne&zoom=10" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>

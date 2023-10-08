@@ -477,7 +477,9 @@
                     <div class="col-lg-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
                             <div class="pic">
-                                <img src="~/jpg/donate.jpg" class="img-fluid" alt="">
+                                <a href="/Donation">
+                                    <img src="~/jpg/donate.jpg" class="img-fluid" alt="">
+                                </a>
                             </div>
                             <div class="member-info">
                             <h4>Donation Points</h4>
@@ -489,7 +491,9 @@
                     <div class="col-lg-6 mt-4 mt-lg-0">
                         <div class="member" data-aos="zoom-in" data-aos-delay="200">
                             <div class="pic">
-                                <img src="~/jpg/freezer.jpg" class="img-fluid" alt="">
+                                <a href="/Donation">
+                                    <img src="~/jpg/freezer.jpg" class="img-fluid" alt="">
+                                </a>
                             </div>
                             <div class="member-info">
                             <h4>Expire Reminder</h4>
@@ -528,42 +532,6 @@
     </div>
 </section><!-- End Team Section -->
 
-
-
-
-
-
-    <button id="refreshButton">Refresh Products</button>
-
-    <div id="productsList">
-    </div>
-    @section Scripts {
-        <script>
-            var token = $('[name="__RequestVerificationToken"]').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "@Url.Page("Index", "RefreshProducts")",
-                        headers: {
-                            "RequestVerificationToken": token
-                        },
-                        success: function (data) {
-                            // Clear current list
-                            $("#productsList").empty();
-                            // Append new product details
-                            data.forEach(product => {
-                                $("#productsList").append(`<div class="product">
-                                                                <h3>${product.name}</h3>
-                                                                <a href="${product.url}">Link</a>
-                                                                <p>Qty: ${product.qty}</p>
-                                                            </div>`);
-                            });
-                        },
-                        error: function () {
-                            alert("An error occurred while fetching products.");
-                        }
-            });
-        </script>
-    }
 <br/>
 <br/>
 

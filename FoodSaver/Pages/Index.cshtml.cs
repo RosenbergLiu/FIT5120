@@ -11,6 +11,7 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     private readonly FoodSaverContext _context;
+    private readonly IConfiguration _configuration;
 
     [BindProperty]
     public List<FoodWaste> FoodWastes { get; set; }
@@ -20,10 +21,11 @@ public class IndexModel : PageModel
 
     public string? selectedGrocery = null;
 
-    public IndexModel(ILogger<IndexModel> logger, FoodSaverContext context)
+    public IndexModel(ILogger<IndexModel> logger, FoodSaverContext context, IConfiguration configuration)
     {
         _logger = logger;
         _context = context;
+        _configuration = configuration;
     }
 
     public async Task OnGetAsync()

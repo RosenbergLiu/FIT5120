@@ -5,6 +5,7 @@ namespace FoodSaver.Pages
 {
     public class DonationModel : PageModel
     {
+
         public void OnGet()
         {
         }
