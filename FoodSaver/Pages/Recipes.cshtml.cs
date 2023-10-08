@@ -10,15 +10,6 @@ namespace FoodSaver.Pages
 
         public List<Ingradient> Ingradients { get; set; } = new List<Ingradient>();
 
-        [BindProperty]
-        public InputModel SearchField { get; set; }
-
-        public class InputModel
-        {
-            [Required]
-            public string Input { get; set; }
-        }
-
         public string ApiKey { get; set; }
         public void OnGet()
         {
@@ -27,7 +18,6 @@ namespace FoodSaver.Pages
 
         public void OnPost()
         {
-            Ingradients.Add(new Ingradient { Name = SearchField.Input });
         }
     }
 }

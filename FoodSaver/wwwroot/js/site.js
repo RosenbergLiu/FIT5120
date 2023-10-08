@@ -3,34 +3,43 @@
 
 // Write your JavaScript code.
 
-function displayRandomProducts() {
-    let displayedProducts = [];
-    let productContainer = document.getElementById('productContainer');
+function addToList() {
+    const inputEl = document.getElementById('ingradient');
+    const listContainer = document.getElementById('listContainer');
 
-    // Clear the previous products
-    productContainer.innerHTML = "";
-    // Get 4 random products
-    while (displayedProducts.length < 4) {
-        let randomIndex = Math.floor(Math.random() * allProducts.length);
-        if (displayedProducts.indexOf(randomIndex) === -1) {
-            displayedProducts.push(randomIndex);
-            let product = allProducts[randomIndex];
+    // Check if the input has a value
+    if (inputEl.value.trim() !== "") {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'row';
 
-            let productDiv = `
-            <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="${product.url}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>${product.name}</h4>
-                        <p>${product.qty}</p>
-                        <div class="portfolio-links">
-                            <a><i class="bx bx-plus"></i> Add</a>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'col-8';
+        const nameP = document.createElement('p');
+        nameP.textContent = inputEl.value;
+        nameDiv.appendChild(nameP);
 
-            productContainer.innerHTML += productDiv;
-        }
+        const closeDiv = document.createElement('div');
+        closeDiv.className = 'col-4';
+        const closeLink = document.createElement('a');
+        closeLink.href = '#';
+        const closeIcon = document.createElement('i');
+        closeIcon.className = 'bi bi-x';
+        closeLink.appendChild(closeIcon);
+
+        closeLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            listContainer.removeChild(rowDiv);
+        });
+
+        closeDiv.appendChild(closeLink);
+
+        rowDiv.appendChild(nameDiv);
+        rowDiv.appendChild(closeDiv);
+        listContainer.appendChild(rowDiv);
+
+        // Clear the input
+        inputEl.value = '';
     }
 }
+
+

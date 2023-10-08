@@ -1,10 +1,36 @@
 ﻿@page "/Recipes"
 @Html.AntiForgeryToken()
+@using FoodSaver.Data
 @model FoodSaver.Pages.RecipesModel
 @{
     ViewData["Title"] = "Recipes Hub";
+    ViewData["Ingradients"] = new List<Ingradient>();
 }
 
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1 class="text-light"><a href="index.html"><span>Food Saver</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar" style="margin-right: 5rem">
+                <ul>
+                    <li><a class="nav-link" href="/">Home</a></li>
+                    <li><a class="nav-link" href="/Donation">Donation Points</a></li>
+                    <li><a class="nav-link" href="/Reminder">Expire Reminder</a></li>
+                    <li><a class="nav-link active" href="/Recipes">Recipes Hub</a></li>
+                    <li><a class="nav-link" href="/Planner">Meal Planner</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div><!-- End Header Container -->
+    </div>
+</header><!-- End Header -->
 
 <main id="main">
 
@@ -29,15 +55,15 @@
         <div class="container" >
             <div class="row" >
                 <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                    <form method="post" role="form" class="shadow-form mt-4" style="height: 15rem">
-                        <h4>Search Ingradient to Add</h4>
+                    <form class="shadow-form mt-4" style="height: 15rem">
+                        <h5>Search Ingradient to Add</h5>
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="subject" id="subject" asp-for="SearchField.Input" placeholder="Ingradient Name" required>
+                            <input type="text" class="form-control" id="ingradient" placeholder="Ingradient Name" required>
                         </div>
                         <div id="autocomplete-results"></div>
 
                         <script>
-                            const inputEl = document.getElementById('subject');
+                            const inputEl = document.getElementById('ingradient');
                             const resultList = document.getElementById('autocomplete-results');
                             let delayTimeout = null;
                             var token = $('[name="__RequestVerificationToken"]').val();
@@ -79,33 +105,26 @@
                                 }
                             });
                         </script>
-
-
                         <div class="text-center">
-                            <button type="submit">Add to list</button>
+                            <button type="submit" onclick="addToList()">Add to List <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-4" data-aos="fade-left" data-aos-delay="100">
                     <div class="shadow-form mt-4" style="height: 15rem">
-                        <h4>Added Ingradient</h4>
-                        <div style="overflow-y: auto; overflow-x: hidden; height: 10rem" class="mt-3">
-                            @foreach (var item in Model.Ingradients)
-                            {
-                                <div class="row">
-                                    <div class="col-8"><p>@item.Name</p></div>
-                                    <div class="col-4"><a href="#"><i class="bi bi-x"></i></a></div>
-                                </div>
-                            }
+                        <h5>Added Ingradient</h5>
+                        <div id="listContainer" style="overflow-y: auto; overflow-x: hidden; height: 10rem" class="mt-3">
+
                         </div>
-                        
                     </div>
-                    
                 </div>
             </div>
 
         </div>
     </section> 
+    <button>
+
+    </button>
 
 </main><!-- End #main -->
 <!--
