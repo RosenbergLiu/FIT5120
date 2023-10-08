@@ -6,41 +6,6 @@
     ViewData["Title"] = "Home";
 }
 
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container">
-        <div class="header-container d-flex align-items-center justify-content-between">
-        <div class="logo">
-            <h1 class="text-light"><a href="index.html"><span>Food Saver</span></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-        </div>
-
-        <nav id="navbar" class="navbar" style="margin-right: 5rem">
-            <ul>
-            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
-            <li><a class="nav-link scrollto" href="#services">Impact</a></li>
-            <li><a class="nav-link scrollto" href="#team">Actions</a></li>
-            <li class="dropdown"><a href="#"><span>Tools</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                <li><a href="/donation">Donation Points</a></li>
-                <li><a href="/reminder">Expire Reminder</a></li>
-                <li><a href="/recipes">Recipes Hub</a></li>
-                <li><a href="/planner">Meal Planner</a></li>
-                </ul>
-            </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
-        </div><!-- End Header Container -->
-    </div>
-</header><!-- End Header -->
-
-
-
-
 <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
@@ -89,45 +54,40 @@
 <!-- ======= About Section ======= -->
 <section id="about" class="about">
     <div class="container">
-
-    <div class="row content">
-        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-        <h2>About</h2>
-        <h3>Beyond the Bin: The Ecosystem Impact of Food Waste</h3>
+        <div class="row content">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                <h2>About</h2>
+                <h3>Beyond the Bin: The Ecosystem Impact of Food Waste</h3>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+                <p>
+                    7.6 Million tonnes of household food waste each year in Australia
+                </p>
+                <ul>
+                    <li><i class="ri-check-double-line"></i> Generating 3 million tonnes of Green-house Gas</li>
+                    <li><i class="ri-check-double-line"></i> 29 Billion liters of water is wasted which was used to grow the food</li>
+                </ul>
+                <p class="fst-italic">
+                    The energy-intensive processes of growing, processing, and transporting food releases carbon dioxide. When discarded food decomposes in landfills, it emits methane, a potent greenhouse gas. Additionally, vast amounts of water are utilized in food production. Wasting food means squandering this water, exacerbating water scarcity issues and leading to unnecessary wastewater, often polluted with agricultural runoffs.
+                </p>
+            </div>
         </div>
-        <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
-        <p>
-            7.6 Million tonnes of household food waste each year in Australia
-        </p>
-        <ul>
-            <li><i class="ri-check-double-line"></i> Generating 3 million tonnes of Green-house Gas</li>
-            <li><i class="ri-check-double-line"></i> 29 Billion liters of water is wasted which was used to grow the food</li>
-        </ul>
-        <p class="fst-italic">
-            The energy-intensive processes of growing, processing, and transporting food releases carbon dioxide. When discarded food decomposes in landfills, it emits methane, a potent greenhouse gas. Additionally, vast amounts of water are utilized in food production. Wasting food means squandering this water, exacerbating water scarcity issues and leading to unnecessary wastewater, often polluted with agricultural runoffs.
-        </p>
-        </div>
-    </div>
-
     </div>
 </section><!-- End About Section -->
 
 <!-- ======= Counts Section ======= -->
 <section id="counts" class="counts">
     <div class="container">
-
         <div class="row counters">
-
             <div class="col-lg-6 col-6 text-center">
                 <p>The Green-house emission in equivelent to </p>
                     <span data-purecounter-start="0" data-purecounter-end="6.7" data-purecounter-duration="1" class="purecounter"></span>
                 <p>million cars</p>
             </div>
-
             <div class="col-lg-6 col-6 text-center">
-                    <p>The wasted water can fill Sydney Harbour</p>
+                <p>The wasted water can fill Sydney Harbour</p>
                 <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="2" class="purecounter"></span>
-                    <p>times</p>
+                <p>times</p>
             </div>
         </div>
     </div>
@@ -185,7 +145,7 @@
 
     <div class="text-center" data-aos="zoom-in">
         <h3>How impact are generated during the food production</h3>
-        <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More</a>
+            <a class="cta-btn" href="https://zzha0352.shinyapps.io/food/" target="_blank">Learn More <i class="bi bi-box-arrow-up-right"></i></a>
     </div>
 
     </div>
@@ -207,15 +167,19 @@
                 <div class="col-md-6 d-flex align-items-stretch">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon"><iconify-icon icon="ion:water" width="32" height="32"></div>
-                        <h4><a href="">Water Used</a></h4>
-                                        <p>Producing food necessitates water due to its pivotal role in the photosynthesis of plants, hydration needs of livestock, irrigation to supplement insufficient rainfall for crops, processing stages that include cleaning and cooking, maintaining soil health.</p>
+                        <h4>
+                            <a href="">Water Used</a>
+                        </h4>
+                        <p>Producing food necessitates water due to its pivotal role in the photosynthesis of plants, hydration needs of livestock, irrigation to supplement insufficient rainfall for crops, processing stages that include cleaning and cooking, maintaining soil health.</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon"><iconify-icon icon="ion:earth" width="32" height="32"></iconify-icon></div>
-                        <h4><a href="">Land Used</a></h4>
+                        <h4>
+                            <a href="">Land Used</a>
+                        </h4>
                         <p>
                             Producing food requires land as it serves as the foundational medium for cultivating various crops, offers grazing and habitat areas for livestock, supports infrastructure for agricultural practices, and plays a role in the ecosystem services essential for maintaining soil health, nutrient cycling, and water management.
                         </p>
@@ -225,7 +189,9 @@
                 <div class="col-md-6 d-flex align-items-stretch mt-4">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon"><iconify-icon icon="material-symbols:co2" width="48" height="48"></iconify-icon></div>
-                        <h4><a href="">GHG Emissions</a></h4>
+                        <h4>
+                            <a href="">GHG Emissions</a>
+                        </h4>
                         <p>
                             Producing food generates greenhouse gases due to agricultural practices like livestock methane emissions, crop cultivation, deforestation for farmland, and the energy-intensive nature of food processing and transportation.
                         </p>
@@ -235,7 +201,9 @@
                 <div class="col-md-6 d-flex align-items-stretch mt-4">
                     <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon"><iconify-icon icon="mdi:dirty" width="32" height="32"></iconify-icon></div>
-                        <h4><a href="">Eutrophying Emissions</a></h4>
+                        <h4>
+                            <a href="">Eutrophying Emissions</a>
+                        </h4>
                         <p>Food waste intensifies eutrophying emissions because wasted food means wasted fertilizers, especially nitrogen and phosphorus. When these nutrients enter water bodies, they trigger excessive algae growth. Decomposing algae consume oxygen, leading to aquatic "dead zones" from eutrophication.</p>
                     </div>
                 </div>
@@ -462,140 +430,87 @@
 <section id="team" class="team">
     <div class="container">
 
-    <div class="row">
-        <div class="col-lg-4">
-        <div class="section-title" data-aos="fade-right">
-            <h2>Actions</h2>
-            <p>What you can do to reduce food waste</p>
-        </div>
-        </div>
-        <div class="col-lg-8">
         <div class="row">
+            <div class="col-lg-4">
+                <div class="section-title" data-aos="fade-right">
+                    <h2>Actions</h2>
+                    <p>What you can do to reduce food waste</p>
+            </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
 
-            <div class="col-lg-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                <div class="pic">
-                    <img src="~/jpg/donate.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="member-info">
-                <h4>Donation Points</h4>
-                <p>You can donate unwanted food to people who need it</p>
-                </div>
-            </div>
-            </div>
+                    <div class="col-lg-6">
+                        <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="pic">
+                                <img src="~/jpg/donate.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                            <h4>Donation Points</h4>
+                            <p>You can donate unwanted food to people who need it</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                <div class="pic">
-                    <img src="~/jpg/freezer.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="member-info">
-                <h4>Expire Reminder</h4>
-                <p>Remind you before foods expire </p>
-                </div>
-            </div>
-            </div>
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="member" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pic">
+                                <img src="~/jpg/freezer.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                            <h4>Expire Reminder</h4>
+                            <p>Remind you before foods expire </p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="col-lg-6 mt-4">
-            <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                <div class="pic"><img src="~/jpg/cooking.jpg" class="img-fluid" alt=""></div>
-                <div class="member-info">
-                <h4>Recipes Hub</h4>
-                <p>Use what you have to cook. Don't waste them</p>
-                </div>
-            </div>
-            </div>
+                    <div class="col-lg-6 mt-4">
+                        <div class="member" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="pic">
+                                <a href="/recipes">
 
-            <div class="col-lg-6 mt-4">
-            <div class="member" data-aos="zoom-in" data-aos-delay="400">
-                <div class="pic"><img src="~/jpg/shopping.jpg" class="img-fluid" alt=""></div>
-                <div class="member-info">
-                <h4>Meal Planner</h4>
-                <p>Plan your meal ahead and buy what is needed</p>
+                                                    <img src="~/jpg/cooking.jpg" class="img-fluid" alt="">
+                                    </a>
+                            </div>
+                            <div class="member-info">
+                            <h4>Recipes Hub</h4>
+                            <p>Use what you have to cook. Don't waste them</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="pic"><img src="~/jpg/shopping.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                            <h4>Meal Planner</h4>
+                            <p>Plan your meal ahead and buy what is needed</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </section><!-- End Team Section -->
 
-<!-- ======= Contact Section ======= 
-<section id="contact" class="contact">
-    <div class="container">
-    <div class="row">
-        <div class="col-lg-4" data-aos="fade-right">
-        <div class="section-title">
-            <h2>Contact</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-        </div>
 
-        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-        <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-        <div class="info mt-4">
-            <i class="bi bi-geo-alt"></i>
-            <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 mt-4">
-            <div class="info">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-            </div>
-            </div>
-            <div class="col-lg-6">
-            <div class="info w-100 mt-4">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-            </div>
-            </div>
-        </div>
 
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
-            <div class="row">
-            <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-            </div>
-            </div>
-            <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-        </form>
-        </div>
-    </div>
 
-    </div>
-</section> End Contact Section -->
+
+
     <button id="refreshButton">Refresh Products</button>
 
     <div id="productsList">
-        <!-- Products will be displayed here -->
     </div>
     @section Scripts {
         <script>
             var token = $('[name="__RequestVerificationToken"]').val();
                     $.ajax({
                         type: "POST",
-                        url: "@Url.Page("Index", "RefreshProducts")", // Replace "YourRazorPageName" with the correct name of your Razor page
+                        url: "@Url.Page("Index", "RefreshProducts")",
                         headers: {
-                            "RequestVerificationToken": token // Add this
+                            "RequestVerificationToken": token
                         },
                         success: function (data) {
                             // Clear current list
