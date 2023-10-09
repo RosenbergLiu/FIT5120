@@ -111,3 +111,15 @@ text {
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+/* By default, the div is visible */
+.desktop-only {
+    display: block;
+}
+
+/* Hide the div on screens smaller than 768px */
+@media (max-width: 767px) {
+    .desktop-only {
+        display: none;
+    }
+}
