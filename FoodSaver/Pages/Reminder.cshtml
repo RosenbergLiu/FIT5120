@@ -50,7 +50,7 @@
 </main>
 
 
-<section id="contact" class="contact">
+<section class="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-4" data-aos="fade-right">
@@ -61,22 +61,19 @@
             </div>
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                <form method="post" role="form" class="shadow-form mt-4">
+                <form method="post" asp-page-handler="Download" role="form" class="shadow-form mt-4">
                     
                     <div class="row">
                         <div class="col-md-10 form-group mt-3">
-                            <input type="text" class="form-control" id="productName" placeholder="Type of scan the Product Name">
+                            <input type="text" class="form-control" id="productName" placeholder="Type of scan the Product Name" asp-for="ProductName" required>
                         </div>
                         <div class="col-md-2 form-group mt-3">
-                            <button class="green-btn" id="captureName" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-camera"></i></button>
+                            <button type="button" class="green-btn" id="captureName" data-bs-toggle="modal" data-bs-target="#captureDialog" onclick="accessCamera()"><i class="bi bi-camera"></i></button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10 form-group mt-3">
-                            <input type="text" class="form-control" id="expireDate" placeholder="Type or scan the Best Before">
-                        </div>
-                        <div class="col-md-2 form-group mt-3">
-                            <button class="green-btn" id="captureDate"><i class="bi bi-camera"></i></button>
+                            <input type="date" class="form-control" id="expireDate" placeholder="Type or scan the Best Before" asp-for="ProductDate" required>
                         </div>
                     </div>
                     <div class="text-center mt-3">
@@ -87,3 +84,69 @@
         </div>
     </div>
 </section>
+
+<!-- Dialog -->
+<div class="modal fade" id="captureDialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="captureDialogLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="captureDialogLabel">Capture the text</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <video id="cameraFeed" autoplay style="width: 100%"></video>
+                <canvas id="imageCapture" style="display:none;"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="green-btn" style="background-color:gray !important" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="green-btn" id="captureImage" data-bs-dismiss="modal">Capture</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById('cameraFeed');
+    const canvas = document.getElementById('imageCapture');
+    const captureBtn = document.getElementById('captureImage');
+
+    // Access the camera
+    function accessCamera() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            }).catch(function (err) {
+                console.error("Error accessing the camera", err);
+            });
+        }
+    }
+
+    // Capture the image
+    captureBtn.addEventListener('click', function () {
+        const videoElement = document.getElementById('cameraFeed');
+        const canvasElement = document.getElementById('imageCapture');
+        const ctx = canvasElement.getContext("2d");
+
+        if (videoElement.readyState === videoElement.HAVE_ENOUGH_DATA) {
+            canvasElement.width = videoElement.videoWidth;
+            canvasElement.height = videoElement.videoHeight;
+            ctx.drawImage(videoElement, 0, 0, videoElement.videoWidth, videoElement.videoHeight);
+
+            const imageDataUrl = canvasElement.toDataURL("image/png").split(",")[1];
+
+            AnalyzeFrame(imageDataUrl).then((result) => {
+                if (result !== null & result !== "") {
+
+                    document.getElementById('productName').value = result;
+                } else {
+                    alert("Fail to capture text or result is empty");
+                }
+            });
+        }
+        const tracks = video.srcObject.getTracks();
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+    });
+
+</script>

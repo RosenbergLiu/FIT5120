@@ -125,3 +125,57 @@ function displayDetailedRecipes(response) {
     }
 
 }
+
+
+
+
+async function AnalyzeFrame(imageDataUrl) {
+
+    // Prepare API payload
+    const payload = {
+        "requests": [
+            {
+                "image": {
+                    "content": imageDataUrl
+                },
+                "features": [
+                    {
+                        "type": "TEXT_DETECTION"
+                    }
+                ]
+            }
+        ]
+    };
+
+    // Call Google Vision API
+    const response = await fetch("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAMLTuq5eTM1B_Q2BhMnc4qa6GzgDrnmuw", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.responses && data.responses[0] && data.responses[0].textAnnotations && data.responses[0].textAnnotations[0]) {
+            const textAnnotations = data.responses[0].textAnnotations[0].description || "No text detected";
+            console.log(textAnnotations);
+            return textAnnotations;
+        }
+        else {
+            return null;
+        }
+    } else {
+        const errMessage = await response.text();
+        throw new Error("Failed to call API: " + errMessage);
+    }
+    return null;
+}
+
+function triggerDownload(dataUrl, fileName) {
+    const link = document.getElementById('downloadLink');
+    link.href = dataUrl;
+    link.download = fileName;
+    link.click();
+}
