@@ -8,8 +8,6 @@ namespace FoodSaver.Pages
     public class RecipesModel : PageModel
     {
 
-        public List<Ingradient> Ingradients { get; set; } = new List<Ingradient>();
-
         public string ApiKey { get; set; }
         public void OnGet()
         {

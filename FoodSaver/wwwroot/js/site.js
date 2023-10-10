@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 function addToList() {
-    const inputEl = document.getElementById('ingradient');
+    const inputEl = document.getElementById('ingredient');
     const listContainer = document.getElementById('listContainer');
 
     // Check if the input has a value
