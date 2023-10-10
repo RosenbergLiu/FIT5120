@@ -262,7 +262,7 @@
         <br/>
         <script>
             let allProducts = @Html.Raw(Json.Serialize(Model.Products));
-
+            let previouslyDisplayedProducts = [];
             function displayRandomProducts() {
                 let displayedProducts = [];
                 let productContainer = document.getElementById('productContainer');
@@ -272,9 +272,9 @@
                 // Get 4 random products
                 while (displayedProducts.length < 4) {
                     let randomIndex = Math.floor(Math.random() * allProducts.length);
-                    if (displayedProducts.indexOf(randomIndex) === -1) {
-                        displayedProducts.push(randomIndex);
-                        let product = allProducts[randomIndex];
+                        if (displayedProducts.indexOf(randomIndex) === -1 && previouslyDisplayedProducts.indexOf(randomIndex) === -1) {
+                            displayedProducts.push(randomIndex);
+                            let product = allProducts[randomIndex];
 
                         let productDiv = `
                         <div class="col-lg-3 col-md-6 portfolio-item filter-app" data-aos="zoom-in-up" data-aos-delay="80">
@@ -293,6 +293,8 @@
                         productContainer.innerHTML += productDiv;
                     }
                 }
+
+                previouslyDisplayedProducts = displayedProducts;
 
                 let addButtons = document.querySelectorAll('.productAdd');
                 addButtons.forEach(btn => {
