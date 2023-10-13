@@ -1,8 +1,56 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Privacy";
 }
-<h1>@ViewData["Title"]</h1>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1 class="text-light"><a href="/"><span>Food Saver</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
 
-<p>This web application does not collect any user data</p>
+            <nav id="navbar" class="navbar" style="margin-right: 5rem">
+                <ul>
+                    <li><a class="nav-link" href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Tools</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/Donation">Donation Points</a></li>
+                            <li><a href="/Reminder">Expiry Reminder</a></li>
+                            <li><a href="/Recipes">Recipes Hub</a></li>
+                            <li><a href="/Planner">Meal Planner</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div><!-- End Header Container -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Privacy Policy</h2>
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Privacy Policy</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section id="contact" class="contact" style="margin-left: 8rem; margin-right:8rem">
+
+
+        <p>This web application does not collect any user data</p>
+    </section>
+</main>
